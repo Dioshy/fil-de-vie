@@ -12,7 +12,7 @@
 }
 .page-thread .thread-pulse {
   stroke: color-mix(in srgb, var(--accent) 70%, #ffd9b8);
-  stroke-width: 3;
+  stroke-width: 4;
 }
 
 /* Knot glow.

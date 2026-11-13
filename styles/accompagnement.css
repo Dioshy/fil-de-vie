@@ -27,7 +27,7 @@
 #accompagnement .acc-knot path {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 1.6;
+  stroke-width: var(--thread-w);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -189,4 +189,28 @@
   #accompagnement .acc-step:nth-child(4) .acc-body { grid-column: 6 / 11; }
   #accompagnement .acc-close { grid-column: 3 / 9; }
   #accompagnement .acc-knot { width: 3.25rem; height: 3.25rem; margin-top: calc(var(--step-2) * .58 - 1.625rem); }
+}
+
+/* The finished piece: at the last step, a drop of glass rimmed with copper hangs from the thread */
+#accompagnement .acc-knot .acc-piece { transform: none; opacity: 1; }
+#accompagnement .acc-knot .acc-piece-cord { stroke-width: calc(var(--thread-w) * .7); }
+#accompagnement .acc-knot .acc-piece-drop {
+  fill: color-mix(in srgb, #e0a35f 40%, var(--bg));
+  stroke: var(--copper, #b06a3b);
+}
+#accompagnement .acc-knot[data-knot="waiting"] .acc-piece { opacity: 0; transform: translateY(-6px); }
+@media (prefers-reduced-motion: no-preference) {
+  #accompagnement .acc-knot .acc-piece { transition: opacity 500ms var(--ease-out) 350ms, transform 700ms var(--acc-settle) 350ms; }
+}
+
+/* Desktop: each knot sits just before its step, so the thread runs from one step down to the next,
+   stepping right as the months pass, all the way to the finished piece */
+@media (min-width: 64rem) {
+  #accompagnement .acc-step > .acc-knot,
+  #accompagnement .acc-step > .acc-body { grid-row: 1; }
+  #accompagnement .acc-step > .acc-knot { justify-self: start; margin-left: calc(-3.25rem - 1rem); }
+  #accompagnement .acc-step:nth-child(1) > .acc-knot { grid-column: 3; }
+  #accompagnement .acc-step:nth-child(2) > .acc-knot { grid-column: 4; }
+  #accompagnement .acc-step:nth-child(3) > .acc-knot { grid-column: 5; }
+  #accompagnement .acc-step:nth-child(4) > .acc-knot { grid-column: 6; margin-left: calc(-3.25rem - 1.75rem); }
 }

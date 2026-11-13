@@ -22,7 +22,7 @@
   height: calc(100% + var(--ct-pad) + var(--space-6));
   overflow: visible; pointer-events: none;
 }
-#contact svg path { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#contact svg path { fill: none; stroke: var(--accent); stroke-width: var(--thread-w); stroke-linecap: round; stroke-linejoin: round; }
 
 /* The photo is the large thing here; it runs off the right edge */
 #contact .ct-photo {
@@ -208,7 +208,7 @@
 #contact .ct-env svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 #contact .ct-env-paper { fill: color-mix(in srgb, #fbf6ea 85%, var(--bg)); stroke: color-mix(in srgb, var(--ink) 25%, transparent); stroke-width: 1; }
 #contact .ct-env-fold { stroke: color-mix(in srgb, var(--ink) 28%, transparent); stroke-width: 1; }
-#contact .ct-env-thread { stroke: #9e3b2e; stroke-width: 1.6; }
+#contact .ct-env-thread { stroke: #9e3b2e; stroke-width: var(--thread-w); }
 #contact .ct-env-text {
   position: absolute; inset: 16% 12%; overflow: hidden;
   font-family: var(--font-display); font-style: italic; font-size: .8125rem; line-height: 1.35; color: var(--ink);

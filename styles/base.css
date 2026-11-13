@@ -6,6 +6,7 @@
   --muted: #6b635a;
   --accent: #9e3b2e;
   --accent-2: #5b6b5f;
+  --thread-w: 2.6;
   --line: color-mix(in srgb, var(--ink) 16%, transparent);
 
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -138,7 +139,7 @@ button { font: inherit; color: inherit; }
 .page-thread path {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 1.6;
+  stroke-width: var(--thread-w);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -194,7 +195,7 @@ html.js [data-fade-after].is-waiting { opacity: 0; }
 .knot path {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 1.6;
+  stroke-width: var(--thread-w);
   stroke-linecap: round;
   stroke-linejoin: round;
 }

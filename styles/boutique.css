@@ -50,7 +50,7 @@
 .tie { display: block; width: 7.5rem; height: 2.5rem; overflow: visible; }
 .tie-large { width: min(13.5rem, 100%); height: 4.5rem; }
 .tie-large .tie-line { stroke-width: .95; }
-.tie-line { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
+.tie-line { fill: none; stroke: var(--accent); stroke-width: var(--thread-w); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; }
 .tie-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; }
 @media (prefers-reduced-motion: no-preference) {
   .tie.is-tying .tie-line { animation: tie-draw var(--shop-dur-tie) var(--ease-in-out) both; }

@@ -38,7 +38,7 @@
 #ce-qui-reste .cqr-knot path {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 1.6;
+  stroke-width: var(--thread-w);
   stroke-linecap: round;
   stroke-linejoin: round;
 }

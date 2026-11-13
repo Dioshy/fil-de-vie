@@ -5,6 +5,8 @@
                           crosses to the knot, and comes back to the gutter at its bottom.
      data-thread="wrap"   the line goes once around the button inside, then ties [data-thread-knot].
      data-thread="end"    the line ends at its top, and ties it.
+   A knot with data-thread-hold keeps the line at its own x until the next knot, instead of going back
+   to the gutter: that is how the accompaniment's steps are strung one to the next.
    Elements with data-fade-after="<knot id>" appear once that knot is tied.
    The line is drawn exactly as far as the reader: to 60% down the screen.
 
@@ -124,6 +126,7 @@
         b: pageBox(a),
         span: span ? pageBox(span) : null,
         btn: kind === "wrap" ? pageBox(a.querySelector("button, a") || a) : null,
+        holdB: "threadHold" in a.dataset ? pageBox(a.closest(a.dataset.threadHold || "li") || a).b : null,
       };
     });
 
@@ -136,17 +139,26 @@
     let wrapAt = null;
     let lastY = 0;
     let ended = false;
+    let baseX = rx;
     const rail = (y0, y1) => {
       const span = y1 - y0;
       if (span < STEP * 1.2) return;
       const k = Math.round(span / STEP);
-      for (let i = 1; i < k; i++) { const y = y0 + (span * i) / k; pts.push({ x: rx + lean(y), y }); }
+      const sway = baseX === rx ? 1 : 0.35;
+      for (let i = 1; i < k; i++) { const y = y0 + (span * i) / k; pts.push({ x: baseX + lean(y) * sway, y }); }
     };
     const through = (cx, cy, R) => pts.push({ x: cx, y: cy - R, v: true }, { x: cx, y: cy, v: true }, { x: cx, y: cy + R, v: true });
 
-    for (const { a, kind, b, span, btn } of boxes) {
+    let holdY = null;
+    for (const { a, kind, b, span, btn, holdB } of boxes) {
       if (!b.w && !b.h) continue;     // hidden
       if (b.t < lastY - 1) continue;  // never loop back up the page
+      // A held line drops straight down past its whole step before it leaves for the next anchor
+      if (holdY !== null) {
+        if (holdY > lastY) { rail(lastY, holdY); pts.push({ x: baseX, y: holdY, v: true }); lastY = holdY; }
+        holdY = null;
+        baseX = rx;
+      }
       if (kind === "knot") {
         const cx = (b.l + b.r) / 2, cy = (b.t + b.b) / 2, R = Math.min(b.h / 2, 26);
         if (span) {
@@ -162,6 +174,7 @@
           tieAt.push({ el: a, idx: pts.length - 2 });
           lastY = cy + R;
         }
+        if (holdB !== null && !span) { baseX = cx; holdY = holdB; } else baseX = rx;
       } else if (kind === "wrap") {
         const p = 12, L = btn.l, R = btn.r, T = btn.t, B = btn.b, M = (T + B) / 2, w = R - L;
         rail(lastY, T - 70);

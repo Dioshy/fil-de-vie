@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="0" fill="#9e3b2e"/><text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#f1eee8">F</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#f1eee8"/>
+  <g transform="translate(16 7) scale(1.08)">
+    <path d="M16 0 C16 7, 25 8, 24 15 C23 22, 8 22, 8 14 C8 7, 19 8, 16 19 L16 25" fill="none" stroke="#9e3b2e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 25 C23 31, 24 38, 16 44 C8 38, 9 31, 16 25 Z" fill="#ecc89a" stroke="#b06a3b" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="16" cy="15.5" r="2.6" fill="#9e3b2e"/>
+  </g>
+</svg>

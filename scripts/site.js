@@ -18,7 +18,7 @@
     shippingFee: 690,
   };
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const euro = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" });
+  const euro = new Intl.NumberFormat("fr-BE", { style: "currency", currency: "EUR" });
 
   window.FDV = Object.assign(window.FDV || {}, {
     reduce,
@@ -74,4 +74,38 @@
   }, { rootMargin: "0px 0px -8% 0px" });
 
   window.FDV.watchFades();
+})();
+
+/* The top bar: a menu on phones, a hairline once the page has scrolled, and the section you are in */
+(() => {
+  const bar = document.querySelector("[data-site-bar]");
+  if (!bar) return;
+  const btn = bar.querySelector("[data-site-menu]");
+  const nav = bar.querySelector(".site-nav-wrap");
+  const setOpen = (open) => {
+    btn.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("is-open", open);
+  };
+  btn?.addEventListener("click", () => setOpen(btn.getAttribute("aria-expanded") !== "true"));
+  nav?.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
+  addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btn?.getAttribute("aria-expanded") === "true") { setOpen(false); btn.focus(); }
+  });
+  document.addEventListener("click", (e) => { if (!bar.contains(e.target)) setOpen(false); });
+
+  const onScroll = () => bar.classList.toggle("is-scrolled", scrollY > 8);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Mark the link of the section on screen (home page only)
+  const links = [...bar.querySelectorAll('.site-nav a[href^="#"]')];
+  const targets = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  if (!targets.length || !("IntersectionObserver" in window)) return;
+  const seen = new Map();
+  const spy = new IntersectionObserver((entries) => {
+    for (const e of entries) seen.set(e.target, e.isIntersecting);
+    const here = targets.filter((t) => seen.get(t)).pop();
+    links.forEach((a) => a.classList.toggle("is-here", !!here && a.getAttribute("href") === `#${here.id}`));
+  }, { rootMargin: "-30% 0px -60% 0px" });
+  targets.forEach((t) => spy.observe(t));
 })();

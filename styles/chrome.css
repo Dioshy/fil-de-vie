@@ -1,0 +1,202 @@
+/* The page's frame, the same on every page:
+   - the bar at the top stays put while you scroll (logo, sections, and the basket in the shop);
+   - the contact bar at the bottom stays put too: Nathalie, where she is, her email, "Écrire".
+   Both sit above the thread, on the paper colour, so the thread runs under them. */
+:root {
+  --bar-h: 4rem;
+  --cb-h: 3rem;
+  --copper: #b06a3b;
+}
+html { scroll-padding-top: calc(var(--bar-h) + var(--space-2)); scroll-padding-bottom: var(--cb-h); }
+body { padding-bottom: var(--cb-h); }
+.skip-link { z-index: 40 !important; }
+
+/* ---------- Top bar ---------- */
+.site-bar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--bar-h);
+  padding: 0 var(--gutter);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+.site-bar.is-scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: 0 .5rem 1.5rem -1rem color-mix(in srgb, var(--ink) 25%, transparent);
+}
+
+/* The logo: the thread comes down, ties one loop, and ends in a drop of glass rimmed with copper */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  min-height: 2.75rem;
+  margin-right: auto;
+  color: var(--accent);
+  text-decoration: none;
+}
+.logo-mark { width: 1.7rem; height: auto; overflow: visible; flex: none; }
+.logo-thread { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.logo-drop {
+  fill: color-mix(in srgb, #e0a35f 38%, var(--bg));
+  stroke: var(--copper);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+.logo-dot { fill: var(--accent); }
+.logo-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.site-logo:hover .logo-word,
+.site-logo:focus-visible .logo-word { opacity: .7; }
+
+.site-nav { display: flex; flex-wrap: wrap; gap: 0 1.25rem; margin: 0; padding: 0; list-style: none; }
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font: 400 .9375rem var(--font-body);
+  color: var(--muted);
+  text-decoration: underline 1px transparent;
+  text-underline-offset: .4em;
+  transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+.site-nav a:hover,
+.site-nav a:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
+.site-nav a[aria-current="page"],
+.site-nav a.is-here { color: var(--accent); text-decoration-color: currentColor; }
+
+.site-menu {
+  display: none;
+  align-items: center;
+  gap: .55rem;
+  min-height: 2.75rem;
+  padding: 0 .25rem;
+  border: 0;
+  background: none;
+  font: 500 .9375rem var(--font-body);
+  color: var(--ink);
+  cursor: pointer;
+}
+.site-menu-lines,
+.site-menu-lines::before,
+.site-menu-lines::after {
+  display: block;
+  width: 1.15rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-1) var(--ease-out);
+}
+.site-menu-lines { position: relative; }
+.site-menu-lines::before,
+.site-menu-lines::after { content: ""; position: absolute; left: 0; }
+.site-menu-lines::before { top: -6px; }
+.site-menu-lines::after { top: 6px; }
+.site-menu[aria-expanded="true"] .site-menu-lines { background: transparent; }
+.site-menu[aria-expanded="true"] .site-menu-lines::before { transform: translateY(6px) rotate(45deg); }
+.site-menu[aria-expanded="true"] .site-menu-lines::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* The shop's basket sits in the bar, next to the menu */
+.site-bar .shop-cart-link { order: 0; margin-right: 0; }
+
+/* Phones and tablets: the sections fold into a menu under the bar */
+@media (max-width: 63.99rem) {
+  html.js .site-menu { display: inline-flex; }
+  html.js .site-nav-wrap {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--space-1) var(--gutter) var(--space-3);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 1rem 2rem -1.25rem color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  html.js .site-nav-wrap:not(.is-open) { display: none; }
+  html.js .site-nav { flex-direction: column; }
+  html.js .site-nav a { min-height: 3rem; font-size: 1.125rem; width: 100%; border-bottom: 1px solid var(--line); }
+  html.js .site-nav li:last-child a { border-bottom: 0; }
+  /* Without JavaScript the links simply wrap under the logo */
+  html:not(.js) .site-bar { flex-wrap: wrap; }
+  html:not(.js) .site-nav-wrap { flex-basis: 100%; }
+  .site-bar .shop-cart-link { order: 1; }
+  .site-bar .site-menu { order: 2; }
+}
+@media (max-width: 22rem) {
+  .logo-word { font-size: 1.5rem; }
+  .site-menu-word { display: none; }
+}
+
+/* ---------- Contact bar ---------- */
+.contact-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: var(--cb-h);
+  padding: 0 var(--gutter);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  font: 400 .875rem var(--font-body);
+  color: var(--muted);
+}
+.cb-who { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.cb-name { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--accent); }
+.cb-links { display: flex; align-items: center; gap: var(--space-3); flex: none; }
+.cb-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--ink);
+  text-decoration: underline 1px var(--line);
+  text-underline-offset: .35em;
+}
+.cb-links a:hover,
+.cb-links a:focus-visible { text-decoration-color: currentColor; }
+.cb-links .cb-write {
+  min-height: 2.25rem;
+  padding: 0 .9rem;
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 500;
+}
+.cb-links .cb-write:hover,
+.cb-links .cb-write:focus-visible { background: color-mix(in srgb, var(--accent) 84%, var(--ink)); }
+.cb-links .cb-write:focus-visible { outline-color: var(--ink); }
+@media (max-width: 40rem) {
+  .contact-bar { gap: var(--space-1); font-size: .8125rem; }
+  .cb-sep, .cb-place { display: none; }
+  .cb-links { gap: var(--space-2); }
+  .cb-links .cb-write { padding: 0 .7rem; }
+}
+@media (max-width: 23rem) {
+  .cb-who { display: none; }
+  .contact-bar { justify-content: flex-end; }
+}
+
+/* The shop's floating basket clears the contact bar */
+.cart-fab { bottom: calc(var(--cb-h) + var(--space-2)) !important; }
+
+/* Titles wear the thread's colour */
+h1, h2, h3 { color: var(--accent); }
+.sec-title em { color: color-mix(in srgb, var(--accent) 72%, var(--bg)); }
+#accompagnement .acc-when { color: var(--accent) !important; }

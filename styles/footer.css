@@ -37,7 +37,7 @@
 #footer .ft-thread path {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 1.5;
+  stroke-width: var(--thread-w);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -55,7 +55,7 @@
   opacity: 0;
   transform: scale(1) rotate(0deg);
 }
-#footer .ft-knot path { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; }
+#footer .ft-knot path { fill: none; stroke: var(--accent); stroke-width: var(--thread-w); stroke-linecap: round; }
 
 /* The closing sentence, in the same letter column as the rest of the page */
 #footer .ft-close p {
