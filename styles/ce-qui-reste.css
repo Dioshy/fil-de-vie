@@ -1,0 +1,161 @@
+#ce-qui-reste {
+  --cqr-gap: var(--space-2);
+  --cqr-fade: 300ms;
+  --cqr-settle: cubic-bezier(.16, 1, .3, 1);
+  --cqr-knot-dur: 600ms;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  column-gap: var(--cqr-gap);
+  align-content: start;
+  /* The longest silence on the page: only the thread crosses it, coming down from the workbench */
+  padding-block: clamp(9rem, 38vh, 26rem) clamp(6rem, 20vh, 14rem);
+  padding-inline: var(--gutter);
+  background: var(--bg);
+  color: var(--ink);
+  container-type: inline-size;
+  /* Clip sideways only (the knot may overhang); the bottom padding stays as breathing room */
+  overflow-x: clip;
+}
+#ce-qui-reste > * {
+  /* One column of the 12-column grid, resolved against the section's content width */
+  --col: calc((100cqi - 11 * var(--cqr-gap)) / 12);
+}
+#ce-qui-reste .cqr-rail { grid-column: 1; grid-row: 1; height: 0; align-self: start; }
+
+/* The thread: in the gutter by default, the whole section once the script has fitted it */
+#ce-qui-reste .cqr-thread {
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  width: 1.75rem;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+#ce-qui-reste .cqr-thread[data-fit] { left: 0; width: 100%; }
+#ce-qui-reste .cqr-thread path,
+#ce-qui-reste .cqr-knot path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#ce-qui-reste .cqr-knot circle { fill: var(--accent); }
+
+#ce-qui-reste .cqr-label {
+  grid-column: 2;
+  margin-bottom: var(--space-4);
+}
+
+/* Two lines, one heading: the made thing set upright, the memory in italic, a long knotted gap between them */
+#ce-qui-reste .cqr-title {
+  grid-column: 2;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 1.3rem + 5.4vw, 6.75rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+#ce-qui-reste .cqr-a { display: block; font-style: normal; }
+#ce-qui-reste .cqr-b { display: block; font-style: italic; padding-left: 12%; }
+#ce-qui-reste .cqr-tie {
+  /* No JS: the knot sits on the gutter thread. With JS it moves out into the page. */
+  --cqr-knot-x: calc(-1 * (var(--cqr-gap) + .875rem));
+  position: relative;
+  display: block;
+  height: clamp(9.5rem, 24vh, 15rem);
+}
+html.js #ce-qui-reste .cqr-tie { --cqr-knot-x: 44%; }
+#ce-qui-reste .cqr-knot {
+  position: absolute;
+  top: 50%;
+  left: var(--cqr-knot-x);
+  width: 4rem;
+  height: 4rem;
+  margin: -2rem 0 0 -2rem;
+  overflow: visible;
+}
+#ce-qui-reste .cqr-knot g { transform-origin: 0 0; transform: rotate(16deg) scale(.88); }
+/* Waiting: a wide, loose loop, invisible until the thread reaches it */
+#ce-qui-reste .cqr-knot[data-knot="waiting"] g { opacity: 0; transform: rotate(-40deg) scale(1.9); }
+
+/* The object, with its tag */
+#ce-qui-reste .cqr-photo {
+  grid-column: 2;
+  justify-self: end;
+  width: min(100%, 19rem);
+  aspect-ratio: 4 / 5;
+  margin-top: clamp(5rem, 15vh, 10rem);
+  background: var(--surface);
+  overflow: hidden;
+}
+#ce-qui-reste .cqr-photo svg { display: block; width: 100%; height: 100%; }
+#ce-qui-reste .cqr-light { fill: var(--bg); opacity: .5; }
+#ce-qui-reste .cqr-sill { fill: var(--ink); opacity: .06; }
+#ce-qui-reste .cqr-ink { fill: none; stroke: var(--ink); stroke-width: 1.1; stroke-linecap: round; }
+#ce-qui-reste .cqr-grain { fill: none; stroke: var(--muted); stroke-width: .7; opacity: .7; }
+#ce-qui-reste .cqr-tag { fill: var(--bg); stroke: var(--ink); stroke-width: .8; }
+#ce-qui-reste .cqr-glass { fill: color-mix(in srgb, var(--accent-2) 22%, var(--bg)); opacity: .9; }
+#ce-qui-reste .cqr-tag-text { font-family: var(--font-display); font-style: italic; font-size: 10.5px; fill: var(--ink); }
+
+#ce-qui-reste .cqr-text {
+  grid-column: 2;
+  max-width: 52ch;
+  margin-top: clamp(3rem, 9vh, 6rem);
+}
+#ce-qui-reste .cqr-text p { font-size: var(--step-0); font-weight: 300; line-height: 1.65; }
+#ce-qui-reste .cqr-text p + p { margin-top: 1.1em; }
+#ce-qui-reste .cqr-text .cqr-aside {
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--step-2);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+/* The way out of the section: ink, full body size, always underlined */
+#ce-qui-reste .cqr-next {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: var(--space-3);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: underline 1px color-mix(in srgb, var(--ink) 45%, transparent);
+  text-underline-offset: .4em;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+#ce-qui-reste .cqr-next:hover,
+#ce-qui-reste .cqr-next:focus-visible { text-decoration-color: currentColor; }
+
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The memory appears as the knot finishes pulling tight */
+  #ce-qui-reste .cqr-b { transition-delay: 280ms; }
+  #ce-qui-reste .cqr-knot g {
+    transition: transform var(--cqr-knot-dur) var(--cqr-settle), opacity var(--cqr-fade) var(--ease-out);
+  }
+}
+
+/* Wide: the full 12 columns. The heading breaks out of the letter column, the rest descends diagonally. */
+@media (min-width: 64rem) {
+  #ce-qui-reste { --cqr-gap: var(--cols-gap); grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  #ce-qui-reste .cqr-thread { left: calc(var(--gutter) + var(--col) + var(--cqr-gap)); width: var(--col); }
+  #ce-qui-reste .cqr-rail { grid-column: 2; }
+  #ce-qui-reste .cqr-label { grid-column: 3 / 9; }
+  #ce-qui-reste .cqr-title { grid-column: 3 / 13; }
+  #ce-qui-reste .cqr-b { padding-left: calc(3 * (var(--col) + var(--cqr-gap))); }
+  #ce-qui-reste .cqr-tie { --cqr-knot-x: calc(-1 * (var(--cqr-gap) + var(--col) / 2)); }
+  html.js #ce-qui-reste .cqr-tie { --cqr-knot-x: calc(4.5 * (var(--col) + var(--cqr-gap))); }
+  #ce-qui-reste .cqr-knot { width: 4.5rem; height: 4.5rem; margin: -2.25rem 0 0 -2.25rem; }
+  #ce-qui-reste .cqr-photo { grid-column: 3 / 7; justify-self: stretch; width: auto; }
+  /* Never side by side: the text starts inside the photo's last column, so it can only sit on the row below,
+     three columns further right, keeping the diagonal descent */
+  #ce-qui-reste .cqr-text { grid-column: 6 / 11; max-width: 46ch; margin-top: clamp(3rem, 9vh, 6rem); }
+}

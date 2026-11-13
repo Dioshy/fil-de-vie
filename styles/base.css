@@ -1,0 +1,284 @@
+/* Un seul fil: the site's tokens and base type. Every section builds on these. */
+:root {
+  --bg: #f1eee8;
+  --surface: #e6e0d6;
+  --ink: #2a2521;
+  --muted: #6b635a;
+  --accent: #9e3b2e;
+  --accent-2: #5b6b5f;
+  --line: color-mix(in srgb, var(--ink) 16%, transparent);
+
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --step--1: clamp(0.82rem, 0.79rem + 0.14vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3: clamp(1.9rem, 1.45rem + 2.2vw, 3.2rem);
+  --step-4: clamp(2.4rem, 1.5rem + 4.4vw, 5rem);
+  --step-5: clamp(3rem, 1.2rem + 8.6vw, 8.5rem);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: clamp(4.5rem, 3rem + 7vw, 10rem);
+  --gutter: clamp(1.25rem, 0.4rem + 3.6vw, 4rem);
+  --max: 84rem;
+  --measure: 62ch;
+  --radius: 0px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 180ms;
+  --dur-2: 420ms;
+  --dur-3: 900ms;
+
+  /* Calm layer: arrival, light, grain */
+  --reveal-rise: 0.75rem;
+  --dur-hero: 1400ms;
+  --glow: color-mix(in srgb, #e0a35f 26%, transparent);
+  --grain-opacity: 0.04;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  hanging-punctuation: first last; /* Safari only; ignored elsewhere */
+  overflow-x: clip;
+}
+
+/* Figures: oldstyle where they sit in running prose, lining and tabular where they are data */
+p, li, blockquote { font-variant-numeric: oldstyle-nums proportional-nums; }
+time, dl, dd, data, table, [class*="price"], [data-num] { font-variant-numeric: lining-nums tabular-nums; }
+
+/* The paper itself: a fixed, very faint grain over the whole page. Purely decorative. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .14 0 0 0 0 .13 0 0 0 1.6 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+@media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+  body::after { content: none; }
+}
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+p, ul, ol, figure, blockquote { margin: 0; }
+p { text-wrap: pretty; }
+ul, ol { padding: 0; list-style: none; }
+img, svg, video, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: var(--bg); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   One thread for the whole page.
+   Every section uses the same columns: on phones a 1.75rem gutter column then the text;
+   from 64rem, twelve columns with the thread in column 2. scripts/thread.js draws a single
+   unbroken line over all of them, through every knot; the per-section lines below only
+   show when JavaScript does not run.
+   ------------------------------------------------------------------ */
+:root { --cols-gap: var(--space-3); }
+
+/* The gutter's centre, measured by scripts/thread.js */
+.rail-probe {
+  position: absolute;
+  top: 0;
+  left: calc(var(--gutter) + .875rem);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+@media (min-width: 64rem) {
+  .rail-probe { left: calc(var(--gutter) + 1.5 * (100% - 2 * var(--gutter) - 11 * var(--cols-gap)) / 12 + var(--cols-gap)); }
+}
+
+.page-thread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.page-thread path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+html.thread-live .hero-thread,
+html.thread-live .acc-thread,
+html.thread-live .at-thread,
+html.thread-live .cqr-thread,
+html.thread-live .ct-thread,
+html.thread-live .ct-wrap,
+html.thread-live .ft-thread-line,
+html.thread-live .rail-thread { visibility: hidden; }
+
+/* Text arrives softly: a fade and a short rise. Visible by default; only the scripts hide what is still below the
+   screen, and they never do under reduced motion. `translate` moves paint only, so nothing shifts the layout. */
+html.js [data-fade].is-waiting,
+html.js [data-fade-after].is-waiting { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-fade].is-waiting,
+  html.js [data-fade-after].is-waiting { translate: 0 var(--reveal-rise); }
+  html.js [data-fade],
+  html.js [data-fade-after] {
+    transition: opacity var(--dur-3) var(--ease-out), translate var(--dur-3) var(--ease-out);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Shared section frame, used by the newer sections (Nathalie, the wishes, the shop)
+   ------------------------------------------------------------------ */
+.sec {
+  --col: calc((100% - 2 * var(--gutter) - 11 * var(--cols-gap)) / 12);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  column-gap: var(--space-2);
+  align-content: start;
+  padding: clamp(8rem, 30vh, 20rem) var(--gutter) clamp(3rem, 8vh, 6rem);
+  background: var(--bg);
+  color: var(--ink);
+}
+.sec > * { grid-column: 2; min-width: 0; }
+.sec > .sec-head { grid-row: 1; max-width: 52ch; }
+
+.rail-thread {
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  width: 1.75rem;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.rail-thread path,
+.knot path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A knot, level with the section's label */
+.sec > .knot {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  align-self: start;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-top: calc(.7rem - 1.625rem);
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+.knot g { transform-origin: 0 0; transform: rotate(-28deg) scale(.85); }
+.knot circle { fill: var(--accent); }
+.knot[data-knot="waiting"] g { opacity: 0; transform: rotate(30deg) scale(1.7); }
+@media (prefers-reduced-motion: no-preference) {
+  .knot g { transition: transform 600ms cubic-bezier(.16, 1, .3, 1), opacity var(--dur-1) var(--ease-out); }
+}
+
+/* The section label: one style for every section (margins stay with each section) */
+.sec-label,
+.acc-label,
+.at-label,
+.cqr-label {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: .8125rem;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sec-label { margin-bottom: var(--space-3); }
+.sec-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-4);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+.sec-title em { display: block; font-style: italic; color: var(--muted); }
+.sec-intro {
+  margin-top: var(--space-4);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  max-width: 52ch;
+}
+
+/* A quiet text link, the same everywhere */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--ink);
+  text-decoration: underline 1px color-mix(in srgb, var(--ink) 40%, transparent);
+  text-underline-offset: .4em;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+.text-link:hover,
+.text-link:focus-visible { text-decoration-color: currentColor; }
+
+@media (min-width: 64rem) {
+  .sec {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--cols-gap);
+  }
+  .sec > * { grid-column: 3 / 9; }
+  .sec > .knot { grid-column: 2; }
+  .sec > .sec-head { grid-column: 3 / 10; }
+  .rail-thread { left: calc(var(--gutter) + var(--col) + var(--cols-gap)); width: var(--col); }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

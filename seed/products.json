@@ -1,0 +1,47 @@
+[
+ {
+  "name": "Pendentif goutte, verre ambre",
+  "category": "Bijoux",
+  "price": 3800,
+  "description": "Un éclat de verre ambre, serti d'un ruban de cuivre puis soudé à la main. Il prend la lumière comme du miel.\n\nExemple à remplacer : cette pièce est là pour montrer à quoi ressemble la boutique.",
+  "details": [
+   { "label": "Matière", "value": "Verre, cuivre, étain" },
+   { "label": "Dimensions", "value": "3,5 cm de haut" },
+   { "label": "Livré avec", "value": "Un cordon de coton ciré" }
+  ],
+  "images": [],
+  "unique": true,
+  "stock": 1,
+  "status": "published",
+  "featured": true
+ },
+ {
+  "name": "Petit vitrail à suspendre, feuille",
+  "category": "Verre et cuivre",
+  "price": 6400,
+  "description": "Une feuille en cinq morceaux de verre vert et gris, à accrocher devant une fenêtre.\n\nExemple à remplacer : cette pièce est là pour montrer à quoi ressemble la boutique.",
+  "details": [
+   { "label": "Matière", "value": "Verre coloré, cuivre, étain" },
+   { "label": "Dimensions", "value": "14 × 8 cm" }
+  ],
+  "images": [],
+  "unique": true,
+  "stock": 1,
+  "status": "published",
+  "featured": true
+ },
+ {
+  "name": "Boucles d'oreilles, verre bleu nuit",
+  "category": "Bijoux",
+  "price": 4200,
+  "description": "Deux petits rectangles de verre bleu nuit, jamais tout à fait pareils.\n\nExemple à remplacer : cette pièce est là pour montrer à quoi ressemble la boutique.",
+  "details": [
+   { "label": "Matière", "value": "Verre, cuivre, crochets en argent" }
+  ],
+  "images": [],
+  "unique": false,
+  "stock": 3,
+  "status": "published",
+  "featured": true
+ }
+]

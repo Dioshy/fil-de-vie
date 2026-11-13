@@ -1,0 +1,192 @@
+#accompagnement {
+  --acc-settle: cubic-bezier(.16, 1, .3, 1);
+  --acc-knot-dur: 600ms;
+  --acc-fade-dur: 300ms;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  column-gap: var(--space-2);
+  /* Sits a third of a screen below the hero: the pause is part of the letter */
+  padding: clamp(9rem, 34vh, 24rem) var(--gutter) clamp(7rem, 20vh, 14rem);
+  background: var(--bg);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+/* Thread: its box is exactly the gutter column, the full height of the section */
+#accompagnement .acc-thread {
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  width: 1.75rem;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+#accompagnement .acc-thread path,
+#accompagnement .acc-knot path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Heading: deliberately smaller than the hero; this section speaks lower */
+#accompagnement .acc-head { grid-column: 2; max-width: 52ch; }
+#accompagnement .acc-label { margin-bottom: var(--space-3); } /* type: shared section label, base.css */
+#accompagnement .acc-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-4);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+#accompagnement .acc-intro,
+#accompagnement .acc-body p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.62;
+  max-width: 52ch;
+}
+#accompagnement .acc-intro { margin-top: var(--space-4); }
+
+/* The steps: each one a row on the parent grid; on the phone they share one full measure */
+#accompagnement .acc-steps {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  margin: clamp(6rem, 18vh, 12rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+#accompagnement .acc-step { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
+#accompagnement .acc-step + .acc-step { margin-top: var(--space-5); }
+#accompagnement .acc-step:nth-child(3) { margin-top: var(--space-4); }
+#accompagnement .acc-step:nth-child(4) { margin-top: var(--space-6); }
+
+#accompagnement .acc-knot {
+  grid-column: 1;
+  justify-self: center;
+  align-self: start;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: calc(var(--step-2) * .58 - 1.375rem);
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+#accompagnement .acc-knot g { transform-origin: 0 0; transform: rotate(-28deg) scale(.85); }
+#accompagnement .acc-knot circle { fill: var(--accent); }
+/* Waiting = a loose open loop, not yet pulled; set only by the script */
+#accompagnement .acc-knot[data-knot="waiting"] g { opacity: 0; transform: rotate(38deg) scale(1.7); }
+
+#accompagnement .acc-body { grid-column: 2; min-width: 0; }
+#accompagnement .acc-when {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--step-2);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+
+/* Photo slot: walnut grain on the surface colour, finished even without the picture */
+#accompagnement .acc-photo {
+  position: relative;
+  margin: var(--space-4) 0 0;
+  width: 100%;
+  max-width: 34rem;
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(ellipse 14% 9% at 68% 44%, color-mix(in srgb, var(--accent-2) 30%, transparent) 0 40%, transparent 72%),
+    repeating-linear-gradient(97deg, transparent 0 .85rem, color-mix(in srgb, var(--ink) 7%, transparent) .85rem calc(.85rem + 1px), transparent calc(.85rem + 1px) 1.6rem),
+    linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 82%, var(--accent-2)));
+}
+#accompagnement .acc-photo figcaption {
+  position: absolute;
+  left: var(--space-2);
+  bottom: var(--space-2);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: max(.875rem, var(--step--1));
+  color: color-mix(in srgb, var(--ink) 80%, var(--surface));
+}
+
+/* The promise: back to the left edge of the letter, said once and plainly */
+#accompagnement .acc-close { grid-column: 2; margin-top: clamp(7rem, 24vh, 16rem); max-width: 52ch; }
+#accompagnement .acc-promise {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--step-4);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+}
+#accompagnement .acc-note {
+  margin-top: var(--space-3);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+#accompagnement .acc-next {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: max(.9375rem, var(--step--1));
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .4em;
+  text-decoration-color: transparent;
+  transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+#accompagnement .acc-next:hover,
+#accompagnement .acc-next:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
+
+
+@media (prefers-reduced-motion: no-preference) {
+  #accompagnement .acc-knot g {
+    transition: transform var(--acc-knot-dur) var(--acc-settle), opacity var(--dur-1) var(--ease-out);
+  }
+}
+
+/* Wider screens: the steps start to drift right as time passes */
+@media (min-width: 48rem) {
+  #accompagnement .acc-step:nth-child(2) .acc-body { padding-left: .75rem; }
+  #accompagnement .acc-step:nth-child(3) .acc-body { padding-left: 1.5rem; }
+  #accompagnement .acc-step:nth-child(4) .acc-body { padding-left: 2.25rem; }
+}
+
+/* Desktop: the 12-column letter. Thread in col 2, steps stepping from col 3 to col 6 */
+@media (min-width: 64rem) {
+  #accompagnement {
+    --acc-col: calc((100% - 2 * var(--gutter) - 11 * var(--cols-gap)) / 12);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--cols-gap);
+  }
+  /* The thread's box is the col-2 gutter track */
+  #accompagnement .acc-thread { left: calc(var(--gutter) + var(--acc-col) + var(--cols-gap)); width: var(--acc-col); }
+  #accompagnement .acc-knot { grid-column: 2; }
+  #accompagnement .acc-head { grid-column: 3 / 10; }
+  #accompagnement .acc-step .acc-body { padding-left: 0 !important; }
+  #accompagnement .acc-step:nth-child(1) .acc-body { grid-column: 3 / 8; }
+  #accompagnement .acc-step:nth-child(2) .acc-body { grid-column: 4 / 9; }
+  #accompagnement .acc-step:nth-child(3) .acc-body { grid-column: 5 / 10; }
+  #accompagnement .acc-step:nth-child(4) .acc-body { grid-column: 6 / 11; }
+  #accompagnement .acc-close { grid-column: 3 / 9; }
+  #accompagnement .acc-knot { width: 3.25rem; height: 3.25rem; margin-top: calc(var(--step-2) * .58 - 1.625rem); }
+}

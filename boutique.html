@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La boutique · Fil de vie</title>
+<meta name="description" content="Bijoux et pièces de verre serties de cuivre, faits à la main par Nathalie, à l'atelier. Pièces uniques ou en très petites séries.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La boutique · Fil de vie">
+<meta name="theme-color" content="#f1eee8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;display=swap">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/thread.css">
+<link rel="stylesheet" href="styles/boutique.css">
+<link rel="stylesheet" href="styles/shop.css">
+<link rel="stylesheet" href="styles/footer.css">
+</head>
+<body class="shop-page">
+<a class="skip-link" href="#shop-title">Aller aux pièces</a>
+
+<main id="top">
+<section id="shop" class="sec" aria-labelledby="shop-title">
+  <svg class="rail-thread" viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path vector-effect="non-scaling-stroke" d="M20 0 C 26 200, 14 420, 20 600 S 25 860, 20 1000" />
+  </svg>
+
+  <!-- The same bar as the home page: the mark, then the site's sections, then the basket -->
+  <header class="shop-bar">
+    <a class="shop-mark" href="index.html" translate="no">Fil de vie</a>
+    <nav aria-label="Sections du site">
+      <ul class="shop-nav">
+        <li><a href="index.html#nathalie">Qui je suis</a></li>
+        <li><a href="index.html#accompagnement">L'accompagnement</a></li>
+        <li><a href="index.html#souhaits">Son dernier souhait</a></li>
+        <li><a href="index.html#ateliers">Les ateliers</a></li>
+        <li><a href="boutique.html" aria-current="page">La boutique</a></li>
+        <li><a href="index.html#ecrire">Écrire à Nathalie</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="shop-cart-link" data-open-cart aria-haspopup="dialog">
+      <span class="cart-word">Panier</span> <span class="cart-count" data-cart-count>(0)</span><span class="visually-hidden" data-cart-sr>, vide</span>
+    </button>
+  </header>
+
+  <svg class="knot" viewBox="-20 -20 40 40" aria-hidden="true" focusable="false" data-thread="knot">
+    <g><path vector-effect="non-scaling-stroke" d="M0 -20 C 0 -8, 12 -11, 11 0 C 10 9, -9 10, -10 1 C -11 -8, 3 -9, 0 2 L 0 20" /><circle r="2.6" /></g>
+  </svg>
+  <header class="sec-head">
+    <p class="sec-label">La boutique</p>
+    <h1 id="shop-title" class="sec-title" tabindex="-1">Faites à la main, <em>une à une.</em></h1>
+    <p class="sec-intro" data-shop-intro>Entre deux accompagnements, je fabrique pour le plaisir&nbsp;: des bijoux, des pièces de verre serties de cuivre. Chaque pièce est faite à la main, à l'atelier.</p>
+    <p class="shop-hand">Prenez votre temps. Rien ne presse ici.</p>
+  </header>
+
+  <div class="shop-filters" role="group" aria-label="Choisir une famille de pièces" hidden></div>
+
+  <p class="shop-state" role="status" aria-live="polite">Les pièces arrivent…</p>
+  <ul class="shop-grid" aria-label="Les pièces"></ul>
+
+  <aside class="shop-note" aria-label="Comment se passe une commande">
+    <ol class="shop-how">
+      <li><span class="how-n" aria-hidden="true">1</span><p>Vous choisissez une pièce et vous m'envoyez votre demande.</p></li>
+      <li><span class="how-n" aria-hidden="true">2</span><p>Je vous écris pour la confirmer et vous dire comment régler. Il n'y a pas de paiement en ligne.</p></li>
+      <li><span class="how-n" aria-hidden="true">3</span><p>Elle vous rejoint, à votre rythme.</p></li>
+    </ol>
+    <p class="shop-custom">Une pièce vous ferait plaisir, mais pas tout à fait comme ça&nbsp;? <a class="text-link" href="index.html#ecrire">Écrivez-moi</a>, on la fait ensemble.</p>
+  </aside>
+</section>
+</main>
+
+<footer id="footer" class="ft-shop" aria-labelledby="ft-title">
+  <div class="ft-thread" aria-hidden="true">
+    <svg class="ft-thread-line" viewBox="0 0 28 1000" preserveAspectRatio="none" focusable="false">
+      <path vector-effect="non-scaling-stroke" d="M14 0 C14 180, 22 250, 22 400 S6 620, 6 750 S14 920, 14 1000" />
+    </svg>
+    <svg class="ft-knot" viewBox="0 0 24 28" focusable="false" data-thread="end">
+      <path d="M12 0 C12 6, 4 9, 5 15 C6 21, 18 21, 18 14 C18 8, 8 9, 9 17 C10 22, 14 24, 15 28" />
+    </svg>
+  </div>
+
+  <div class="ft-close">
+    <p>Une pièce peut attendre le jour où vous serez prêt à la porter. Revenez quand vous voulez&nbsp;: elles seront là, et moi aussi.</p>
+  </div>
+
+  <div class="ft-sign">
+    <p class="ft-regards">Avec douceur,</p>
+    <p id="ft-title" class="ft-name">Nathalie</p>
+    <svg class="ft-stroke" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path vector-effect="non-scaling-stroke" d="M2 9 C 40 4, 70 12, 110 7 S 170 3, 198 6" />
+    </svg>
+    <p class="ft-place" data-fill>Près d'Annecy, Haute-Savoie</p>
+  </div>
+
+  <nav class="ft-ps" aria-label="Pour continuer">
+    <ul class="ft-links">
+      <li><a href="index.html#ecrire">Écrire à Nathalie</a></li>
+      <li><a href="index.html">Revenir à l'accueil</a></li>
+      <li><a href="mailto:nathalie@fildevie.fr" data-contact-email data-fill>nathalie@fildevie.fr</a></li>
+    </ul>
+  </nav>
+
+  <div class="ft-base">
+    <div class="ft-base-inner">
+      <p class="ft-mark" translate="no">Fil de vie</p>
+      <details class="ft-legal">
+        <summary>Mentions légales et confidentialité</summary>
+        <div class="ft-legal-body" data-fill>
+          <p>Éditrice du site&nbsp;: Nathalie [Nom], entrepreneuse individuelle, [adresse postale], 74000 Annecy.</p>
+          <p>SIRET&nbsp;: [000 000 000 00000]. Directrice de la publication&nbsp;: Nathalie [Nom].</p>
+          <p>Hébergement&nbsp;: [nom de l'hébergeur], [adresse de l'hébergeur].</p>
+          <p>Ce que vous m'écrivez reste entre nous. Vos messages et vos commandes servent uniquement à vous répondre et à vous livrer&nbsp;; ils ne sont ni partagés ni utilisés à d'autres fins. Ce site ne dépose aucun cookie de suivi. Pour consulter ou effacer vos données, écrivez-moi.</p>
+        </div>
+      </details>
+      <p class="ft-meta"><a class="ft-top" href="#top">Revenir au début du fil</a></p>
+      <p class="ft-copy">© <span data-ft-year>2026</span> <span translate="no">Fil de vie</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- A piece, opened from the grid or from a link ending in #p-<id> -->
+<dialog class="sheet piece" id="piece" aria-labelledby="piece-name" aria-describedby="piece-made">
+  <div class="sheet-in">
+    <button type="button" class="sheet-close" data-close>Fermer <span aria-hidden="true">×</span></button>
+
+    <div class="piece-gallery" role="group" aria-roledescription="galerie" aria-label="Photos de la pièce">
+      <div class="piece-frame">
+        <div class="c-frame"><div class="piece-img piece-main"></div></div>
+        <div class="piece-nav" hidden>
+          <button type="button" class="piece-step" data-step="-1" aria-label="Photo précédente"><span aria-hidden="true">←</span></button>
+          <p class="piece-count" aria-live="polite"></p>
+          <button type="button" class="piece-step" data-step="1" aria-label="Photo suivante"><span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+      <ul class="piece-thumbs" aria-label="Choisir une photo"></ul>
+    </div>
+
+    <div class="piece-body">
+      <p class="piece-cat"></p>
+      <h2 id="piece-name" class="piece-name" tabindex="-1"></h2>
+      <p class="piece-price"></p>
+      <p id="piece-made" class="piece-made">Faite à la main par Nathalie, à l'atelier. <span class="piece-made-more"></span></p>
+      <div class="piece-desc"></div>
+      <dl class="piece-details"></dl>
+
+      <form class="piece-buy">
+        <div class="piece-qty">
+          <label for="piece-qty">Combien&nbsp;?</label>
+          <input id="piece-qty" type="number" name="qty" min="1" value="1" inputmode="numeric">
+        </div>
+        <button type="submit" class="btn">Mettre de côté dans le panier</button>
+        <p class="piece-avail"></p>
+      </form>
+
+      <!-- Shown once the piece is in the basket: a short thread, tied -->
+      <div class="piece-added" hidden tabindex="-1">
+        <svg class="tie" viewBox="0 0 120 40" aria-hidden="true" focusable="false">
+          <path class="tie-line" pathLength="1" d="M2 26 C 20 24, 38 30, 56 25 C 64 22.5, 70 16, 69 10 C 68 4, 58 5, 59 12 C 60 19, 68 25, 78 26 C 92 27.5, 106 23, 118 21" />
+          <circle class="tie-dot" cx="62.5" cy="22.5" r="2.4" />
+        </svg>
+        <p class="added-title">Elle vous attend dans le panier.</p>
+        <p class="added-text">Rien n'est encore envoyé. Vous pouvez continuer à regarder, ou m'envoyer votre demande.</p>
+        <div class="added-act">
+          <button type="button" class="btn" data-go-cart>Voir le panier</button>
+          <button type="button" class="text-link link-btn" data-close>Continuer à regarder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- The basket, then the order -->
+<dialog class="sheet cart" id="cart" aria-labelledby="cart-title">
+  <div class="sheet-in">
+    <button type="button" class="sheet-close" data-close>Fermer <span aria-hidden="true">×</span></button>
+
+    <div class="cart-view">
+      <h2 id="cart-title" class="cart-title" tabindex="-1">Votre panier</h2>
+
+      <div class="cart-empty">
+        <p>Le panier est vide pour l'instant.</p>
+        <button type="button" class="text-link link-btn" data-close>Regarder les pièces</button>
+      </div>
+
+
+      <section class="order-block" aria-labelledby="step-1">
+        <h3 id="step-1" class="step-title"><span class="step-n" aria-hidden="true">1</span> Vos pièces</h3>
+        <ul class="cart-lines"></ul>
+        <p class="cart-sub"><span>Sous-total</span> <span data-cart-sub></span></p>
+      </section>
+
+      <form class="order" novalidate>
+        <div class="order-summary" tabindex="-1" hidden>
+          <p class="summary-title">Il manque encore quelques lignes pour que je puisse vous répondre&nbsp;:</p>
+          <ul></ul>
+        </div>
+
+        <fieldset class="order-block order-delivery">
+          <legend class="step-title"><span class="step-n" aria-hidden="true">2</span> Comment la recevoir</legend>
+          <label class="order-opt" data-opt="pickup"><input type="radio" name="delivery" value="pickup"> <span><b>À l'atelier</b> <small data-pickup-note></small></span></label>
+          <label class="order-opt" data-opt="shipping"><input type="radio" name="delivery" value="shipping"> <span><b>Par la poste</b> <small data-ship-fee></small></span></label>
+        </fieldset>
+
+        <fieldset class="order-block order-fields">
+          <legend class="step-title"><span class="step-n" aria-hidden="true">3</span> Vos coordonnées</legend>
+          <div class="field">
+            <label for="o-name">Votre nom</label>
+            <input id="o-name" name="name" autocomplete="name" required maxlength="120" enterkeyhint="next" aria-invalid="false">
+            <p class="field-error" id="o-name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="o-email">Votre e-mail</label>
+            <p class="field-hint" id="o-email-hint">Pour que je puisse vous écrire.</p>
+            <input id="o-email" name="email" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" required maxlength="200" enterkeyhint="next" aria-invalid="false" aria-describedby="o-email-hint">
+            <p class="field-error" id="o-email-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="o-phone">Téléphone <span class="opt">(facultatif)</span></label>
+            <p class="field-hint" id="o-phone-hint">Si vous préférez qu'on s'appelle.</p>
+            <input id="o-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" enterkeyhint="next" aria-describedby="o-phone-hint">
+          </div>
+          <div class="order-address" hidden>
+            <div class="field">
+              <label for="o-address">Adresse</label>
+              <input id="o-address" name="address" autocomplete="street-address" maxlength="300" aria-invalid="false">
+              <p class="field-error" id="o-address-error" hidden></p>
+            </div>
+            <div class="order-row">
+              <div class="field">
+                <label for="o-postal">Code postal</label>
+                <input id="o-postal" name="postal" autocomplete="postal-code" inputmode="numeric" maxlength="20" aria-invalid="false">
+                <p class="field-error" id="o-postal-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="o-city">Ville</label>
+                <input id="o-city" name="city" autocomplete="address-level2" maxlength="120" aria-invalid="false">
+                <p class="field-error" id="o-city-error" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="o-country">Pays</label>
+              <input id="o-country" name="country" autocomplete="country-name" value="France" maxlength="80">
+            </div>
+          </div>
+          <div class="field">
+            <label for="o-note">Un mot pour Nathalie <span class="opt">(facultatif)</span></label>
+            <p class="field-hint" id="o-note-hint">Une gravure, une couleur, une date, ou rien du tout.</p>
+            <textarea id="o-note" name="note" rows="3" maxlength="2000" aria-describedby="o-note-hint"></textarea>
+          </div>
+          <div class="ct-hp" aria-hidden="true"><label>Ne pas remplir <input name="website" tabindex="-1" autocomplete="off"></label></div>
+        </fieldset>
+
+        <div class="order-block order-send">
+          <h3 class="step-title"><span class="step-n" aria-hidden="true">4</span> Envoyer</h3>
+          <p class="order-total"><span>Total</span> <span data-cart-total></span></p>
+          <p class="order-pay" data-payment-note></p>
+          <p class="order-reassure">Ce n'est pas un paiement&nbsp;: c'est une demande. Je vous écris ensuite pour tout confirmer.</p>
+          <button type="submit" class="btn btn-accent">Envoyer ma demande à Nathalie</button>
+          <p class="order-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="cart-done" hidden>
+      <svg class="tie tie-large" viewBox="0 0 120 40" aria-hidden="true" focusable="false">
+        <path class="tie-line" pathLength="1" d="M2 26 C 20 24, 38 30, 56 25 C 64 22.5, 70 16, 69 10 C 68 4, 58 5, 59 12 C 60 19, 68 25, 78 26 C 92 27.5, 106 23, 118 21" />
+        <circle class="tie-dot" cx="62.5" cy="22.5" r="2.4" />
+      </svg>
+      <h2 class="done-title" tabindex="-1">Merci.</h2>
+      <p>Votre demande <b data-order-number></b> est bien arrivée chez moi. Je vous écris très vite pour la confirmer et vous dire comment régler.</p>
+      <p class="done-soft">D'ici là, il n'y a rien d'autre à faire.</p>
+      <button type="button" class="btn" data-close>Revenir à la boutique</button>
+    </div>
+  </div>
+</dialog>
+
+<button type="button" class="cart-fab" data-open-cart aria-haspopup="dialog" hidden>Panier <span data-cart-count>(0)</span></button>
+<p class="visually-hidden" role="status" aria-live="polite" data-cart-live></p>
+
+<script src="scripts/site.js"></script>
+<script src="scripts/thread.js"></script>
+<script src="scripts/boutique.js"></script>
+<script src="scripts/footer.js"></script>
+</body>
+</html>

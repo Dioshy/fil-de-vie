@@ -1,0 +1,253 @@
+#hero {
+  /* Floor about 3rem; the 12vw cap keeps the unbroken name inside the column at 360px */
+  --hero-h1: min(clamp(3rem, 1.2rem + 7.4vw, 7.75rem), 12vw);
+  --hero-settle: cubic-bezier(.16, 1, .3, 1);
+  --hero-knot-dur: 600ms;
+  --hero-pad-top: var(--space-3);
+  --hero-pad-bottom: var(--space-4);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  grid-template-rows: auto minmax(8vh, 14vh) auto auto auto clamp(6rem, 14vh, 10rem) auto;
+  align-content: start;
+  column-gap: var(--space-2);
+  min-height: min(100svh, 58rem);
+  padding: var(--hero-pad-top) var(--gutter) var(--hero-pad-bottom);
+  background: var(--bg);
+  color: var(--ink);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Light: a warm, low glow behind the name, as if from a window to the right.
+   It fills the open half of the page on wide screens and only warms the corner on phones. */
+#hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -20% -25% 0 25%;
+  /* closest-side: each layer fades to nothing before the box edge, so no seam shows */
+  background:
+    radial-gradient(closest-side at 55% 42%, var(--glow), transparent),
+    radial-gradient(closest-side at 50% 45%, color-mix(in srgb, var(--glow) 40%, transparent) 30%, transparent);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js #hero::before { animation: hero-glow var(--dur-hero) var(--ease-out) both; }
+}
+@keyframes hero-glow { from { opacity: 0; } }
+@media (forced-colors: active) { #hero::before { content: none; } }
+
+/* Top bar: hangs from the same left edge as the letter, so the gutter stays the thread's alone */
+#hero .hero-bar {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--space-4);
+}
+#hero .hero-mark {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.625rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  text-decoration: none;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+#hero .hero-mark:hover,
+#hero .hero-mark:focus-visible { opacity: .65; }
+/* On mobile the nav takes its own full row under the mark */
+#hero .hero-bar nav { flex-basis: 100%; }
+#hero .hero-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#hero .hero-nav a,
+#hero .hero-next {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: max(0.9375rem, var(--step--1));
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .4em;
+  text-decoration-color: transparent;
+  transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+#hero .hero-nav a { font-size: .875rem; }
+/* Phones: the six links sit in two rows of 44px targets, so the name starts higher */
+@media (max-width: 47.99rem) {
+  #hero { grid-template-rows: auto minmax(4vh, 8vh) auto auto auto clamp(5rem, 12vh, 8rem) auto; }
+  #hero .hero-bar { row-gap: 0; }
+  #hero .hero-mark { min-height: 2.75rem; }
+  #hero .hero-nav { gap: 0 .75rem; margin-inline-start: -.125rem; }
+  #hero .hero-nav a { font-size: .8125rem; letter-spacing: .01em; }
+}
+#hero .hero-nav a:hover,
+#hero .hero-nav a:focus-visible,
+#hero .hero-next:hover,
+#hero .hero-next:focus-visible {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+/* The thread spans every row and both paddings: from the section's top edge to its bottom edge.
+   Absolutely placed in its grid area so it never pushes the rows apart. */
+#hero .hero-thread {
+  position: absolute;
+  left: 0;
+  top: calc(-1 * var(--hero-pad-top));
+  grid-column: 1;
+  grid-row: 1 / -1;
+  width: 100%;
+  height: calc(100% + var(--hero-pad-top) + var(--hero-pad-bottom));
+  overflow: visible;
+  pointer-events: none;
+}
+#hero .hero-thread path,
+#hero .hero-knot path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The knot sits on the thread, level with the name */
+#hero .hero-knot {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
+  align-self: start;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: calc(var(--hero-h1) * .5 - 1.375rem);
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+/* Scaling about the centre keeps both ends of the loop on the thread's axis */
+#hero .hero-knot g {
+  transform-origin: 0 0;
+  transform: none;
+}
+#hero .hero-knot circle { fill: var(--accent); }
+/* Waiting: a wide, loose loop, slightly twisted, not yet visible */
+#hero .hero-knot[data-knot="waiting"] g { opacity: 0; transform: rotate(-32deg) scale(1.8); }
+#hero .hero-knot[data-knot="waiting"] circle { opacity: 0; }
+
+/* Type: the name at full size, set exactly as written */
+#hero .hero-title {
+  grid-column: 2;
+  grid-row: 3;
+  /* Pull the italic's overhang back so its stem sits on the letter's edge */
+  margin-inline-start: -0.035em;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--hero-h1);
+  line-height: .98;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  font-variant: normal;
+  white-space: nowrap;
+}
+/* What the name holds, one quieter step down, still in the display italic */
+#hero .hero-lede {
+  grid-column: 2;
+  grid-row: 4;
+  max-width: 24ch;
+  margin-top: var(--space-3);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.625rem, 1.15rem + 2.1vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+#hero .hero-letter {
+  grid-column: 2;
+  grid-row: 5;
+  max-width: 52ch;
+  margin-top: var(--space-4);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--step-0);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+#hero .hero-aside {
+  margin-top: var(--space-2);
+  font-style: italic;
+  color: var(--muted);
+}
+#hero .hero-foot {
+  grid-column: 2;
+  grid-row: 7;
+  align-self: end;
+  margin-top: var(--space-5);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+  max-width: 52ch;
+}
+#hero .hero-place {
+  font-size: max(0.875rem, var(--step--1));
+  color: var(--muted);
+}
+#hero .hero-next { color: var(--ink); text-decoration-color: var(--line); }
+
+@media (min-width: 64rem) {
+  #hero {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--cols-gap);
+    grid-template-rows: auto minmax(10vh, 16vh) auto auto auto clamp(6rem, 14vh, 10rem) auto;
+  }
+  #hero .hero-bar { grid-column: 3 / -1; }
+  #hero .hero-bar nav { flex-basis: auto; }
+  #hero .hero-nav { gap: 0 1.25rem; }
+  #hero .hero-nav a { font-size: max(0.9375rem, var(--step--1)); }
+  #hero .hero-thread,
+  #hero .hero-knot { grid-column: 2; }
+  #hero .hero-title { grid-column: 3 / 12; }
+  #hero .hero-lede,
+  #hero .hero-letter,
+  #hero .hero-foot { grid-column: 3 / 8; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #hero .hero-knot g {
+    transition: transform var(--hero-knot-dur) var(--hero-settle), opacity 160ms linear;
+  }
+  #hero .hero-knot circle {
+    transition: opacity 200ms linear 280ms;
+  }
+}
+
+/* Arrival: the hero's blocks fade and rise one after the other, a little more spaced than further down */
+@keyframes hero-in { from { opacity: 0; translate: 0 var(--reveal-rise); } }
+@media (prefers-reduced-motion: no-preference) {
+  html.js #hero [data-fade] { animation: hero-in var(--dur-3) var(--ease-out) both; }
+  html.js #hero .hero-title { animation-delay: 200ms; }
+  html.js #hero .hero-lede { animation-delay: 650ms; }
+  html.js #hero .hero-letter { animation-delay: 1100ms; }
+  html.js #hero .hero-foot { animation-delay: 1550ms; }
+}
+@media (min-width: 64rem) and (max-width: 80rem) {
+  #hero .hero-bar { grid-column: 3 / -1; }
+}

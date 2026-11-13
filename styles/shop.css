@@ -1,0 +1,391 @@
+/* The shop page: a quiet gallery of keepsakes. The same paper, the same thread down the gutter,
+   each piece hung in its own mat with room around it. Red stays for the thread, the knots,
+   the ties of feedback and the one last button (sending the order).
+   Shared pieces (the mat, the picture, the tie) live in boutique.css, which both pages load. */
+
+.shop-page #shop { padding-top: var(--space-3); padding-bottom: var(--space-5); }
+html:has(dialog[open]) { overflow: hidden; }
+
+.skip-link {
+  position: absolute; left: var(--gutter); top: -4rem; z-index: 20;
+  padding: .75rem 1rem; background: var(--ink); color: var(--bg);
+  text-decoration: none; font-size: .9375rem;
+}
+.skip-link:focus { top: var(--space-1); }
+[tabindex="-1"]:focus:not(:focus-visible) { outline: none; }
+
+/* ------------------------------------------------------------------
+   Top bar: the same mark, words and sizes as the home page's bar
+   ------------------------------------------------------------------ */
+.shop-bar {
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--space-4);
+  margin-bottom: clamp(5rem, 16vh, 10rem);
+}
+.shop-mark {
+  display: inline-flex; align-items: center; min-height: 2.75rem;
+  font-family: var(--font-display); font-style: italic; font-size: 1.625rem; letter-spacing: -0.01em;
+  color: var(--ink); text-decoration: none;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+.shop-mark:hover, .shop-mark:focus-visible { opacity: .65; }
+/* Phones: mark and basket on one line, the sections on their own line below, like the home page */
+.shop-bar nav { order: 2; flex-basis: 100%; }
+.shop-cart-link { order: 1; }
+.shop-nav { display: flex; flex-wrap: wrap; gap: 0 1rem; margin: 0; padding: 0; list-style: none; }
+.shop-nav a, .shop-cart-link {
+  display: inline-flex; align-items: center; min-height: 2.75rem;
+  padding: 0; border: 0; background: none;
+  font: 400 .875rem var(--font-body);
+  color: var(--muted);
+  text-decoration: underline 1px transparent; text-underline-offset: .4em;
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+.shop-nav a:hover, .shop-nav a:focus-visible,
+.shop-cart-link:hover, .shop-cart-link:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
+.shop-nav a[aria-current="page"] { color: var(--ink); text-decoration-color: var(--line); }
+.shop-cart-link { gap: .3em; padding: 0 .75rem; margin-right: -.75rem; color: var(--ink); font-weight: 500; border-radius: var(--radius); }
+
+#shop > .knot, #shop > .sec-head { grid-row: 2; }
+.shop-filters { grid-row: 3; }
+.shop-state { grid-row: 4; }
+.shop-grid { grid-row: 5; }
+.shop-note { grid-row: 6; }
+
+.shop-hand {
+  margin-top: var(--space-3);
+  font-family: var(--font-display); font-style: italic; font-size: var(--step-1);
+  color: var(--muted);
+}
+
+/* Families of pieces: plain words, the chosen one underlined */
+.shop-filters {
+  display: flex; flex-wrap: wrap; gap: 0 var(--space-3);
+  margin-top: var(--space-5);
+}
+.shop-filters button {
+  min-height: 2.75rem; padding: 0; border: 0; background: none;
+  font: 400 1rem var(--font-body); color: var(--muted);
+  text-decoration: underline 1px transparent; text-underline-offset: .45em;
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-out), text-decoration-color var(--dur-1) var(--ease-out);
+}
+.shop-filters button:hover { color: var(--ink); }
+.shop-filters button[aria-pressed="true"] { color: var(--ink); text-decoration-color: currentColor; }
+
+.shop-state { margin-top: var(--space-3); color: var(--muted); min-height: 1.5em; max-width: 52ch; }
+.shop-state:empty { min-height: 0; margin: 0; }
+
+/* ------------------------------------------------------------------
+   The gallery: one piece per row on phones, then two, then a wall of three
+   whose middle column hangs a little lower
+   ------------------------------------------------------------------ */
+.shop-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5) var(--shop-gallery-gap);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.shop-card button {
+  display: grid; gap: var(--space-2);
+  width: 100%; padding: 0; border: 0; background: none;
+  color: inherit; text-align: left; font: inherit;
+  cursor: pointer;
+}
+.shop-card button:focus-visible { outline: none; }
+.shop-card button:focus-visible .c-frame { outline: 2px solid var(--accent); outline-offset: 4px; }
+.shop-card button:hover .c-frame,
+.shop-card button:focus-visible .c-frame { box-shadow: var(--shop-glow); }
+.shop-card button:hover .piece-img img { transform: scale(1.02); }
+.c-text { display: grid; gap: .3rem; padding-inline: .25rem; }
+.c-name {
+  font-family: var(--font-display); font-style: italic; font-size: var(--step-2); line-height: 1.1;
+  text-decoration: underline 1px transparent; text-underline-offset: .2em;
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+.shop-card button:hover .c-name, .shop-card button:focus-visible .c-name { text-decoration-color: var(--line); }
+.c-meta { font-size: .9375rem; color: var(--muted); }
+.c-price { font-weight: 300; font-size: 1rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.shop-card.is-out .piece-img { filter: grayscale(.7); opacity: .6; }
+.shop-card.is-out .c-price { color: var(--muted); text-decoration: line-through 1px var(--line); }
+
+/* How an order goes: three short steps, then the door to a custom piece */
+.shop-note { max-width: 52ch; margin-top: var(--space-6); }
+.shop-how { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.shop-how li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: var(--space-2); align-items: baseline; }
+.how-n, .step-n {
+  display: inline-grid; place-items: center;
+  width: 2rem; height: 2rem; border: 1px solid var(--line); border-radius: 50%;
+  font-family: var(--font-display); font-style: italic; font-size: 1.125rem; line-height: 1; color: var(--muted);
+}
+.shop-how p { color: var(--muted); line-height: 1.65; }
+.shop-custom { margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--line); color: var(--muted); line-height: 1.65; }
+.shop-custom a { color: var(--ink); min-height: 0; }
+
+/* ------------------------------------------------------------------
+   Buttons. Only the order's last button is red.
+   ------------------------------------------------------------------ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3.25rem; padding: 0 1.75rem;
+  border: 1px solid var(--ink); border-radius: var(--radius);
+  background: transparent; color: var(--ink);
+  font: 500 1rem var(--font-body);
+  cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), box-shadow var(--dur-2) var(--ease-out), opacity var(--dur-1);
+}
+.btn:hover, .btn:focus-visible { background: var(--ink); color: var(--bg); }
+.btn-accent { border-color: var(--accent); background: var(--accent); color: var(--bg); }
+.btn-accent:hover, .btn-accent:focus-visible { background: color-mix(in srgb, var(--accent) 86%, var(--ink)); color: var(--bg); box-shadow: var(--shop-glow); }
+.btn[hidden], .link-btn[hidden] { display: none; }
+.btn[aria-busy="true"] { opacity: .75; cursor: progress; }
+.link-btn { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
+
+.cart-fab {
+  position: fixed; right: var(--gutter); bottom: var(--space-3); z-index: 5;
+  min-height: 3rem; padding: 0 1.25rem;
+  border: 1px solid var(--ink); border-radius: var(--radius); background: var(--bg); color: var(--ink);
+  font: 500 .9375rem var(--font-body);
+  box-shadow: 0 .5rem 1.5rem color-mix(in srgb, var(--ink) 12%, transparent);
+  cursor: pointer;
+}
+.cart-fab:hover, .cart-fab:focus-visible { background: var(--ink); color: var(--bg); }
+
+/* The basket, when a piece goes in: a warm light passes once. No jump, no badge. */
+.is-glowing { animation: basket-glow 1.8s var(--ease-out); }
+@keyframes basket-glow {
+  0% { background-color: transparent; box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent); }
+  25% { background-color: color-mix(in srgb, var(--accent) 12%, var(--bg)); box-shadow: 0 0 0 .5rem color-mix(in srgb, var(--accent) 10%, transparent); }
+  100% { background-color: transparent; box-shadow: 0 0 0 1.25rem color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+.cart-fab.is-glowing { animation-name: basket-glow-fab; }
+@keyframes basket-glow-fab {
+  25% { box-shadow: 0 .5rem 1.5rem color-mix(in srgb, var(--ink) 12%, transparent), 0 0 0 .5rem color-mix(in srgb, var(--accent) 12%, transparent); }
+}
+
+/* ------------------------------------------------------------------
+   Sheets: a piece, the basket. Paper laid gently over the page.
+   ------------------------------------------------------------------ */
+.sheet {
+  width: min(100% - 1rem, 66rem);
+  max-height: calc(100dvh - 1rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 2rem 5rem color-mix(in srgb, var(--ink) 22%, transparent);
+  overscroll-behavior: contain;
+}
+.sheet.cart { width: min(100% - 1rem, 40rem); }
+.sheet::backdrop { background: color-mix(in srgb, var(--ink) 38%, transparent); backdrop-filter: blur(2px); }
+.sheet-in { position: relative; padding: var(--space-5) clamp(1.25rem, 4vw, 3.5rem) var(--space-4); }
+.sheet-close {
+  position: absolute; right: .5rem; top: .5rem; z-index: 2;
+  display: inline-flex; align-items: center; gap: .4rem;
+  min-height: 2.75rem; padding: 0 .9rem; border: 0; border-radius: var(--radius); background: var(--bg);
+  font: 400 .9375rem var(--font-body); color: var(--muted);
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
+}
+.sheet-close span { font-size: 1.25em; line-height: 1; }
+.sheet-close:hover, .sheet-close:focus-visible { color: var(--ink); background: var(--surface); }
+@media (prefers-reduced-motion: no-preference) {
+  .sheet[open] { animation: sheet-in var(--dur-2) var(--ease-out); }
+  .sheet[open]::backdrop { animation: veil-in var(--dur-2) linear; }
+  @keyframes sheet-in { from { opacity: 0; transform: translateY(.75rem); } }
+  @keyframes veil-in { from { opacity: 0; } }
+}
+
+/* A piece */
+.piece .sheet-in { display: grid; gap: var(--space-4); }
+.piece-frame { position: relative; }
+.piece-nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-top: .75rem; }
+.piece-nav[hidden] { display: none; }
+.piece-step {
+  display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem;
+  border: 1px solid var(--line); border-radius: 50%; background: transparent;
+  font-size: 1.125rem; color: var(--ink); cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+.piece-step:hover, .piece-step:focus-visible { background: var(--surface); border-color: var(--ink); }
+.piece-count { font-size: .9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.piece-thumbs { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 0; padding: 0; list-style: none; }
+.piece-thumbs:empty { display: none; }
+.piece-thumbs button {
+  width: 4rem; padding: 3px; border: 1px solid transparent; background: none; cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+.piece-thumbs button:hover { border-color: var(--line); }
+.piece-thumbs button[aria-pressed="true"] { border-color: var(--ink); }
+.piece-thumbs .piece-img { aspect-ratio: 1; }
+.piece-cat { font-weight: 500; font-size: .875rem; color: var(--muted); }
+.piece-name { margin-top: .5rem; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: var(--step-3); line-height: 1.05; }
+.piece-price { margin-top: var(--space-2); font-weight: 300; font-size: var(--step-1); font-variant-numeric: tabular-nums; }
+.piece-made {
+  margin-top: var(--space-3); padding-left: var(--space-2); border-left: 1px solid var(--accent);
+  font-family: var(--font-display); font-style: italic; font-size: 1.125rem; line-height: 1.4; color: var(--muted);
+}
+.piece-desc { margin-top: var(--space-3); max-width: 52ch; line-height: 1.7; }
+.piece-desc p + p { margin-top: var(--space-1); }
+.piece-details { display: grid; grid-template-columns: max-content 1fr; gap: .5rem var(--space-3); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--line); font-size: .9375rem; }
+.piece-details:empty { display: none; }
+.piece-details dt { color: var(--muted); }
+.piece-buy { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-2); margin-top: var(--space-4); }
+.piece-buy[hidden] { display: none; }
+.piece-qty { display: grid; gap: .3rem; font-size: .875rem; color: var(--muted); }
+.piece-qty[hidden] { display: none; }
+.piece-qty input { width: 5.5rem; min-height: 3.25rem; padding: 0 .9rem; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); border-radius: var(--radius); background: transparent; font: 400 1rem var(--font-body); color: var(--ink); }
+.piece-qty input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.piece-avail { flex-basis: 100%; font-size: .9375rem; color: var(--muted); line-height: 1.6; }
+.piece-avail .text-link { min-height: 2.75rem; color: var(--ink); }
+
+.piece-added { margin-top: var(--space-4); display: grid; gap: var(--space-2); justify-items: start; }
+.piece-added[hidden] { display: none; }
+.added-title { font-family: var(--font-display); font-style: italic; font-size: var(--step-2); line-height: 1.15; }
+.added-text { color: var(--muted); max-width: 44ch; line-height: 1.6; }
+.added-act { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin-top: var(--space-1); }
+
+@media (min-width: 52rem) {
+  .piece .sheet-in { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; gap: var(--space-5); }
+}
+
+/* ------------------------------------------------------------------
+   The basket and the order, in four plain steps on one sheet
+   ------------------------------------------------------------------ */
+.cart-title { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: var(--step-3); }
+.cart-empty { margin-top: var(--space-3); display: grid; gap: var(--space-1); justify-items: start; color: var(--muted); }
+.cart-empty[hidden] { display: none; }
+.cart-empty .text-link { color: var(--ink); }
+
+.order-block { margin: var(--space-4) 0 0; padding: 0; border: 0; min-width: 0; }
+.order-block[hidden] { display: none; }
+.step-title {
+  display: flex; align-items: center; gap: .75rem;
+  margin: 0 0 var(--space-2); padding: 0;
+  font-family: var(--font-body); font-weight: 500; font-size: 1rem; line-height: 1.3;
+}
+.step-title .step-n { width: 1.875rem; height: 1.875rem; font-size: 1rem; color: var(--ink); border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+
+.cart-lines { margin: 0; padding: 0; list-style: none; }
+.cart-line {
+  display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: var(--space-2); align-items: center;
+  padding: var(--space-2) 0; border-top: 1px solid var(--line);
+}
+.cart-line:last-child { border-bottom: 1px solid var(--line); }
+.cart-line .l-name { font-family: var(--font-display); font-style: italic; font-size: 1.1875rem; line-height: 1.2; }
+.cart-line .l-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .75rem; margin-top: .25rem; font-size: .875rem; color: var(--muted); }
+.cart-line .l-qty { display: inline-flex; align-items: center; gap: .4rem; }
+.cart-line .l-meta input { width: 4rem; min-height: 2.75rem; padding: 0 .6rem; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); border-radius: var(--radius); background: transparent; font: 400 1rem var(--font-body); color: var(--ink); }
+.cart-line .l-del { min-height: 2.75rem; padding: 0; border: 0; background: none; font: inherit; color: var(--muted); text-decoration: underline 1px; text-underline-offset: .3em; cursor: pointer; }
+.cart-line .l-del:hover, .cart-line .l-del:focus-visible { color: var(--ink); }
+.cart-line .l-price { white-space: nowrap; font-weight: 300; font-variant-numeric: tabular-nums; }
+.cart-sub, .order-total { display: flex; justify-content: space-between; gap: 1rem; margin-top: var(--space-2); font-variant-numeric: tabular-nums; }
+.cart-sub span:first-child, .order-total span:first-child { color: var(--muted); }
+
+.order { display: grid; }
+.order[hidden] { display: none; }
+.order fieldset.order-block { display: grid; gap: .6rem; }
+.order-opt {
+  display: flex; gap: .75rem; align-items: flex-start;
+  padding: .9rem 1rem; border: 1px solid var(--line); border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
+}
+.order-opt:hover { border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+.order-opt:has(input:checked) { border-color: var(--ink); background: color-mix(in srgb, var(--surface) 45%, transparent); }
+.order-opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.order-opt input { width: 1.125rem; height: 1.125rem; margin: .2rem 0 0; accent-color: var(--ink); }
+.order-opt small { display: block; color: var(--muted); font-size: .875rem; }
+.order-opt[hidden] { display: none; }
+
+.order-fields { gap: var(--space-2) !important; }
+.order-address { display: grid; gap: var(--space-2); }
+.order-address[hidden] { display: none; }
+.order-row { display: grid; grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); gap: var(--space-2); }
+.field { display: grid; gap: .35rem; }
+.field label { font-size: .9375rem; }
+.field .opt { color: var(--muted); font-weight: 300; }
+.field-hint { font-size: .875rem; color: var(--muted); }
+.order input:not([type="radio"]), .order textarea {
+  width: 100%; min-height: 3rem; padding: .6rem .9rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 30%, var(--bg));
+  font: 300 1rem var(--font-body); color: var(--ink);
+  transition: border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
+}
+.order textarea { resize: vertical; }
+.order input:focus-visible, .order textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--ink); }
+.order [aria-invalid="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.field-error {
+  display: flex; gap: .5rem; align-items: baseline;
+  font-size: .9375rem; color: var(--accent); line-height: 1.45;
+}
+.field-error::before {
+  content: "!"; flex: none;
+  display: inline-grid; place-items: center; width: 1.15rem; height: 1.15rem;
+  border: 1px solid currentColor; border-radius: 50%;
+  font: 500 .75rem/1 var(--font-body); transform: translateY(-.05em);
+}
+.field-error[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .field-error:not([hidden]) { animation: soft-in var(--dur-1) var(--ease-out); }
+  @keyframes soft-in { from { opacity: 0; transform: translateY(-2px); } }
+}
+
+.order-summary {
+  margin-top: var(--space-4); padding: var(--space-2) var(--space-3);
+  border-left: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+}
+.order-summary[hidden] { display: none; }
+.order-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.summary-title { font-weight: 500; }
+.order-summary ul { margin-top: .5rem; display: grid; gap: .1rem; }
+.order-summary a { display: inline-flex; min-height: 2.25rem; align-items: center; color: var(--accent); text-underline-offset: .3em; }
+
+.order-total { margin-top: 0; padding-top: var(--space-2); border-top: 1px solid var(--line); font-size: var(--step-1); }
+.order-pay, .order-reassure { margin-top: var(--space-2); font-size: .9375rem; color: var(--muted); line-height: 1.6; }
+.order-pay:empty { display: none; }
+.order-send .btn { margin-top: var(--space-3); width: 100%; }
+.order-status { margin-top: var(--space-2); min-height: 1.5em; }
+.order-status[data-tone="error"] { color: var(--accent); }
+.ct-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Sent: the thread ties itself, then a few quiet words */
+.cart-done { margin-top: var(--space-2); display: grid; gap: var(--space-3); justify-items: start; }
+.cart-done[hidden] { display: none; }
+.done-title { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: var(--step-4); line-height: 1; }
+.cart-done p { max-width: 44ch; line-height: 1.65; }
+.done-soft { color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .cart-done:not([hidden]) > :not(.tie) { animation: soft-in 600ms var(--ease-out) both; animation-delay: 900ms; }
+  .cart-done:not([hidden]) > .done-title { animation-delay: 700ms; }
+  .piece-added:not([hidden]) > :not(.tie) { animation: soft-in 500ms var(--ease-out) both; animation-delay: 650ms; }
+}
+
+/* ------------------------------------------------------------------
+   Wider screens
+   ------------------------------------------------------------------ */
+@media (min-width: 40rem) {
+  .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shop-grid > li:nth-child(even) { margin-top: var(--space-5); }
+  .order-send .btn { width: auto; }
+}
+@media (min-width: 64rem) {
+  .shop-bar { grid-column: 3 / -1; flex-wrap: nowrap; }
+  .shop-bar nav { order: 0; flex-basis: auto; margin-left: auto; }
+  .shop-cart-link { order: 0; }
+  .shop-nav { gap: 0 1.25rem; }
+  .shop-filters, .shop-state { grid-column: 3 / -1; }
+  .shop-grid { grid-column: 3 / -2; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--space-6); }
+  .shop-grid > li:nth-child(even) { margin-top: 0; }
+  .shop-grid > li:nth-child(3n + 2) { margin-top: var(--space-6); }
+  .shop-note { grid-column: 3 / 9; }
+}

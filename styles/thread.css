@@ -1,0 +1,52 @@
+/* The living thread: sway, knot glow and the message pulse. Drawn by scripts/thread.js.
+   The line itself is styled in base.css (.page-thread path). */
+
+/* The short stretch that sways (.thread-sway) is drawn over a gap in the line and inherits its ink. */
+
+/* The pulse: a bead of light carried up the thread after a message is sent.
+   A wide, faint halo stroke under a brighter core; no filter on the page-tall SVG. */
+.page-thread .thread-pulse-halo {
+  stroke: var(--accent);
+  stroke-width: 9;
+  stroke-opacity: .16;
+}
+.page-thread .thread-pulse {
+  stroke: color-mix(in srgb, var(--accent) 70%, #ffd9b8);
+  stroke-width: 3;
+}
+
+/* Knot glow.
+   filter: drop-shadow() is costly because the browser rasterises the filter region on every change.
+   Here it is only ever set on the knot SVGs, boxes of about 3rem, so that region stays tiny.
+   It must never be applied to .page-thread: that SVG is as tall as the document. */
+[data-knot] {
+  transition: filter 450ms cubic-bezier(.16, 1, .3, 1);
+}
+[data-knot].is-near {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 38%, transparent));
+}
+[data-knot].is-lit {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 60%, transparent));
+}
+
+/* The first time a knot is tied it gives one small tug. `scale` (not `transform`)
+   so it composes with any transform the knot already has. */
+@keyframes thread-tie {
+  0%   { scale: 1; }
+  35%  { scale: 1.14; }
+  65%  { scale: .96; }
+  100% { scale: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-knot].is-tying { animation: thread-tie 700ms cubic-bezier(.34, 1.3, .64, 1) 1 both; }
+}
+
+/* Reduced motion (or ?fil): a still, fully drawn thread */
+html.thread-still [data-knot] { transition: none; filter: none; animation: none; }
+html.thread-still .page-thread .thread-sway,
+html.thread-still .page-thread .thread-pulse,
+html.thread-still .page-thread .thread-pulse-halo { display: none; }
+
+/* The loop round the button while it untwists into the line after a message is sent, and while it
+   ties itself round the button again (.thread-loop). It stands in for that stretch of the line and
+   inherits its ink, so nothing to add here; it is a plain path, never filtered. */

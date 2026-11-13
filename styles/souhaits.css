@@ -1,0 +1,87 @@
+/* Son dernier souhait: what they said, then what we made of it */
+#souhaits .sw-list {
+  margin-top: clamp(4rem, 12vh, 8rem);
+  display: grid;
+  gap: clamp(2.5rem, 6vh, 4rem);
+  counter-reset: wish;
+}
+#souhaits .sw-wish { max-width: 46ch; }
+#souhaits .sw-said {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-2);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+#souhaits .sw-made {
+  position: relative;
+  margin-top: var(--space-2);
+  padding-left: var(--space-3);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+/* A short green stitch leads from the words to the piece */
+#souhaits .sw-made::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .8em;
+  width: .9rem;
+  height: 1px;
+  background: var(--accent-2);
+  transform-origin: left center;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+/* Hover: the stitch reaches a little further toward the piece. Transform only, no reflow. */
+@media (hover: hover) {
+  #souhaits .sw-wish:hover .sw-made::before { transform: scaleX(1.45); }
+}
+/* The wishes, in their own voice, are the section's one italic; the title's second line stays upright */
+#souhaits .sec-title em { font-style: normal; }
+#souhaits .sw-wish:last-child .sw-made { color: var(--ink); font-weight: 400; }
+
+#souhaits .sw-further {
+  margin-top: clamp(5rem, 14vh, 9rem);
+  max-width: 52ch;
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--accent-2);
+}
+#souhaits .sw-further-title {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: var(--step-3);
+  line-height: 1.05;
+}
+#souhaits .sw-further p {
+  margin-top: var(--space-3);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+#souhaits .sw-further .sw-aside {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: var(--step-1);
+  color: var(--muted);
+}
+
+#souhaits .sw-law {
+  margin-top: clamp(4rem, 10vh, 6rem);
+  max-width: 60ch;
+  font-size: max(.875rem, var(--step--1));
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (min-width: 64rem) {
+  #souhaits .sw-list { grid-column: 3 / 11; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: var(--cols-gap); }
+  /* The wishes step down and to the right, one after the other, never side by side */
+  #souhaits .sw-wish:nth-child(1) { grid-column: 1 / 6; }
+  #souhaits .sw-wish:nth-child(2) { grid-column: 2 / 7; }
+  #souhaits .sw-wish:nth-child(3) { grid-column: 3 / 8; }
+  #souhaits .sw-wish:nth-child(4) { grid-column: 4 / 9; }
+  #souhaits .sw-further { grid-column: 5 / 11; }
+  #souhaits .sw-law { grid-column: 3 / 9; }
+}
