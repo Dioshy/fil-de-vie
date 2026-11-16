@@ -53,6 +53,53 @@
 }
 #accompagnement .acc-intro { margin-top: var(--space-4); }
 
+/* The three parts: Accueillir, Honorer, Transformer */
+#accompagnement .acc-parts {
+  grid-column: 2;
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-5) 0 var(--space-6);
+  scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3));
+}
+#accompagnement .acc-part { scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3)); border-top: 1px solid var(--line); padding-top: var(--space-2); }
+#accompagnement .acc-part-n {
+  margin: 0 0 .25rem;
+  font: 500 .8125rem var(--font-body);
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+#accompagnement .acc-part-title {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--step-2, 1.75rem);
+  line-height: 1.1;
+}
+#accompagnement .acc-part ul { margin: 0; padding: 0; list-style: none; }
+#accompagnement .acc-part li {
+  position: relative;
+  padding: .35rem 0 .35rem 1.1rem;
+  font: 300 1.0625rem/1.5 var(--font-body);
+  max-width: 34ch;
+  scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-5));
+}
+/* a small knot of thread before each one */
+#accompagnement .acc-part li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(.35rem + .72em);
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+#accompagnement .acc-part a { color: inherit; text-decoration: underline 1px var(--line); text-underline-offset: .3em; }
+#accompagnement .acc-part a:hover,
+#accompagnement .acc-part a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
+#accompagnement .acc-part li:target { color: var(--accent); }
+
 /* The steps: each one a row on the parent grid; on the phone they share one full measure */
 #accompagnement .acc-steps {
   grid-column: 1 / -1;
@@ -182,6 +229,7 @@
   #accompagnement .acc-thread { left: calc(var(--gutter) + var(--acc-col) + var(--cols-gap)); width: var(--acc-col); }
   #accompagnement .acc-knot { grid-column: 2; }
   #accompagnement .acc-head { grid-column: 3 / 10; }
+  #accompagnement .acc-parts { grid-column: 3 / 12; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cols-gap); }
   #accompagnement .acc-step .acc-body { padding-left: 0 !important; }
   #accompagnement .acc-step:nth-child(1) .acc-body { grid-column: 3 / 8; }
   #accompagnement .acc-step:nth-child(2) .acc-body { grid-column: 4 / 9; }

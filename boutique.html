@@ -37,7 +37,34 @@
   <nav id="site-nav" class="site-nav-wrap" aria-label="Sections du site">
     <ul class="site-nav">
       <li><a href="index.html#nathalie">Qui je suis</a></li>
-      <li><a href="index.html#accompagnement">L'accompagnement</a></li>
+      <li class="site-nav-has-sub">
+        <a href="index.html#accompagnement">L'accompagnement</a>
+        <button type="button" class="site-sub-toggle" aria-expanded="false" aria-controls="site-sub-acc" data-site-sub>
+          <span class="visually-hidden">Les trois temps de l'accompagnement</span>
+        </button>
+        <div class="site-sub" id="site-sub-acc">
+          <div class="site-sub-group">
+            <a class="site-sub-head" href="index.html#accueillir">Accueillir</a>
+            <ul>
+              <li><a href="index.html#etapes">Parcours d'accompagnement</a></li>
+              <li><a href="index.html#deposer">Déposer sa peine</a></li>
+            </ul>
+          </div>
+          <div class="site-sub-group">
+            <a class="site-sub-head" href="index.html#honorer">Honorer</a>
+            <ul>
+              <li><a href="index.html#souhaits">Réaliser un souhait</a></li>
+              <li><a href="index.html#lien">Maintenir un lien symbolique</a></li>
+            </ul>
+          </div>
+          <div class="site-sub-group">
+            <a class="site-sub-head" href="index.html#transformer">Transformer</a>
+            <ul>
+              <li><a href="index.html#transformer">Transformer ses émotions en quelque chose de porteur de sens</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
       <li><a href="index.html#souhaits">Son dernier souhait</a></li>
       <li><a href="index.html#ateliers">Les ateliers</a></li>
       <li><a href="boutique.html" aria-current="page">La boutique</a></li>

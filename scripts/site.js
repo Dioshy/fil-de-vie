@@ -87,18 +87,29 @@
     nav.classList.toggle("is-open", open);
   };
   btn?.addEventListener("click", () => setOpen(btn.getAttribute("aria-expanded") !== "true"));
+  // L'accompagnement: its three parts open from the small arrow beside it (and on hover with a mouse)
+  bar.querySelectorAll("[data-site-sub]").forEach((t) => {
+    t.addEventListener("click", () => t.setAttribute("aria-expanded", String(t.getAttribute("aria-expanded") !== "true")));
+    t.parentElement.addEventListener("focusout", (e) => { if (!t.parentElement.contains(e.relatedTarget)) t.setAttribute("aria-expanded", "false"); });
+  });
+  const closeSubs = () => bar.querySelectorAll("[data-site-sub]").forEach((t) => t.setAttribute("aria-expanded", "false"));
+  nav?.addEventListener("click", (e) => { if (e.target.closest(".site-sub a")) closeSubs(); });
   nav?.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
   addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const open = bar.querySelector('[data-site-sub][aria-expanded="true"]');
+      if (open) { open.setAttribute("aria-expanded", "false"); open.focus(); return; }
+    }
     if (e.key === "Escape" && btn?.getAttribute("aria-expanded") === "true") { setOpen(false); btn.focus(); }
   });
-  document.addEventListener("click", (e) => { if (!bar.contains(e.target)) setOpen(false); });
+  document.addEventListener("click", (e) => { if (!bar.contains(e.target)) { setOpen(false); closeSubs(); } });
 
   const onScroll = () => bar.classList.toggle("is-scrolled", scrollY > 8);
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
   // Mark the link of the section on screen (home page only)
-  const links = [...bar.querySelectorAll('.site-nav a[href^="#"]')];
+  const links = [...bar.querySelectorAll('.site-nav > li > a[href^="#"]')];
   const targets = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
   if (!targets.length || !("IntersectionObserver" in window)) return;
   const seen = new Map();
