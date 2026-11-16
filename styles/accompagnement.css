@@ -53,53 +53,6 @@
 }
 #accompagnement .acc-intro { margin-top: var(--space-4); }
 
-/* The three parts: Accueillir, Honorer, Transformer */
-#accompagnement .acc-parts {
-  grid-column: 2;
-  display: grid;
-  gap: var(--space-4);
-  margin: var(--space-5) 0 var(--space-6);
-  scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3));
-}
-#accompagnement .acc-part { scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3)); border-top: 1px solid var(--line); padding-top: var(--space-2); }
-#accompagnement .acc-part-n {
-  margin: 0 0 .25rem;
-  font: 500 .8125rem var(--font-body);
-  letter-spacing: .12em;
-  color: var(--muted);
-}
-#accompagnement .acc-part-title {
-  margin: 0 0 var(--space-1);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: var(--step-2, 1.75rem);
-  line-height: 1.1;
-}
-#accompagnement .acc-part ul { margin: 0; padding: 0; list-style: none; }
-#accompagnement .acc-part li {
-  position: relative;
-  padding: .35rem 0 .35rem 1.1rem;
-  font: 300 1.0625rem/1.5 var(--font-body);
-  max-width: 34ch;
-  scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-5));
-}
-/* a small knot of thread before each one */
-#accompagnement .acc-part li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: calc(.35rem + .72em);
-  width: .4rem;
-  height: .4rem;
-  border-radius: 50%;
-  background: var(--accent);
-}
-#accompagnement .acc-part a { color: inherit; text-decoration: underline 1px var(--line); text-underline-offset: .3em; }
-#accompagnement .acc-part a:hover,
-#accompagnement .acc-part a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
-#accompagnement .acc-part li:target { color: var(--accent); }
-
 /* The steps: each one a row on the parent grid; on the phone they share one full measure */
 #accompagnement .acc-steps {
   grid-column: 1 / -1;
@@ -229,7 +182,6 @@
   #accompagnement .acc-thread { left: calc(var(--gutter) + var(--acc-col) + var(--cols-gap)); width: var(--acc-col); }
   #accompagnement .acc-knot { grid-column: 2; }
   #accompagnement .acc-head { grid-column: 3 / 10; }
-  #accompagnement .acc-parts { grid-column: 3 / 12; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cols-gap); }
   #accompagnement .acc-step .acc-body { padding-left: 0 !important; }
   #accompagnement .acc-step:nth-child(1) .acc-body { grid-column: 3 / 8; }
   #accompagnement .acc-step:nth-child(2) .acc-body { grid-column: 4 / 9; }
@@ -261,4 +213,58 @@
   #accompagnement .acc-step:nth-child(2) > .acc-knot { grid-column: 4; }
   #accompagnement .acc-step:nth-child(3) > .acc-knot { grid-column: 5; }
   #accompagnement .acc-step:nth-child(4) > .acc-knot { grid-column: 6; margin-left: calc(-3.25rem - 1.75rem); }
+}
+
+/* La séance découverte: the first door, in a quiet card */
+#accompagnement .acc-first,
+#accompagnement > .acc-sub,
+#accompagnement .acc-more,
+#accompagnement .acc-frame { grid-column: 2; min-width: 0; }
+#accompagnement .acc-first {
+  margin-top: var(--space-6);
+  padding: clamp(1.25rem, 5vw, var(--space-4));
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  max-width: 44rem;
+}
+#accompagnement .acc-first-tag { font: 500 .8125rem var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+#accompagnement .acc-first-title,
+#accompagnement .acc-sub {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-3, 2.25rem);
+  line-height: 1.08;
+  margin: var(--space-1) 0 var(--space-3);
+}
+#accompagnement > .acc-sub { margin-top: var(--space-6); scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3)); }
+#accompagnement .acc-first-meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin-bottom: var(--space-3); }
+#accompagnement .acc-first-meta dt { font-size: .8125rem; color: var(--muted); }
+#accompagnement .acc-first-meta dd { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 1.375rem; }
+#accompagnement .acc-first > p:not(.acc-first-tag) { font-weight: 300; font-size: 1.0625rem; line-height: 1.62; max-width: 52ch; }
+#accompagnement .acc-first-btn {
+  display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: var(--space-3); padding: 0 1.1rem;
+  background: var(--accent); color: var(--bg); font: 500 .9375rem var(--font-body); text-decoration: none;
+}
+#accompagnement .acc-first-btn:hover,
+#accompagnement .acc-first-btn:focus-visible { background: color-mix(in srgb, var(--accent) 84%, var(--ink)); }
+#accompagnement .acc-first-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* Five complementary accompagnements, each tagged with its pillar */
+#accompagnement .acc-more { margin-top: clamp(5rem, 14vh, 9rem); scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3)); }
+#accompagnement .acc-more-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); counter-reset: more; }
+#accompagnement .acc-more-list li { border-top: 1px solid var(--line); padding-top: var(--space-2); max-width: 40ch; }
+#accompagnement .acc-more-pilier { font: 500 .75rem var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+#accompagnement .acc-more-list h4 { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 1.5rem; line-height: 1.15; color: var(--accent); margin: .25rem 0 .5rem; }
+#accompagnement .acc-more-list p { font-weight: 300; font-size: 1.0625rem; line-height: 1.58; }
+
+/* Un cadre clair */
+#accompagnement .acc-frame { margin-top: clamp(4rem, 10vh, 7rem); padding-top: var(--space-3); border-top: 1px solid var(--line); scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3)); }
+#accompagnement .acc-frame ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; max-width: 56ch; }
+#accompagnement .acc-frame li { position: relative; padding-left: 1.1rem; font-weight: 300; font-size: 1.0625rem; line-height: 1.55; }
+#accompagnement .acc-frame li::before { content: ""; position: absolute; left: 0; top: .7em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--accent); }
+@media (min-width: 64rem) {
+  #accompagnement .acc-first { grid-column: 3 / 9; }
+  #accompagnement > .acc-sub { grid-column: 3 / 10; }
+  #accompagnement .acc-more, #accompagnement .acc-frame { grid-column: 3 / 11; }
+  #accompagnement .acc-more-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--cols-gap); }
 }

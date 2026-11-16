@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1.75rem minmax(0, 1fr);
   /* Spacer rows instead of padding, so the thread spans the full height and joins its neighbours */
-  grid-template-rows: clamp(12rem, 36vh, 24rem) auto auto auto clamp(5rem, 12vh, 9rem);
+  grid-template-rows: clamp(12rem, 36vh, 24rem) auto auto auto auto clamp(5rem, 12vh, 9rem);
   column-gap: var(--space-2);
   padding-inline: var(--gutter);
   background: var(--bg);
@@ -80,7 +80,7 @@
 /* The bench: the page's one row, denser and smaller, bleeding off the right edge */
 #ateliers .at-bench {
   grid-column: 2 / -1;
-  grid-row: 3;
+  grid-row: 4;
   margin-top: clamp(4rem, 10vh, 7rem);
   margin-right: calc(-1 * var(--gutter));
   min-width: 0;
@@ -231,7 +231,7 @@ html.js #ateliers .at-nav { display: flex; gap: var(--space-4); margin-top: var(
 /* For those who simply want to learn: back in the letter, marked by the green, not the red */
 #ateliers .at-note {
   grid-column: 2;
-  grid-row: 4;
+  grid-row: 5;
   max-width: 52ch;
   margin-top: clamp(6rem, 18vh, 12rem);
   padding-left: var(--space-3);
@@ -260,4 +260,20 @@ html.js #ateliers .at-nav { display: flex; gap: var(--space-4); margin-top: var(
   #ateliers .at-knot circle {
     transition: transform 600ms var(--at-settle), opacity 600ms var(--at-settle);
   }
+}
+
+/* Two kinds of atelier, and their formats */
+#ateliers .at-kinds {
+  grid-column: 2;
+  grid-row: 3;
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+#ateliers .at-kind { border-top: 1px solid var(--line); padding-top: var(--space-2); max-width: 44ch; }
+#ateliers .at-kind h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2, 1.75rem); line-height: 1.1; margin-bottom: var(--space-1); }
+#ateliers .at-kind p { font-weight: 300; font-size: 1.0625rem; line-height: 1.6; }
+#ateliers .at-formats { grid-column: 1 / -1; font-size: .9375rem; color: var(--muted); }
+@media (min-width: 64rem) {
+  #ateliers .at-kinds { grid-column: 3 / 11; grid-template-columns: 1fr 1fr; column-gap: var(--cols-gap); }
 }

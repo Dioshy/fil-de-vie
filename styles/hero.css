@@ -251,3 +251,20 @@
 @media (min-width: 64rem) and (max-width: 80rem) {
   #hero .hero-bar { grid-column: 3 / -1; }
 }
+
+/* Two ways in: book the first session, or read on */
+#hero .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); margin-top: var(--space-2); }
+#hero .hero-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  background: var(--accent);
+  color: var(--bg);
+  font: 500 .9375rem var(--font-body);
+  text-decoration: none;
+  transition: background var(--dur-1) var(--ease-out);
+}
+#hero .hero-btn:hover,
+#hero .hero-btn:focus-visible { background: color-mix(in srgb, var(--accent) 84%, var(--ink)); }
+#hero .hero-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }

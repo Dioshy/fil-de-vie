@@ -1,0 +1,22 @@
+/* Les rituels: three gestures, side by side on a wide screen */
+#rituels .rit-list {
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+#rituels .rit { border-top: 1px solid var(--line); padding-top: var(--space-2); max-width: 36ch; }
+#rituels .rit h3 {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--step-3, 2.25rem);
+  line-height: 1.05;
+}
+#rituels .rit p { font-weight: 300; font-size: 1.0625rem; line-height: 1.6; }
+#rituels .rit-note { margin-top: var(--space-5); max-width: 52ch; font-weight: 300; font-size: 1.125rem; line-height: 1.62; color: var(--muted); }
+@media (min-width: 64rem) {
+  #rituels .rit-list { grid-column: 3 / 12; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cols-gap); }
+}

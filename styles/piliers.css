@@ -1,0 +1,32 @@
+/* Les 3 piliers: Accueillir, Honorer, Transformer, then one line of manifesto */
+#piliers .pil-list {
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+#piliers .pil { border-top: 1px solid var(--line); padding-top: var(--space-2); max-width: 36ch; scroll-margin-top: calc(var(--bar-h, 4rem) + var(--space-3)); }
+#piliers .pil-n { font: 500 .8125rem var(--font-body); letter-spacing: .12em; color: var(--muted); }
+#piliers .pil-title {
+  margin: .25rem 0 var(--space-1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--step-3, 2.25rem);
+  line-height: 1.05;
+}
+#piliers .pil p:not(.pil-n) { font-weight: 300; font-size: 1.0625rem; line-height: 1.6; }
+#piliers .pil-manifeste {
+  margin: clamp(4rem, 10vh, 7rem) 0 0;
+  max-width: 30ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-2, 1.75rem);
+  line-height: 1.25;
+  color: var(--ink);
+}
+@media (min-width: 64rem) {
+  #piliers .pil-list { grid-column: 3 / 12; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--cols-gap); }
+  #piliers .pil-manifeste { grid-column: 4 / 10; }
+}
