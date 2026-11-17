@@ -33,19 +33,19 @@
     "heroNext": "De begeleiding ontdekken"
   },
   "nathalie": {
-    "secTitle": "Ik heb altijd dingen met mijn handen gemaakt.",
-    "natTextP1": "Ik ben vierenvijftig en zolang ik me kan herinneren, heb ik dingen gemaakt. Scrapbookalbums voor elke zomer, tekeningen in de marge, klei, hout. En sinds een paar jaar glas: ik snijd het, omwikkel het met koperfolie en soldeer het met tin tot de stukken samenhouden. Ik heb hele avonden in allerlei ateliers doorgebracht, gewoon om nog één handeling te leren.",
-    "natTextP2": "Een paar jaar geleden verloor ik mijn moeder. Mijn vader ging wat later. Tussen de papieren, de kamers die leeggemaakt moesten worden en de urn die ze u in het funerarium aanreiken, begreep ik één ding: wat mij geholpen heeft, is niet wat men mij verkocht heeft. Het is wat ik met mijn handen voor hen gemaakt heb.",
-    "natTextP3": "Zo is <span translate=\"no\">Fil de vie</span> ontstaan. Vandaag wil ik die weg samen met anderen gaan: naast u blijven nadat iemand is heengegaan, en samen met u het stuk maken dat die persoon dicht bij u houdt.",
+    "secTitle": "Luisteren en maken.",
+    "natTextP1": "Ik ben Nathalie Sibille. Ik ben gecertificeerd coach, opgeleid in taalkunde en toegepaste psychologie, en ik heb meer dan dertig jaar in human resources gewerkt, waar ik mensen begeleidde in hun loopbaan, hun veranderingen en hun overgangen binnen het bedrijf.",
+    "natTextP2": "Ik begeleidde ook jongeren bij de keuze van hun studierichting, vrouwen op zoek naar een beter evenwicht in hun leven, en ook, zonder het zelf te beseffen, mijn mama, de pijler van mijn leven, in een vreselijke strijd tegen de ziekte. Die heeft ze helaas niet gewonnen, en haar overlijden liet me radeloos achter, leger dan een lege schelp. Daarna was mijn papa aan de beurt, die alleen nog wachtte om haar terug te vinden, en wiens wens enkele jaren geleden in vervulling ging.",
+    "natWhyTitle": "Waarom <span translate=\"no\">Fil de vie</span>",
+    "natWhyP1": "Een dierbare verliezen, rouwen om een scheiding of om wat er niet meer is, is een van de zwaarste beproevingen die er bestaan. Het brengt ons evenwicht, onze identiteit en onze kijk op de wereld aan het wankelen. Het laat een enorme leegte achter en een immense eenzaamheid.",
+    "natWhyP2": "Met <span translate=\"no\">Fil de vie</span> wilde ik een plek creëren waar u niet hoeft te vergeten of de bladzijde om te slaan. Een plek om uw verdriet neer te leggen, uw emoties te verwelkomen en persoonlijke, creatieve manieren te vinden om ze om te zetten in iets zinvols, dat de banden en de herinnering eert aan wat er niet meer is.",
     "natPhotoLabel": "Portret: Nathalie aan haar werkbank, een stuk amberkleurig glas voor het raam omhooggehouden, de soldeerbout ernaast.",
     "natPhotoFigcaption": "Nathalie, in het atelier.",
-    "natHandsTitle": "Wat mijn handen kunnen",
-    "natHandsLi1": "<span>Glas en koper</span> Glas-in-lood, hangers, kleine stukken om op te hangen, met de hand gevat en gesoldeerd.",
-    "natHandsLi2": "<span>Scrapbooking</span> Albums en schriften waarin je plakt, schrijft, bewaart.",
-    "natHandsLi3": "<span>Tekenen</span> Met potlood, inkt of aquarel: een gezicht, een huis, een landschap.",
-    "natHandsLi4": "<span>Beeldhouwen</span> Klei, zacht hout, wat je in één hand kunt houden.",
-    "natHandsLi5": "<span>En de rest</span> Naaien, boekbinden, alles wat ik van atelier tot atelier geleerd heb.",
-    "natQuoteP": "“Wat ik voor hen gemaakt heb, past in één hand. Ik kijk er elke dag naar, en het is nooit triest.”"
+    "natEcoute": "<span>Het luisteren</span> Doorheen mijn loopbaan en mijn leven, vol veranderingen, breuken en keerpunten, heb ik geleerd wat volgens mij het belangrijkste is: luisteren zonder te oordelen, erop vertrouwen dat de kracht er al is, en iedereen in zijn eigen tempo laten verdergaan, stap voor stap.",
+    "natMains": "<span>De handen</span> Wanneer woorden niet meer volstaan, kunnen de handen het overnemen. Een voorwerp tot leven brengen is een eenvoudige, bijna magische manier om vorm te geven aan wat moeilijk te zeggen is. Mijn handen tekenen, haken, zetten glasramen in elkaar, binden schriften in en versieren het huis met mooie voorwerpen.",
+    "natAfter": "Met <span translate=\"no\">Fil de vie</span> bied ik een nieuw elan aan, door te creëren, te delen en via kleine rituelen: om uw verdriet om te vormen, de herinnering te eren aan wat geweest is en uw herinneringen een mooie vorm te geven.",
+    "natQuoteLead": "<span translate=\"no\">Fil de vie</span> is ontstaan uit de ontmoeting van die twee werelden: het luisteren en het maken.",
+    "natQuoteP": "Niet om de bladzijde om te slaan, en ook niet om te vervangen wat verloren is, maar om een nieuwe draad te spinnen en een weg terug naar het leven te vinden."
   },
   "piliers": {
     "secTitle": "Ontvangen, eren, omvormen.",
@@ -79,7 +79,7 @@
     "accFirstBtn": "De kennismakingssessie boeken",
     "accSub": {
       "trajetPropose": "Het voorgestelde traject",
-      "cadreClair": "Een duidelijk kader"
+      "cadreClair": "Mijn kader"
     },
     "accWhen": {
       "premieresSemaines": "De eerste weken",
@@ -109,8 +109,8 @@
     "wishLink": "De laatste wens",
     "accMoreListP4": "Een voorwerp, een gebaar, een afspraak die de persoon op een andere manier aanwezig houdt.",
     "accMoreListP5": "Manieren vinden om wat u voelt om te vormen tot iets dat zin draagt, vaak met de handen.",
+    "accFrameP": "Ik ben coach, geen therapeut. Ik stel geen diagnose en ik leg geen traject op. Als uw situatie gespecialiseerde begeleiding vraagt, verwijs ik u door naar een zorgverlener.",
     "accFrameLi1": "Wat u me toevertrouwt, blijft tussen ons.",
-    "accFrameLi2": "Ik vervang geen arts en geen psychotherapeut; als het nodig is, verwijs ik u naar hen door.",
     "accFrameLi3": "De sessies, hun ritme en hun tarief worden vanaf het begin samen vastgelegd.",
     "accFrameLi4": "U kunt stoppen wanneer u wilt."
   },

@@ -33,19 +33,19 @@
     "heroNext": "Discover the support"
   },
   "nathalie": {
-    "secTitle": "I've always made things with my hands.",
-    "natTextP1": "I'm fifty-four, and for as long as I can remember, I've been making things. Scrapbook albums for every summer, drawings in the margins, clay, wood. And for the past few years, glass: I cut it, wrap it in copper foil, then solder it with tin until the pieces hold together. I've spent whole evenings in workshops of all kinds, just to learn one more gesture.",
-    "natTextP2": "A few years ago, I lost my mother. My father went a little later. Between the paperwork, the rooms to empty and the urn they hand you at the funeral home, I understood one thing: what helped me was not what I was sold. It was what I made with my hands, for them.",
-    "natTextP3": "That's where <span translate=\"no\">Fil de vie</span> came from. Today, I want to walk that road with others: to stay beside you after someone has gone, and to make with you the piece that keeps them close.",
+    "secTitle": "Listening, and making.",
+    "natTextP1": "My name is Nathalie Sibille. I am a certified coach, trained in linguistics and applied psychology, and I spent more than thirty years in human resources, supporting people through their careers, their changes and their transitions at work.",
+    "natTextP2": "I have also guided young people in choosing what to study, women looking for a better balance in their lives, and also, without even realising it, my mum, the pillar of my life, through a terrible fight with illness. Sadly, she did not win it, and her death left me lost, emptier than a shell. Then came my dad's turn; he was only waiting to join her, and his wish came true a few years ago.",
+    "natWhyTitle": "Why <span translate=\"no\">Fil de vie</span>",
+    "natWhyP1": "Losing someone dear, grieving a separation or what is no more, is one of the hardest trials there is. It upsets our balance, our identity and the way we relate to the world. It leaves a huge emptiness and an immense loneliness.",
+    "natWhyP2": "With <span translate=\"no\">Fil de vie</span>, I wanted to create a space where you don't have to forget or turn the page. A space to set down your grief, welcome your emotions and find personal, creative ways to turn them into something meaningful, something that honours the bonds and the memory of what is no more.",
     "natPhotoLabel": "Portrait: Nathalie at her workbench, a piece of amber glass held up to the window, the soldering iron resting beside her.",
     "natPhotoFigcaption": "Nathalie, in her workshop.",
-    "natHandsTitle": "What my hands know how to do",
-    "natHandsLi1": "<span>Glass and copper</span> Stained glass, pendants, small pieces to hang, wrapped and soldered by hand.",
-    "natHandsLi2": "<span>Scrapbooking</span> Albums and notebooks where you stick, write, keep.",
-    "natHandsLi3": "<span>Drawing</span> In pencil, ink or watercolour: a face, a house, a landscape.",
-    "natHandsLi4": "<span>Sculpture</span> Clay, soft wood, whatever you can hold in one hand.",
-    "natHandsLi5": "<span>And the rest</span> Sewing, bookbinding, everything I've learned from workshop to workshop.",
-    "natQuoteP": "“What I made for them fits in one hand. I look at it every day, and it's never sad.”"
+    "natEcoute": "<span>Listening</span> Through my working life and my life itself, made of changes, breaks and turning points, I have learned what I believe matters most: to listen without judging, to trust that the resources are already there, and to let each person move forward at their own pace, one step after another.",
+    "natMains": "<span>Hands</span> When words are no longer enough, hands can take over. Bringing an object to life is a simple, almost magical way to give shape to what is hard to say. Mine draw, crochet, put together stained glass, bind notebooks, and fill the house with pretty things.",
+    "natAfter": "With <span translate=\"no\">Fil de vie</span>, I offer a fresh start through making, sharing and small rituals: to transform your grief, honour the memory of what has been and give your memories a beautiful shape.",
+    "natQuoteLead": "<span translate=\"no\">Fil de vie</span> was born where these two worlds meet: listening and making.",
+    "natQuoteP": "Not to turn the page, nor to replace what was lost, but to weave another thread and find a way back to life."
   },
   "piliers": {
     "secTitle": "Welcome, honour, transform.",
@@ -79,7 +79,7 @@
     "accFirstBtn": "Book the introductory session",
     "accSub": {
       "trajetPropose": "The path I suggest",
-      "cadreClair": "A clear framework"
+      "cadreClair": "My framework"
     },
     "accWhen": {
       "premieresSemaines": "The first weeks",
@@ -109,8 +109,8 @@
     "wishLink": "Their last wish",
     "accMoreListP4": "An object, a gesture, an appointment that keeps the person present, in another way.",
     "accMoreListP5": "Finding ways to turn what you feel into something that carries meaning, often through your hands.",
+    "accFrameP": "I am a coach, not a therapist. I don't make diagnoses and I don't impose any path. If your situation calls for specialised support, I will refer you to a health professional.",
     "accFrameLi1": "What you confide in me stays between us.",
-    "accFrameLi2": "I don't replace a doctor or a psychotherapist; if needed, I'll point you towards them.",
     "accFrameLi3": "The sessions, their pace and their fee are agreed together from the start.",
     "accFrameLi4": "You can stop whenever you wish."
   },

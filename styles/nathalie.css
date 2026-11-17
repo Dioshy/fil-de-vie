@@ -1,4 +1,4 @@
-/* Qui je suis: Nathalie, in her own words. A letter, then her hands, then one line she keeps. */
+/* Qui je suis: Nathalie, in her own words. Who she is, why Fil de vie, listening and hands, then the line it all comes to. */
 #nathalie .nat-text {
   margin-top: var(--space-5);
   max-width: 52ch;
@@ -9,6 +9,18 @@
   line-height: 1.68;
 }
 #nathalie .nat-text p + p { margin-top: 1.1em; }
+
+/* Why Fil de vie: the same letter voice, under a small sage heading */
+#nathalie .nat-why {
+  margin-top: clamp(4rem, 10vh, 7rem);
+  max-width: 52ch;
+}
+#nathalie .nat-why p {
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.68;
+}
+#nathalie .nat-why p + p { margin-top: 1.1em; }
 
 #nathalie .nat-photo {
   position: relative;
@@ -34,7 +46,7 @@
   color: color-mix(in srgb, var(--ink) 80%, var(--surface));
 }
 
-/* Her crafts: a plain list, the name of each in the display italic */
+/* Listening and hands: two ruled panels, the name of each in the display face */
 #nathalie .nat-hands {
   margin-top: clamp(4rem, 10vh, 7rem);
   max-width: 52ch;
@@ -69,20 +81,41 @@
   color: var(--ink);
 }
 
+#nathalie .nat-hands li span { margin-bottom: .35em; }
+#nathalie .nat-after {
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.68;
+}
+
 #nathalie .nat-quote {
   margin: clamp(4rem, 10vh, 7rem) 0 0;
-  max-width: 30ch;
+  max-width: 32ch;
   font-family: var(--font-display);
   font-style: italic;
   font-size: var(--step-2);
   line-height: 1.18;
   letter-spacing: -0.01em;
 }
+/* The sentence that leads into it, in the letter voice */
+#nathalie .nat-quote .nat-quote-lead {
+  margin-bottom: var(--space-2);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--muted);
+}
 
 @media (min-width: 64rem) {
-  #nathalie .nat-text { grid-column: 3 / 8; }
+  #nathalie .nat-text, #nathalie .nat-why { grid-column: 3 / 8; }
   #nathalie .nat-photo { grid-column: 6 / 10; justify-self: stretch; width: auto; }
-  #nathalie .nat-hands { grid-column: 3 / 9; }
+  #nathalie .nat-hands { grid-column: 3 / 10; max-width: none; }
+  #nathalie .nat-hands li:last-child { border-bottom: 0; }
   #nathalie .nat-hands ul { columns: 2; column-gap: var(--cols-gap); }
   #nathalie .nat-hands li { break-inside: avoid; border-bottom: 0; }
   #nathalie .nat-quote { grid-column: 5 / 11; }
