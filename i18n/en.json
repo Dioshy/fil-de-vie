@@ -25,7 +25,7 @@
     "languageLabel": "Language"
   },
   "hero": {
-    "heroLede": "Someone has left you. Keep them close, in your hands.",
+    "heroLede": "Honour yesterday. Welcome today. Create tomorrow.",
     "heroLetterP": "I'm Nathalie. After a loss, I walk beside you, from the first weeks until the finished piece. Instead of one more urn on a shelf, we make together a small piece that looks like them and honours a little of their last wish: a shard of glass set in copper, a sculpture, an album, a drawing. We make it four hands together, and we take the time to talk about what weighs on you.",
     "heroAside": "Nothing to fix. Nothing to rush.",
     "heroPlace": "Workshops in Brussels, at my place or yours",
@@ -198,6 +198,7 @@
     "cqrTextP1": "At the end of the workshop, you leave with what you've made. Not a perfect object: yours, with the mark of your fingers, the solder a little thick, the piece of glass you cut twice.",
     "cqrTextP2": "It holds two memories at once. That of the person, whom you find a little in its shape, its colour, what they loved. And that of the hours spent making it, talking about them, and being quiet too.",
     "cqrAside": "You don't put it away. You set it where you pass by.",
+    "cqrBond": "The bond goes on, differently.",
     "cqrNext": "Write to them, when the time comes"
   },
   "rituels": {

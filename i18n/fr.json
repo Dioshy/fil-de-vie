@@ -25,7 +25,7 @@
     "languageLabel": "Langue"
   },
   "hero": {
-    "heroLede": "Quelqu'un vous a quitté. Gardez-le entre vos mains.",
+    "heroLede": "Honorer hier. Accueillir aujourd’hui. Créer demain.",
     "heroLetterP": "Je suis Nathalie. Après une perte, je marche à vos côtés, des premières semaines jusqu'à l'objet terminé. Plutôt qu'une urne de plus sur un meuble, on fabrique ensemble une petite pièce qui lui ressemble et qui exauce un peu son dernier souhait\u00a0: un éclat de verre serti de cuivre, une sculpture, un album, un dessin. On le fait à quatre mains, et on prend le temps de parler de ce qui pèse.",
     "heroAside": "Rien à réparer. Rien à presser.",
     "heroPlace": "Ateliers à Bruxelles, chez moi ou chez vous",
@@ -198,6 +198,7 @@
     "cqrTextP1": "À la fin de l'atelier, vous repartez avec ce que vous avez fait. Pas un objet parfait\u00a0: le vôtre, avec la marque de vos doigts, la soudure un peu épaisse, le morceau de verre qu'on a recoupé deux fois.",
     "cqrTextP2": "Il garde deux mémoires à la fois. Celle de la personne, qu'on retrouve un peu dans sa forme, sa couleur, ce qu'elle aimait. Et celle des heures passées à le faire, à parler d'elle, à se taire aussi.",
     "cqrAside": "On ne le range pas. On le pose là où l'on passe.",
+    "cqrBond": "Le lien continue, autrement.",
     "cqrNext": "Lui écrire, quand ce sera le moment"
   },
   "rituels": {

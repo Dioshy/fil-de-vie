@@ -159,3 +159,14 @@ html.js #ce-qui-reste .cqr-tie { --cqr-knot-x: 44%; }
      three columns further right, keeping the diagonal descent */
   #ce-qui-reste .cqr-text { grid-column: 6 / 11; max-width: 46ch; margin-top: clamp(3rem, 9vh, 6rem); }
 }
+
+/* Nathalie's line: the bond goes on, in the thread's colour, right under the aside */
+#ce-qui-reste .cqr-text .cqr-bond {
+  margin-top: var(--space-1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--step-2);
+  line-height: 1.15;
+  color: var(--accent);
+}
