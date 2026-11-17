@@ -6,20 +6,17 @@
   const { shop, price } = window.FDV || {};
   if (!shop) return;
 
-  shop().then(({ products = [], settings = {} }) => {
-    if (settings.contactEmail) {
-      document.querySelectorAll("[data-contact-email]").forEach((a) => {
-        a.href = `mailto:${settings.contactEmail}`;
-        a.textContent = settings.contactEmail;
-        a.removeAttribute("data-fill");
-      });
-    }
-    if (intro && settings.shopIntro) intro.textContent = settings.shopIntro;
+  // wait for the language files too, so nothing shows a bare key
+  Promise.all([shop(), window.i18n.ready]).then(([{ products = [], settings = {} }]) => {
+    window.FDV.setContactEmail(settings.contactEmail);
+    // Nathalie's own words for the intro are shown as she wrote them, in every language
+    const custom = (settings.shopIntro || "").trim();
+    if (intro && custom && custom !== window.i18n.french("shopDefaults.shopIntro").trim()) { intro.removeAttribute("data-i18n"); intro.textContent = settings.shopIntro; }
     if (!list) return;
 
     const featured = products.filter((p) => p.featured);
     const shown = (featured.length ? featured : products).slice(0, 3);
-    list.replaceChildren(...shown.map((p) => {
+    const render = () => list.replaceChildren(...shown.map((p) => {
       const li = document.createElement("li");
       li.className = "bq-item";
       const a = document.createElement("a");
@@ -44,7 +41,7 @@
       txt.className = "bq-text";
       const name = document.createElement("span"); name.className = "bq-name"; name.textContent = p.name;
       const meta = document.createElement("span"); meta.className = "bq-meta";
-      meta.textContent = [p.category, p.stock <= 0 ? "partie" : p.unique ? "pièce unique" : ""].filter(Boolean).join(" · ");
+      meta.textContent = [p.category, p.stock <= 0 ? i18n.t("shop.sold") : p.unique ? i18n.t("shop.unique") : ""].filter(Boolean).join(" · ");
       const pr = document.createElement("span"); pr.className = "bq-price";
       pr.textContent = price(p.price);
       txt.append(name, meta, pr);
@@ -52,7 +49,10 @@
       li.append(a);
       return li;
     }));
+    render();
     list.hidden = !shown.length;
     window.FDV.rebuildThread?.();
+    // prices and the "pièce unique" note follow the language
+    document.addEventListener("fildevie:locale-changed", render);
   }).catch(() => { /* no server: the static section stays */ });
 })();

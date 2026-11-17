@@ -3,7 +3,9 @@
    so the next Tab starts from the top rather than from the footer. */
 (() => {
   const year = document.querySelector("#footer [data-ft-year]");
-  if (year) year.textContent = String(new Date().getFullYear());
+  const setYear = () => { if (year) year.textContent = window.i18n ? window.i18n.formatDate(new Date(), { year: "numeric" }) : String(new Date().getFullYear()); };
+  setYear();
+  document.addEventListener("fildevie:locale-changed", setYear);
 
   const top = document.querySelector("#footer .ft-top");
   if (!top) return;

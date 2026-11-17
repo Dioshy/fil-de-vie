@@ -3,6 +3,8 @@
    Feedback stays quiet: a short thread that ties itself, a soft glow on the basket. No bouncing. */
 (() => {
   const { api, price } = window.FDV;
+  const i18n = window.i18n;
+  const t = (key, params) => i18n.t(key, params);
   const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -23,6 +25,7 @@
   let photo = 0;        // its photo on show
   let returnTo = null;  // where focus goes back when the last sheet closes
   let switching = false;
+  let loaded = false;   // the shop has been drawn once
 
   /* ---------- Basket, in localStorage ---------- */
   const KEY = "fdv-cart";
@@ -42,7 +45,7 @@
   function renderCount() {
     const n = count();
     $$("[data-cart-count]").forEach((s) => { s.textContent = `(${n})`; });
-    $$("[data-cart-sr]").forEach((s) => { s.textContent = n ? `, ${n} pièce${n > 1 ? "s" : ""}` : ", vide"; });
+    $$("[data-cart-sr]").forEach((s) => { s.textContent = n ? t("cart.srItems", { items: i18n.plural("cart.items", n) }) : t("cart.srEmpty"); });
     $(".cart-fab").hidden = n === 0;
   }
   // A soft light passes over the basket, once
@@ -97,18 +100,19 @@
       });
       return b;
     };
-    filters.replaceChildren(mk("Tout", ""), ...cats.map((c) => mk(c, c)));
+    filters.replaceChildren(mk(t("shop.all"), ""), ...cats.map((c) => mk(c, c)));
   }
 
   const metaOf = (p) => {
-    if (p.stock <= 0) return [p.category, "partie"].filter(Boolean).join(" · ");
+    if (p.stock <= 0) return [p.category, t("shop.sold")].filter(Boolean).join(" · ");
     // No counts, no "last one": nothing here should hurry anyone. Stock only limits the quantity field.
-    return [p.category, p.unique ? "pièce unique" : ""].filter(Boolean).join(" · ");
+    return [p.category, p.unique ? t("shop.unique") : ""].filter(Boolean).join(" · ");
   };
 
   function renderGrid() {
     const shown = products.filter((p) => !filter || p.category === filter);
-    state.textContent = products.length ? "" : "La boutique se remplit doucement. Revenez bientôt, ou écrivez-moi si une pièce vous fait envie.";
+    state.removeAttribute("data-i18n"); // this line is the page's own to set from here on
+    state.textContent = products.length ? "" : t("shop.empty");
     grid.replaceChildren(...shown.map((p) => {
       const li = el("li", "shop-card");
       if (p.stock <= 0) li.classList.add("is-out");
@@ -144,10 +148,10 @@
     if (!p) return;
     const n = p.images.length;
     photo = n ? (i + n) % n : 0;
-    const pic = picture(p, p.images[photo], n ? `${p.name}, photo ${photo + 1} sur ${n}` : "", false);
+    const pic = picture(p, p.images[photo], n ? t("shop.photoAlt", { name: p.name, n: photo + 1, total: n }) : "", false);
     main.className = pic.className + " piece-main";
     main.replaceChildren(...pic.childNodes);
-    counter.textContent = n > 1 ? `${photo + 1} / ${n}` : "";
+    counter.textContent = n > 1 ? t("shop.photoCounter", { n: photo + 1, total: n }) : "";
     $$("button", thumbs).forEach((t, k) => t.setAttribute("aria-pressed", String(k === photo)));
   }
   $$(".piece-step", pieceDlg).forEach((b) => b.addEventListener("click", () => show(photo + Number(b.dataset.step))));
@@ -172,7 +176,7 @@
       const li = el("li");
       const b = el("button");
       b.type = "button";
-      b.setAttribute("aria-label", `Photo ${i + 1} sur ${p.images.length}`);
+      b.setAttribute("aria-label", t("shop.photoLabel", { n: i + 1, total: p.images.length }));
       b.append(picture(p, src));
       b.addEventListener("click", () => show(i));
       li.append(b);
@@ -180,11 +184,11 @@
     }) : []));
     show(0);
 
-    $(".piece-cat", pieceDlg).textContent = [p.category, p.unique ? "pièce unique" : ""].filter(Boolean).join(" · ");
+    $(".piece-cat", pieceDlg).textContent = [p.category, p.unique ? t("shop.unique") : ""].filter(Boolean).join(" · ");
     $(".piece-name", pieceDlg).textContent = p.name;
     $(".piece-price", pieceDlg).textContent = price(p.price);
-    $(".piece-made-more", pieceDlg).textContent = p.unique ? "Il n'y en a qu'une." : "Chacune est un peu différente.";
-    $(".piece-desc", pieceDlg).replaceChildren(...(p.description || "").split(/\n\s*\n/).filter((t) => t.trim()).map((t) => el("p", "", t.trim())));
+    $(".piece-made-more", pieceDlg).textContent = p.unique ? t("shop.madeUnique") : t("shop.madeVaried");
+    $(".piece-desc", pieceDlg).replaceChildren(...(p.description || "").split(/\n\s*\n/).filter((para) => para.trim()).map((para) => el("p", "", para.trim())));
     $(".piece-details", pieceDlg).replaceChildren(...p.details.flatMap((d) => [el("dt", "", d.label), el("dd", "", d.value)]));
 
     added.hidden = true;
@@ -198,17 +202,17 @@
     $("button[type=submit]", buy).hidden = left <= 0; // the note below says why, and where to go
     $(".piece-avail", pieceDlg).dataset.tone = p.stock <= 0 ? "out" : "";
     $(".piece-avail", pieceDlg).textContent =
-      p.stock <= 0 ? "Elle est partie. Si vous aimeriez la même, écrivez-moi : je peux en refaire une proche, jamais tout à fait pareille."
-      : left <= 0 ? "Elle est déjà dans votre panier."
-      : p.unique ? "Pièce unique : il n'y en a qu'une."
-      : left > 1 ? `Vous pouvez en prendre jusqu'à ${left}.`
+      p.stock <= 0 ? t("shop.availSold")
+      : left <= 0 ? t("shop.availInCart")
+      : p.unique ? t("shop.availUnique")
+      : left > 1 ? t("shop.availUpTo", { n: left })
       : "";
     if (p.stock <= 0) {
-      const a = el("a", "text-link", "Écrire à Nathalie");
+      const a = el("a", "text-link", t("shop.writeToNathalie"));
       a.href = "index.html#ecrire";
       $(".piece-avail", pieceDlg).append(" ", a);
     } else if (left <= 0) {
-      const a = el("button", "text-link link-btn", "Voir le panier");
+      const a = el("button", "text-link link-btn", t("shop.viewCart"));
       a.type = "button";
       a.dataset.goCart = "";
       $(".piece-avail", pieceDlg).append(" ", a);
@@ -237,7 +241,7 @@
     tie($(".tie", added));
     added.focus();
     glow();
-    live.textContent = `${p.name} est dans le panier.`;
+    live.textContent = t("shop.addedLive", { name: p.name });
   });
 
   /* ---------- Basket and order ---------- */
@@ -256,27 +260,28 @@
       const txt = el("div");
       const meta = el("div", "l-meta");
       if (!p.unique && maxQty(p) > 1) {
-        const lab = el("label", "l-qty", "Combien ");
+        const lab = el("label", "l-qty", `${t("cart.howMany")} `);
         const q = el("input");
         q.type = "number"; q.min = "1"; q.max = String(maxQty(p)); q.value = String(l.qty); q.inputMode = "numeric";
-        q.setAttribute("aria-label", `Combien, ${p.name}`);
+        const qLabel = t("cart.howManyFor", { name: p.name });
+        q.setAttribute("aria-label", qLabel);
         q.addEventListener("change", () => {
           l.qty = Math.min(maxQty(p), Math.max(1, parseInt(q.value, 10) || 1));
           saveCart(); renderCart();
-          $(`[aria-label="Combien, ${CSS.escape(p.name)}"]`, cartDlg)?.focus();
+          $(`[aria-label="${CSS.escape(qLabel)}"]`, cartDlg)?.focus();
         });
         lab.append(q);
         meta.append(lab);
       } else {
-        meta.append(el("span", "", p.unique ? "Pièce unique" : "1 pièce"));
+        meta.append(el("span", "", p.unique ? t("cart.unique") : i18n.plural("cart.items", 1)));
       }
-      const del = el("button", "l-del", "Retirer");
+      const del = el("button", "l-del", t("cart.remove"));
       del.type = "button";
-      del.setAttribute("aria-label", `Retirer ${p.name} du panier`);
+      del.setAttribute("aria-label", t("cart.removeFor", { name: p.name }));
       del.addEventListener("click", () => {
         cart = cart.filter((x) => x !== l);
         saveCart(); renderCart();
-        live.textContent = `${p.name} a été retirée du panier.`;
+        live.textContent = t("cart.removedLive", { name: p.name });
         $(".cart-title", cartDlg).focus();
       });
       meta.append(del);
@@ -291,9 +296,9 @@
     $(".order-block", cartDlg).hidden = empty;
     orderForm.hidden = empty;
 
-    const t = totals();
-    $("[data-cart-sub]", cartDlg).textContent = price(t.sub);
-    $("[data-cart-total]", cartDlg).textContent = price(t.total);
+    const sums = totals();
+    $("[data-cart-sub]", cartDlg).textContent = price(sums.sub);
+    $("[data-cart-total]", cartDlg).textContent = price(sums.total);
     $(".order-address", cartDlg).hidden = delivery() !== "shipping";
   }
 
@@ -302,44 +307,71 @@
     $(".cart-view", cartDlg).hidden = false;
     $(".cart-done", cartDlg).hidden = true;
     $(".order-status", cartDlg).textContent = "";
+    statusMsg = null;
     renderCart();
     if (!cartDlg.open) cartDlg.showModal();
     $(".cart-title", cartDlg).focus();
   }
 
+  // Nathalie's own wording is shown as she wrote it. Empty, or still the French default the server ships with, means "use the visitor's language".
+  const mine = (key) => {
+    const v = (settings[key] || "").trim();
+    return v && v !== window.i18n.french("shopDefaults." + key).trim() ? settings[key] : "";
+  };
+
   function applySettings() {
     const pick = $('[data-opt="pickup"]', cartDlg), ship = $('[data-opt="shipping"]', cartDlg);
     pick.hidden = !settings.pickupEnabled;
     ship.hidden = !settings.shippingEnabled;
-    $("[data-pickup-note]", cartDlg).textContent = settings.pickupNote || "";
-    $("[data-ship-fee]", cartDlg).textContent = settings.shippingFee ? `${price(settings.shippingFee)} de frais d'envoi, suivi` : "Envoi offert";
-    $("[data-payment-note]", cartDlg).textContent = settings.paymentNote || "";
+    // Nathalie's own wording is kept as she wrote it; the example shop (no server) speaks the visitor's language
+    $("[data-pickup-note]", cartDlg).textContent = mine("pickupNote") || (window.FDV.offline ? t("checkout.offlinePickup") : t("shopDefaults.pickupNote"));
+    $("[data-ship-fee]", cartDlg).textContent = settings.shippingFee ? t("checkout.shipFee", { fee: price(settings.shippingFee) }) : t("checkout.shipFree");
+    $("[data-payment-note]", cartDlg).textContent = mine("paymentNote") || (window.FDV.offline ? t("checkout.offlinePayment") : t("shopDefaults.paymentNote"));
     const d = delivery();
     if (!d || (d === "pickup" && !settings.pickupEnabled) || (d === "shipping" && !settings.shippingEnabled)) {
       orderForm.elements.delivery.value = settings.pickupEnabled ? "pickup" : "shipping";
     }
-    if (settings.shopIntro) $$("[data-shop-intro]").forEach((p) => { p.textContent = settings.shopIntro; });
-    if (settings.contactEmail) {
-      $$("[data-contact-email]").forEach((a) => { a.href = `mailto:${settings.contactEmail}`; a.textContent = settings.contactEmail; a.removeAttribute("data-fill"); });
-    }
+    if (mine("shopIntro")) $$("[data-shop-intro]").forEach((p) => { p.removeAttribute("data-i18n"); p.textContent = settings.shopIntro; });
+    window.FDV.setContactEmail(settings.contactEmail);
   }
 
   /* ---------- Friendly validation: after the field is left, cleared as soon as it is right ---------- */
   const MSG = {
-    name: { missing: "Écrivez votre nom, pour que je sache à qui répondre." },
-    email: { missing: "Écrivez votre e-mail, c'est par là que je vous répondrai.", bad: "Cette adresse semble incomplète, par exemple prenom@exemple.fr." },
-    address: { missing: "Écrivez l'adresse où l'envoyer." },
-    postal: { missing: "Écrivez le code postal." },
-    city: { missing: "Écrivez la ville." },
+    name: { missing: "checkout.error.nameMissing" },
+    email: { missing: "checkout.error.emailMissing", bad: "checkout.error.emailBad" },
+    address: { missing: "checkout.error.addressMissing" },
+    postal: { missing: "checkout.error.postalMissing" },
+    city: { missing: "checkout.error.cityMissing" },
   };
   const needed = () => ["name", "email", ...(delivery() === "shipping" ? ["address", "postal", "city"] : [])];
   const dirty = new WeakSet();
+  // What the order-status line says, kept as a function so it can be written again in the visitor's language
+  let statusMsg = null;
+  const orderStatus = () => $(".order-status", cartDlg);
+  function showStatus(fn, tone) {
+    statusMsg = fn;
+    const s = orderStatus();
+    s.textContent = fn ? fn() : "";
+    if (fn && tone) s.dataset.tone = tone; else delete s.dataset.tone;
+  }
+  // The "a few lines are missing" list is rebuilt from the fields that are still wrong, so it follows the language
+  function fillSummary(missing) {
+    const f = orderForm.elements;
+    $("ul", $(".order-summary", cartDlg)).replaceChildren(...missing.map((n) => {
+      const li = el("li");
+      const a = el("a", "", problem(n));
+      a.href = `#${f[n].id}`;
+      a.addEventListener("click", (ev) => { ev.preventDefault(); f[n].focus(); });
+      li.append(a);
+      return li;
+    }));
+  }
 
   function problem(name) {
     const v = orderForm.elements[name].value.trim();
     if (!needed().includes(name)) return "";
-    if (!v) return MSG[name].missing;
-    if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return MSG.email.bad;
+    if (!v) return t(MSG[name].missing);
+    if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return t(MSG.email.bad);
     return "";
   }
   function render(name) {
@@ -386,22 +418,14 @@
     e.preventDefault();
     const f = orderForm.elements;
     const btn = $("button[type=submit]", orderForm);
-    const status = $(".order-status", orderForm);
     if (btn.getAttribute("aria-busy") === "true") return;
 
     const missing = needed().filter((n) => render(n));
     const summary = $(".order-summary", cartDlg);
     if (missing.length) {
-      $("ul", summary).replaceChildren(...missing.map((n) => {
-        const li = el("li");
-        const a = el("a", "", problem(n));
-        a.href = `#${f[n].id}`;
-        a.addEventListener("click", (ev) => { ev.preventDefault(); f[n].focus(); });
-        li.append(a);
-        return li;
-      }));
+      fillSummary(missing);
       summary.hidden = false;
-      status.textContent = "";
+      showStatus(null);
       summary.focus();
       return;
     }
@@ -411,27 +435,26 @@
     for (const n of ["name", "email", "phone", "address", "postal", "city", "country", "note", "website"]) body[n] = f[n].value.trim();
 
     btn.setAttribute("aria-busy", "true");
-    btn.textContent = "J'envoie…";
-    status.textContent = "";
-    delete status.dataset.tone;
+    btn.textContent = t("checkout.sending");
+    showStatus(null);
     if (window.FDV.offline) {
       // No server behind this copy of the site: the order leaves as an e-mail from the visitor's own mail app
-      const lines = cart.map(({ id, qty }) => { const p = byId(id); return `- ${qty} × ${p.name} (${price(p.price * qty)})`; });
+      const lines = cart.map(({ id, qty }) => { const p = byId(id); return t("checkout.mail.line", { qty, name: p.name, price: price(p.price * qty) }); });
       const ship = body.delivery === "shipping";
       const fee = ship ? (Number(settings.shippingFee) || 0) : 0;
       const total = cart.reduce((t, { id, qty }) => t + byId(id).price * qty, 0) + fee;
       const text = [
-        "Bonjour Nathalie,", "", "Je voudrais commander :", ...lines,
-        ship ? `Envoi par la poste : ${price(fee)}` : "Retrait à l'atelier", `Total : ${price(total)}`, "",
-        ship ? `Adresse : ${body.address}, ${body.postal} ${body.city}, ${body.country}` : "",
-        body.note ? `Un mot : ${body.note}` : "", "",
+        t("checkout.mail.greeting"), "", t("checkout.mail.intro"), ...lines,
+        ship ? t("checkout.mail.shipping", { price: price(fee) }) : t("checkout.mail.pickup"), t("checkout.mail.total", { price: price(total) }), "",
+        ship ? t("checkout.mail.address", body) : "",
+        body.note ? t("checkout.mail.note", body) : "", "",
         body.name, body.email, body.phone,
       ].filter((l, i, a) => l !== "" || a[i - 1] !== "").join("\n");
       const to = settings.contactEmail || "";
-      location.href = `mailto:${to}?subject=${encodeURIComponent(`Commande de ${body.name}`)}&body=${encodeURIComponent(text)}`;
-      status.textContent = "Votre messagerie s'ouvre avec la commande déjà écrite : il ne reste qu'à l'envoyer.";
+      location.href = `mailto:${to}?subject=${encodeURIComponent(t("checkout.mail.subject", { name: body.name }))}&body=${encodeURIComponent(text)}`;
+      showStatus(() => t("checkout.offlineStatus"));
       btn.removeAttribute("aria-busy");
-      btn.textContent = "Envoyer ma demande à Nathalie";
+      btn.textContent = t("checkout.submit");
       return;
     }
     try {
@@ -439,21 +462,21 @@
       cart = []; saveCart();
       orderForm.reset();
       clearErrors();
+      showStatus(null);
       applySettings();
       const num = $("[data-order-number]", cartDlg);
-      num.textContent = out.number ? `n° ${out.number}` : "";
+      num.textContent = out.number ? t("cart.orderNumber", { number: out.number }) : "";
       $(".cart-view", cartDlg).hidden = true;
       $(".cart-done", cartDlg).hidden = false;
       tie($(".cart-done .tie", cartDlg));
       $(".done-title", cartDlg).focus();
       load(); // stock has changed
     } catch (err) {
-      status.dataset.tone = "error";
-      status.textContent = err.status ? err.message : "Je n'arrive pas à joindre le site. Réessayez dans un instant, ou écrivez-moi directement.";
+      showStatus(() => (err.status ? window.FDV.errorText(err) : t("errors.orderUnreachable")), "error");
       if (err.status === 409) { await load(); renderCart(); }
     } finally {
       btn.removeAttribute("aria-busy");
-      btn.textContent = "Envoyer ma demande à Nathalie";
+      btn.textContent = t("checkout.submit");
     }
   });
 
@@ -499,13 +522,29 @@
       pruneCart();
       renderFilters();
       renderGrid();
+      loaded = true;
     } catch {
-      state.textContent = "La boutique ne répond pas pour le moment. Réessayez un peu plus tard, ou écrivez-moi.";
+      state.removeAttribute("data-i18n");
+      state.textContent = t("errors.shopUnreachable");
     }
   }
 
-  renderCount();
-  load().then(() => {
+  // A language switch happens with the sheets closed (they are modal), so the page itself is what needs redrawing
+  document.addEventListener("fildevie:locale-changed", () => {
+    renderCount();
+    if (!loaded) return;
+    renderFilters();
+    renderGrid();
+    applySettings();
+    // The basket and its messages may be open: write them again in the new language
+    renderCart();
+    Object.keys(MSG).forEach((n) => { if (orderForm.elements[n].getAttribute("aria-invalid") === "true") render(n); });
+    const summary = $(".order-summary", cartDlg);
+    if (!summary.hidden) fillSummary(needed().filter(problem));
+    if (statusMsg) orderStatus().textContent = statusMsg();
+  });
+
+  i18n.ready.then(() => { renderCount(); return load(); }).then(() => {
     const id = location.hash.startsWith("#p-") ? location.hash.slice(3) : "";
     if (id && byId(id)) openPiece(id, false);
   });

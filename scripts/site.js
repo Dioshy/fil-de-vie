@@ -11,18 +11,40 @@
   const OFFLINE_SETTINGS = {
     contactEmail: "nathalie@fildevie.fr",
     shopIntro: "",
-    paymentNote: "Aucun paiement en ligne. Votre messagerie s'ouvre avec la commande déjà écrite : envoyez-la, je vous réponds pour la confirmer et vous dire comment régler.",
+    paymentNote: "",   // the shop page words these two itself (checkout.offlinePayment / offlinePickup), in the visitor's language
     pickupEnabled: true,
-    pickupNote: "Retrait à l'atelier, sur rendez-vous",
+    pickupNote: "",
     shippingEnabled: true,
     shippingFee: 690,
   };
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const euro = new Intl.NumberFormat("fr-BE", { style: "currency", currency: "EUR" });
 
   window.FDV = Object.assign(window.FDV || {}, {
     reduce,
-    price: (cents) => euro.format((Number(cents) || 0) / 100),
+    price: (cents) => window.i18n.formatPrice((Number(cents) || 0) / 100),
+    // Nathalie's address from the server goes into every [data-contact-email]; it is put back after a language switch re-writes the text around it
+    contactEmail: "",
+    setContactEmail(email) {
+      if (email) window.FDV.contactEmail = email;
+      const mail = window.FDV.contactEmail;
+      if (!mail) return;
+      document.querySelectorAll("[data-contact-email]").forEach((a) => {
+        a.href = `mailto:${mail}`;
+        a.textContent = mail;
+        a.removeAttribute("data-fill");
+      });
+    },
+    // The message for a server error in the visitor's language: errors.<code> when the server sent a code
+    // this language knows, otherwise the server's own (French) text, otherwise the fallback key.
+    errorText(err, fallbackKey) {
+      const i = window.i18n;
+      if (err && err.code && i) {
+        const key = `errors.${err.code}`;
+        const m = i.t(key, err.params);
+        if (m !== key) return m;
+      }
+      return (err && err.message && err.status ? err.message : "") || (i && fallbackKey ? i.t(fallbackKey) : "");
+    },
     async api(url, opts = {}) {
       const res = await fetch(url, {
         ...opts,
@@ -31,7 +53,7 @@
       });
       let data = null;
       try { data = await res.json(); } catch { /* empty body */ }
-      if (!res.ok) { const err = new Error((data && data.error) || `Erreur ${res.status}`); err.status = res.status; err.data = data; throw err; }
+      if (!res.ok) { const err = new Error((data && data.error) || `Erreur ${res.status}`); err.status = res.status; err.data = data; err.code = data && data.code; err.params = data && data.params; throw err; }
       return data;
     },
     // The shop's pieces and settings. Without the server (a static host such as GitHub Pages),
@@ -74,6 +96,8 @@
   }, { rootMargin: "0px 0px -8% 0px" });
 
   window.FDV.watchFades();
+  document.addEventListener("fildevie:locale-changed", () => window.FDV.setContactEmail());
+  window.i18n.ready.then(() => window.FDV.setContactEmail());
 })();
 
 /* The top bar: a menu on phones, a hairline once the page has scrolled, and the section you are in */

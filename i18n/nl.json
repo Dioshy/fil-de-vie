@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "home": {
+      "title": "Fil de vie · Nathalie, rouwbegeleiding en creatieve ateliers",
+      "description": "Nathalie begeleidt mensen die net iemand hebben verloren en maakt samen met hen een klein stuk dat de laatste wens van die persoon vervult: glas en koper, beeldhouwwerk, album, tekening. In plaats van nog een urn op een meubel.",
+      "ogTitle": "Fil de vie",
+      "ogDescription": "Na een verlies loopt Nathalie naast u en maakt ze samen met u een klein stuk dat de persoon dicht bij u houdt."
+    },
+    "shop": {
+      "title": "De winkel · Fil de vie",
+      "description": "Juwelen en glazen stukken in koper gevat, met de hand gemaakt door Nathalie in haar atelier. Unieke stukken of heel kleine reeksen.",
+      "ogTitle": "De winkel · Fil de vie"
+    }
+  },
+  "nav": {
+    "menu": "Menu",
+    "sectionsLabel": "Onderdelen van de site",
+    "about": "Wie ik ben",
+    "pillars": "De 3 pijlers",
+    "support": "De begeleiding",
+    "workshops": "De ateliers",
+    "rituals": "De rituelen",
+    "shop": "De winkel",
+    "book": "Boeken",
+    "languageLabel": "Taal"
+  },
+  "hero": {
+    "heroLede": "Iemand is van u heengegaan. Houd die persoon in uw handen.",
+    "heroLetterP": "Ik ben Nathalie. Na een verlies loop ik naast u, van de eerste weken tot het afgewerkte stuk. In plaats van nog een urn op een meubel maken we samen een klein stuk dat op die persoon lijkt en een beetje de laatste wens vervult: een scherf glas in koper gevat, een beeldje, een album, een tekening. We maken het met vier handen, en we nemen de tijd om te praten over wat zwaar weegt.",
+    "heroAside": "Niets te herstellen. Niets te haasten.",
+    "heroPlace": "Ateliers in Brussel, bij mij of bij u thuis",
+    "heroBtn": "Een kennismakingssessie boeken",
+    "heroNext": "De begeleiding ontdekken"
+  },
+  "nathalie": {
+    "secTitle": "Ik heb altijd dingen met mijn handen gemaakt.",
+    "natTextP1": "Ik ben vierenvijftig en zolang ik me kan herinneren, heb ik dingen gemaakt. Scrapbookalbums voor elke zomer, tekeningen in de marge, klei, hout. En sinds een paar jaar glas: ik snijd het, omwikkel het met koperfolie en soldeer het met tin tot de stukken samenhouden. Ik heb hele avonden in allerlei ateliers doorgebracht, gewoon om nog één handeling te leren.",
+    "natTextP2": "Een paar jaar geleden verloor ik mijn moeder. Mijn vader ging wat later. Tussen de papieren, de kamers die leeggemaakt moesten worden en de urn die ze u in het funerarium aanreiken, begreep ik één ding: wat mij geholpen heeft, is niet wat men mij verkocht heeft. Het is wat ik met mijn handen voor hen gemaakt heb.",
+    "natTextP3": "Zo is <span translate=\"no\">Fil de vie</span> ontstaan. Vandaag wil ik die weg samen met anderen gaan: naast u blijven nadat iemand is heengegaan, en samen met u het stuk maken dat die persoon dicht bij u houdt.",
+    "natPhotoLabel": "Portret: Nathalie aan haar werkbank, een stuk amberkleurig glas voor het raam omhooggehouden, de soldeerbout ernaast.",
+    "natPhotoFigcaption": "Nathalie, in het atelier.",
+    "natHandsTitle": "Wat mijn handen kunnen",
+    "natHandsLi1": "<span>Glas en koper</span> Glas-in-lood, hangers, kleine stukken om op te hangen, met de hand gevat en gesoldeerd.",
+    "natHandsLi2": "<span>Scrapbooking</span> Albums en schriften waarin je plakt, schrijft, bewaart.",
+    "natHandsLi3": "<span>Tekenen</span> Met potlood, inkt of aquarel: een gezicht, een huis, een landschap.",
+    "natHandsLi4": "<span>Beeldhouwen</span> Klei, zacht hout, wat je in één hand kunt houden.",
+    "natHandsLi5": "<span>En de rest</span> Naaien, boekbinden, alles wat ik van atelier tot atelier geleerd heb.",
+    "natQuoteP": "“Wat ik voor hen gemaakt heb, past in één hand. Ik kijk er elke dag naar, en het is nooit triest.”"
+  },
+  "piliers": {
+    "secTitle": "Ontvangen, eren, omvormen.",
+    "secIntro": "Rouw los je niet op, je gaat er doorheen. Fil de vie rust op drie bewegingen die elkaar niet altijd in volgorde opvolgen: je keert terug, je vermengt ze, je gaat op je eigen tempo.",
+    "pilTitle": {
+      "accueillir": "Ontvangen",
+      "honorer": "Eren",
+      "transformer": "Omvormen"
+    },
+    "pilP1": "Het verdriet ontvangen zoals het is. Er een plaats aan geven, het neerleggen, zonder meteen beter te hoeven zijn.",
+    "pilP2": "Hulde brengen aan de persoon en aan wat u verbindt. Een wens vervullen, een symbolische band bewaren.",
+    "pilP3": "Van wat u voelt iets maken dat zin draagt: een voorwerp, een gebaar, een ritueel.",
+    "pilManifesteP": "“Wat ons verbindt, houdt niet op wanneer iemand heengaat. Het verandert van vorm.”"
+  },
+  "accompagnement": {
+    "accTitle": "Hier ga je niet in één keer doorheen.",
+    "accIntro": "Ik kom niet voor één sessie om daarna weer te vertrekken. Ik blijf zolang als nodig is, vaak meerdere maanden. We gaan op uw tempo, en tussen twee afspraken door ben ik er altijd.",
+    "accFirstTag": "Om te beginnen",
+    "accFirstTitle": "De kennismakingssessie",
+    "accFirstMetaDt": {
+      "duree": "Duur",
+      "tarif": "Tarief",
+      "ou": "Waar"
+    },
+    "accFirstMetaDd": {
+      "60Minutes": "60 minuten",
+      "tarifPreciser": "[tarief nog te bepalen]"
+    },
+    "accFirstMetaDd1": "In Brussel, bij mij of bij u thuis",
+    "accFirstP": "Een uur om kennis te maken. U vertelt me wat u hierheen brengt, in uw eigen tempo, en ik leg uit hoe ik werk. Samen kijken we naar wat u nu nodig hebt: neerleggen wat zwaar weegt, de persoon eren of beginnen met omvormen. Op het einde gaat u weg zonder verplichting; als u dat wilt, tekenen we samen het vervolg uit.",
+    "accFirstBtn": "De kennismakingssessie boeken",
+    "accSub": {
+      "trajetPropose": "Het voorgestelde traject",
+      "cadreClair": "Een duidelijk kader"
+    },
+    "accWhen": {
+      "premieresSemaines": "De eerste weken",
+      "premierMois": "De eerste maand",
+      "moisSuivent": "De maanden daarna",
+      "jourObjetFini": "De dag waarop het stuk af is"
+    },
+    "accBodyP1": "We ontmoeten elkaar, bij u thuis of in het atelier. U vertelt me over hem of haar, over wat er 's avonds aan tafel ontbreekt, over wat die persoon “ooit eens” wilde doen. Die dag hoeft er niets beslist te worden.",
+    "accBodyP2": "We zien elkaar elke week, als u dat wilt. Coaching is bij mij eenvoudig: woorden vinden voor wat er nog geen heeft, wat houvast terugvinden, de dagen doorkomen waarop alles zwaarder weegt dan verwacht.",
+    "accBodyP3": "We kiezen samen wat u gaat maken, vertrekkend van de laatste wens. Daarna werken we zij aan zij: glas, koper, klei, papier. Met bezige handen komen de woorden anders. We vormen en we praten in hetzelfde gebaar, zonder elkaar recht in de ogen te moeten kijken.",
+    "accPhotoLabel": "De handen van Nathalie en die van de begeleide persoon, naast elkaar op een werkbank, tussen stukken glas en een rol koperfolie.",
+    "accPhotoFigcaption": "Twee paar handen, dezelfde werkbank.",
+    "accBodyP4": "U gaat naar huis met die persoon, en met wat we elkaar gezegd hebben terwijl we het maakten. Als u zin hebt om elkaar daarna nog te zien, blijft de deur open.",
+    "accPromise": "U zult die weg niet zonder mij gaan.",
+    "accNote": "Tussen twee sessies volstaat een bericht. Ik antwoord dezelfde dag, behalve op zondag.",
+    "accSub1": "Vijf aanvullende vormen van begeleiding",
+    "accMoreListH4": {
+      "parcoursAccompagnement": "Het begeleidingstraject",
+      "deposerPeine": "Uw verdriet neerleggen",
+      "realiserSouhait": "Een wens vervullen",
+      "maintenirLienSymbolique": "Een symbolische band bewaren",
+      "donnerSensEmotions": "Zin geven aan uw emoties"
+    },
+    "accMoreListP1": "Regelmatige afspraken, over meerdere maanden, om de eerste tijd van de rouw door te komen zonder alleen te zijn.",
+    "accMoreListP2": "Een ruimte om te zeggen wat zwaar weegt, zonder sterk te hoeven zijn, zonder oordeel en zonder raad waar u niet om vroeg.",
+    "accMoreListP3": "Vertrekken van wat die persoon graag had, van wat hij of zij “ooit eens” wilde doen, en het laten bestaan.",
+    "wishLink": "De laatste wens",
+    "accMoreListP4": "Een voorwerp, een gebaar, een afspraak die de persoon op een andere manier aanwezig houdt.",
+    "accMoreListP5": "Manieren vinden om wat u voelt om te vormen tot iets dat zin draagt, vaak met de handen.",
+    "accFrameLi1": "Wat u me toevertrouwt, blijft tussen ons.",
+    "accFrameLi2": "Ik vervang geen arts en geen psychotherapeut; als het nodig is, verwijs ik u naar hen door.",
+    "accFrameLi3": "De sessies, hun ritme en hun tarief worden vanaf het begin samen vastgelegd.",
+    "accFrameLi4": "U kunt stoppen wanneer u wilt."
+  },
+  "souhaits": {
+    "secTitle": "Geen urn meer op een meubel. <em>Wat hij of zij gewild zou hebben.</em>",
+    "secIntro": "Een klassieke urn belandt vaak ergens, en niemand weet nog wat ermee te doen. Ik stel u iets anders voor: vertrekken van wat die persoon graag had, van wat hij of zij ooit eens wilde doen, en er een klein stuk van maken. Een voorwerp dat u kunt vasthouden, dragen, aan een raam hangen.",
+    "swSaid1": "“Ze zei altijd dat ze de zee nog eens zou zien.”",
+    "swMade1": "Een hanger van blauw glas, in koper gevat, met een paar korrels zand van haar strand.",
+    "swSaid2": "“Zijn tuin was zijn hele leven.”",
+    "swMade2": "Een blad van glas-in-lood voor het keukenraam, groen als zijn tomaten die nog niet rijp zijn.",
+    "swSaid3": "“Hij wilde het vakantiealbum afmaken. Hij heeft er nooit de tijd voor gehad.”",
+    "swMade3": "We maken het samen af, pagina na pagina, met zijn foto's, zijn tickets en zijn handschrift.",
+    "swSaid4": "“Ooit ga ik een pisco drinken in Peru.”",
+    "swMade": {
+      "alorsVa": "Dan gaan we."
+    },
+    "swFurtherTitle": "En soms gaan we verder.",
+    "swFurtherP": "Wanneer de wens een reis is, kunnen we die ook vervullen. Als hij of zij droomde van een pisco ergens in Latijns-Amerika, help ik u die reis voor te bereiden, en <span data-fill>als u dat wilt, ga ik met u mee</span>. Daar heffen we het glas op die persoon. We brengen een steentje, een etiket, een stukje stof, een foto mee terug. Bij onze terugkeer maken we er het stuk van.",
+    "swAside": "Het voorwerp blijft klein. Wat het draagt, is dat niet.",
+    "swLaw": "Een eerlijke kanttekening: <span data-fill>in België is wat men met as mag doen wettelijk geregeld, en de regels verschillen van gewest tot gewest. De stukken die we maken, bevatten geen as</span>; ze bewaren iets anders: de kleur van die persoon, zijn of haar spullen, het handschrift, wat die persoon nog wilde beleven."
+  },
+  "ateliers": {
+    "atTitle": "Wat we maken, met vier handen.",
+    "atIntro": "Een scherf glas, een beeldje, een album, een tekening, of iets wat nog geen naam heeft. U kiest het materiaal, ik toon u de handelingen, en we gaan samen verder tot het stuk overeind staat. Niemand verwacht dat u het al kunt.",
+    "atKindH3": {
+      "ateliersPartage": "De deelateliers",
+      "ateliersCreation": "De creatieve ateliers"
+    },
+    "atKindP1": "Een gesprekskring, met weinig mensen, om te zeggen wat u doormaakt en te horen dat anderen het ook doormaken.",
+    "atKindP2": "De handen aan het werk: glas, klei, papier. We maken, en de woorden komen anders.",
+    "atFormats": "Groepsgewijs of individueel. <span data-fill>Volgende data: binnenkort.</span>",
+    "atRowLabel": "De ateliers, zijdelings scrollen",
+    "atPhotoLabel1": "Foto: een blad van glas-in-lood, in koper gevat, opgehangen voor een raam",
+    "atWorkH3": {
+      "verreCuivre": "Glas en koper",
+      "sculpture": "Beeldhouwen",
+      "album": "Het album",
+      "dessin": "Tekenen",
+      "vetementsRecousus": "Zijn of haar kleren, opnieuw genaaid"
+    },
+    "atWorkP1": "We kiezen de kleuren, snijden, omwikkelen elk stukje met koperfolie en solderen dan. Een glas-in-loodraam om op te hangen, een hanger om te dragen: het licht schijnt erdoor, zoals het hoort.",
+    "atMetaDt": {
+      "matiere": "Materiaal",
+      "repartez": "U gaat naar huis met"
+    },
+    "atMetaDd": {
+      "verreColoreCuivre": "Gekleurd glas, koper, tin",
+      "4Seances3": "4 sessies van 3 uur",
+      "terreTilleulNoyer": "Klei, lindehout of notelaar",
+      "68Seances": "6 tot 8 sessies",
+      "35Seances": "3 tot 5 sessies",
+      "4Seances": "4 sessies",
+      "tempsFaut": "Zolang als nodig is"
+    },
+    "atMetaDd1": "Een glas-in-loodraam of een juweel, in zijn of haar lievelingskleur",
+    "atPhotoLabel2": "Foto: een vogel gebeeldhouwd in lindehout, half bevrijd uit zijn blok, krullen eromheen",
+    "atWorkP2": "Een stuk lindehout of een kluit klei, en de herinnering aan zijn of haar handen die op zondag werkten. Een krul, dan nog een. De vorm komt langzaam, zoals de rest.",
+    "atMetaDd2": "Een gebeeldhouwd stuk, getekend met uw initialen",
+    "atPhotoLabel3": "Foto: een openliggend scrapbookalbum, vakantiefoto's, treintickets en handschrift in inkt",
+    "atWorkP3": "Zijn of haar foto's, tickets, recepten, handschrift. We knippen, we plakken, we vertellen. Een album dat maar in één exemplaar bestaat, en dat u voor die persoon hebt afgemaakt.",
+    "atMetaDd3": "Papier, foto's, stoffen, persoonlijke spullen",
+    "atMetaDd4": "Een gebonden album, om door te bladeren of aan te vullen",
+    "atPhotoLabel4": "Foto: een potloodtekening van een ouderlijk huis, een potlood dwars over het blad",
+    "atWorkP4": "Zijn of haar huis, gezicht, landschap. We leren kijken voor we tekenen, met potlood, inkt of aquarel. We doen het voor onszelf, niet voor een museum.",
+    "atMetaDd5": "Een ingelijste tekening, of een heel schetsboek",
+    "atPhotoLabel5": "Foto: een patchworkdeken van geruite hemden en een oude trui, opgevouwen op een stoel",
+    "atWorkP5": "Zijn of haar zondagse hemd, de te grote trui. We knippen, we zetten in elkaar, en het wordt een deken of een kussen waarin u nog kunt wegkruipen.",
+    "atMetaDd6": "Een deken of een kussen, genaaid van zijn of haar kleren",
+    "atOpenH3": "Uw idee",
+    "atOpenP": "Een doos voor zijn of haar brieven, een mobiel voor de kinderkamer, een urn gevormd voor het columbarium. U vertelt het me, we tekenen het samen uit, en ik zoek de juiste handelingen.",
+    "atStep": {
+      "atelierPrecedent": "Vorig atelier",
+      "atelierSuivant": "Volgend atelier"
+    },
+    "atNoteH3": "Hebt u niemand verloren? Kom toch ook.",
+    "atNoteP": "De ateliers staan open voor wie glas en koper, scrapbooking, tekenen of beeldhouwen wil leren. We werken zij aan zij, met weinig mensen, ieder op zijn eigen tempo. Verdriet is geen voorwaarde om binnen te komen.",
+    "atWhen": "Drie plaatsen per atelier, op dinsdag en zaterdag",
+    "atAsk": "Een plaats in het atelier aanvragen"
+  },
+  "ceQuiReste": {
+    "cqrLabel": "Wat blijft",
+    "cqrA": "Het voorwerp, gemaakt met uw handen.",
+    "cqrB": "De herinnering, erin geknoopt.",
+    "cqrPhotoLabel": "Foto: een klein blad van glas-in-lood, in koper gevat, opgehangen aan een raam, een papieren label aan zijn draad geknoopt",
+    "cqrTextP1": "Op het einde van het atelier gaat u naar huis met wat u gemaakt hebt. Geen perfect voorwerp: het uwe, met de afdruk van uw vingers, de soldeernaad wat dik, het stuk glas dat u twee keer hebt bijgesneden.",
+    "cqrTextP2": "Het bewaart twee herinneringen tegelijk. Die van de persoon, die u een beetje terugvindt in de vorm, de kleur, wat die persoon graag had. En die van de uren waarin u het maakte, praatte over die persoon, en ook zweeg.",
+    "cqrAside": "Je bergt het niet op. Je zet het waar je voorbijkomt.",
+    "cqrNext": "Een brief schrijven, wanneer het zover is"
+  },
+  "rituels": {
+    "secTitle": "Eenvoudige gebaren, om te markeren wat telt.",
+    "secIntro": "Een ritueel is een moment dat u ervoor kiest volledig te beleven. Een kaars, een brief, een voorwerp dat ergens neergezet wordt. We maken ze samen, naar uw beeld.",
+    "ritH3": {
+      "revoir": "Het afscheid",
+      "gratitude": "De dankbaarheid",
+      "intentions": "De intenties"
+    },
+    "ritP1": "Zeggen wat nog niet gezegd is, en zachtjes loslaten.",
+    "ritP2": "Bedanken voor wat beleefd is, voor wat blijft.",
+    "ritP3": "Neerleggen wat u wenst voor wat volgt, voor uzelf en voor de band.",
+    "ritNote": "Rituelen kunnen deel uitmaken van een begeleidingssessie of een atelier afsluiten. Ze worden alleen beleefd, met de familie of met meerderen."
+  },
+  "boutique": {
+    "secTitle": "Wat ik maak, tussen twee ateliers door.",
+    "secIntro": "Tussen twee begeleidingen door maak ik dingen voor mijn plezier: juwelen, glazen stukken in koper gevat. Elk stuk is met de hand gemaakt, in het atelier.",
+    "bqMore": "Alle stukken in de winkel bekijken"
+  },
+  "shop": {
+    "skipLink": "Naar de stukken gaan",
+    "secTitle": "Met de hand gemaakt, <em>stuk voor stuk.</em>",
+    "shopHand": "Neem uw tijd. Hier is geen haast bij.",
+    "shopFiltersLabel": "Een soort stukken kiezen",
+    "shopGridLabel": "De stukken",
+    "shopNoteLabel": "Hoe een bestelling verloopt",
+    "shopHowP1": "U kiest een stuk en stuurt me uw aanvraag.",
+    "shopHowP2": "Ik schrijf u om het te bevestigen en u te zeggen hoe u kunt betalen. Er is geen online betaling.",
+    "shopHowP3": "Het komt bij u aan, op uw tempo.",
+    "shopCustom": "Bevalt een stuk u, maar niet helemaal zoals het is? <a class=\"text-link\" href=\"index.html#ecrire\">Schrijf me</a>, dan maken we het samen.",
+    "close": "Sluiten <span aria-hidden=\"true\">×</span>",
+    "pieceGalleryLabel": "Foto's van het stuk",
+    "pieceGalleryRoledescription": "galerij",
+    "pieceStepLabel": {
+      "photoPrecedente": "Vorige foto",
+      "photoSuivante": "Volgende foto"
+    },
+    "pieceThumbsLabel": "Een foto kiezen",
+    "pieceMade": "Met de hand gemaakt door Nathalie, in het atelier. <span class=\"piece-made-more\"></span>",
+    "pieceQtyLabel": "Hoeveel?",
+    "addToCart": "Opzijleggen in het winkelmandje",
+    "addedTitle": "Het wacht op u in het winkelmandje.",
+    "addedText": "Er is nog niets verstuurd. U kunt verder kijken, of me uw aanvraag sturen.",
+    "viewCart": "Het winkelmandje bekijken",
+    "keepLooking": "Verder kijken",
+    "all": "Alles",
+    "sold": "heeft een thuis gevonden",
+    "unique": "uniek stuk",
+    "empty": "De winkel vult zich langzaam. Kom binnenkort terug, of schrijf me als een stuk u aanspreekt.",
+    "photoAlt": "{name}, foto {n} van {total}",
+    "photoLabel": "Foto {n} van {total}",
+    "photoCounter": "{n} / {total}",
+    "madeUnique": "Er is er maar één.",
+    "madeVaried": "Elk stuk is een beetje anders.",
+    "availSold": "Het heeft een thuis gevonden. Als u graag hetzelfde zou hebben, schrijf me: ik kan er een maken die dichtbij komt, nooit helemaal hetzelfde.",
+    "availInCart": "Het zit al in uw winkelmandje.",
+    "availUnique": "Uniek stuk: er is er maar één.",
+    "availUpTo": "U kunt er maximaal {n} nemen.",
+    "writeToNathalie": "Schrijf Nathalie",
+    "addedLive": "{name} zit in het winkelmandje."
+  },
+  "cart": {
+    "word": "Winkelmandje",
+    "cartTitle": "Uw winkelmandje",
+    "cartEmptyP": "Het winkelmandje is voorlopig leeg.",
+    "browse": "De stukken bekijken",
+    "stepTitle": "<span class=\"step-n\" aria-hidden=\"true\">1</span> Uw stukken",
+    "cartSubSpan": "Subtotaal",
+    "doneTitle": "Dank u wel.",
+    "cartDoneP": "Uw aanvraag <b data-order-number></b> is goed bij mij aangekomen. Ik schrijf u heel snel om ze te bevestigen en u te zeggen hoe u kunt betalen.",
+    "doneSoft": "Tot dan hoeft u niets meer te doen.",
+    "backToShop": "Terug naar de winkel",
+    "removedLive": "{name} is uit het winkelmandje gehaald.",
+    "howMany": "Hoeveel",
+    "howManyFor": "Hoeveel, {name}",
+    "remove": "Verwijderen",
+    "removeFor": "{name} uit het winkelmandje verwijderen",
+    "unique": "Uniek stuk",
+    "items": {
+      "one": "{n} stuk",
+      "other": "{n} stukken"
+    },
+    "srItems": ", {items}",
+    "srEmpty": ", leeg",
+    "orderNumber": "nr. {number}"
+  },
+  "checkout": {
+    "summaryTitle": "Er ontbreken nog een paar regels zodat ik u kan antwoorden:",
+    "stepTitle1": "<span class=\"step-n\" aria-hidden=\"true\">2</span> Hoe u het ontvangt",
+    "orderOptB": {
+      "atelier": "In het atelier",
+      "poste": "Per post"
+    },
+    "stepTitle2": "<span class=\"step-n\" aria-hidden=\"true\">3</span> Uw gegevens",
+    "fieldLabel": {
+      "nom": "Uw naam",
+      "eMail": "Uw e-mailadres",
+      "adresse": "Adres",
+      "codePostal": "Postcode",
+      "ville": "Gemeente",
+      "pays": "Land"
+    },
+    "fieldHint1": "Zodat ik u kan schrijven.",
+    "fieldLabel1": "Gsm-nummer <span class=\"opt\">(facultatief)</span>",
+    "fieldHint2": "Als u liever hebt dat we bellen.",
+    "fieldLabel2": "Een woordje voor Nathalie <span class=\"opt\">(facultatief)</span>",
+    "fieldHint3": "Een gravure, een kleur, een datum, of niets.",
+    "stepTitle3": "<span class=\"step-n\" aria-hidden=\"true\">4</span> Versturen",
+    "orderTotalSpan": "Totaal",
+    "orderReassure": "Dit is geen betaling: het is een aanvraag. Ik schrijf u daarna om alles te bevestigen.",
+    "submit": "Mijn aanvraag naar Nathalie sturen",
+    "shipFee": "{fee} verzendkosten, met opvolging",
+    "shipFree": "Gratis verzending",
+    "sending": "Ik verstuur…",
+    "countryDefault": "België",
+    "offlinePayment": "Geen online betaling. Uw e-mailprogramma opent met de bestelling al ingevuld: verstuur ze, dan antwoord ik om ze te bevestigen en u te zeggen hoe u kunt betalen.",
+    "offlinePickup": "Afhalen in het atelier, op afspraak",
+    "offlineStatus": "Uw e-mailprogramma opent met de bestelling al ingevuld: u hoeft ze alleen nog te versturen.",
+    "error": {
+      "nameMissing": "Schrijf uw naam, zodat ik weet aan wie ik moet antwoorden.",
+      "emailMissing": "Schrijf uw e-mailadres, daarlangs antwoord ik u.",
+      "emailBad": "Dit adres lijkt onvolledig, bijvoorbeeld voornaam@voorbeeld.be.",
+      "addressMissing": "Schrijf het adres waarnaar ik het moet sturen.",
+      "postalMissing": "Schrijf de postcode.",
+      "cityMissing": "Schrijf de gemeente."
+    },
+    "mail": {
+      "subject": "Bestelling van {name}",
+      "greeting": "Dag Nathalie,",
+      "intro": "Ik zou graag bestellen:",
+      "line": "- {qty} × {name} ({price})",
+      "shipping": "Verzending per post: {price}",
+      "pickup": "Afhalen in het atelier",
+      "total": "Totaal: {price}",
+      "address": "Adres: {address}, {postal} {city}, {country}",
+      "note": "Een woordje: {note}"
+    }
+  },
+  "contact": {
+    "honeypot": "Niet invullen",
+    "ctPhotoLabel": "Foto: de tafel in Nathalies atelier, twee kopjes thee naast een nauwelijks aangesneden blok lindehout en wat krullen",
+    "ctCaption": "Het atelier, op een dinsdagochtend. Twee kopjes, en alle tijd die u nodig hebt.",
+    "ctTitle": "Boeken, of gewoon schrijven.",
+    "ctLetterP1": "Om de kennismakingssessie te boeken, laat u me uw voornaam en een manier om u te bereiken: ik stel u een moment voor dat u past. <span data-fill>[boekingstool nog te kiezen]</span>",
+    "ctLetterP2": "En als u gewoon wilt praten, hoeft u niet te weten wat u moet zeggen. De naam van die persoon, wat u bezighoudt, of alleen “ik weet niet waar ik moet beginnen”: dat is genoeg opdat ik u antwoord.",
+    "ctLetterP3": "Ik ben het die leest, en ik ben het die terugschrijft. Daarna spreken we elkaar, aan de telefoon of rond een tafel, en niets verplicht u tot iets.",
+    "ctFieldLabel": {
+      "prenom": "Uw voornaam"
+    },
+    "ctFieldLabel1": "Een e-mailadres of een nummer, om u te antwoorden",
+    "ctFieldLabel2": "Wat u me wilt zeggen <span>(al zijn het maar drie woorden)</span>",
+    "submit": "Naar Nathalie sturen",
+    "ctThanksLabel": "Bericht verstuurd",
+    "ctAgain": "Nog een woordje schrijven",
+    "ctNoteP1": "Ik antwoord zelf, binnen drie dagen.",
+    "ctNoteP2": "Schrijft u liever vanuit uw eigen e-mail? <a href=\"mailto:nathalie@fildevie.fr\" data-contact-email data-fill>nathalie@fildevie.fr</a>. Als schrijven te veel is, laat dan gewoon een voornaam en een nummer achter: ik bel u terug.",
+    "contactBarLabel": "Nathalie contacteren",
+    "error": {
+      "both": "Ik heb minstens een voornaam en een manier om u te antwoorden nodig.",
+      "name": "Ik mis uw voornaam.",
+      "contact": "Ik mis een e-mailadres of een nummer om u te antwoorden."
+    },
+    "sending": "Ik verstuur…",
+    "mailSubject": "Een woordje van {name}"
+  },
+  "ritual": {
+    "thanks": "Dank u wel, {name}. Ik heb uw bericht goed ontvangen, ik antwoord u zelf.",
+    "words": {
+      "one": "{n} woord",
+      "other": "{n} woorden"
+    }
+  },
+  "footer": {
+    "ftCloseP1": "U hoeft vandaag niets te beslissen. Deze site blijft er, en ik ook: binnen drie weken, binnen zes maanden, de dag waarop de zin om iets met uw handen te maken terugkomt.",
+    "ftRegards": "Met zachtheid,",
+    "ftRole": "<span translate=\"no\">Fil de vie</span>, rouwbegeleiding, herinneringsstukken en creatieve ateliers",
+    "ftPlace": "Brussel, België",
+    "ftPsP": "<span class=\"ft-ps-mark\">P.S.</span> Als schrijven u moeite kost, volstaan twee regels. <span data-fill>Ik antwoord zelf, binnen drie dagen.</span>",
+    "ftLinksA": {
+      "ecrireNathalie": "Schrijf Nathalie",
+      "revenirAccueil": "Terug naar de startpagina"
+    },
+    "ftLegalSummary": "Juridische vermeldingen en privacy",
+    "ftLegalBodyP1": "Uitgever van de site: Nathalie [Naam], zelfstandige, [postadres], 1000 Brussel, België.",
+    "ftLegalBodyP2": "Ondernemingsnummer (KBO): [0000.000.000]. Verantwoordelijke uitgever: Nathalie [Naam].",
+    "ftLegalBodyP3": "Hosting: [naam van de host], [adres van de host].",
+    "ftLegalBodyP4": "Wat u me schrijft, blijft tussen ons. Uw berichten en bestellingen dienen enkel om u te antwoorden en te leveren; ze worden niet gedeeld en niet voor andere doeleinden gebruikt. Deze site plaatst geen tracking-cookies. Om uw gegevens in te kijken of te wissen, schrijf me.",
+    "ftTop": "Terug naar het begin van de draad",
+    "ftCloseP2": "Een stuk kan wachten tot de dag waarop u klaar bent om het te dragen. Kom terug wanneer u wilt: ze zullen er zijn, en ik ook.",
+    "ftPsLabel": "Om verder te gaan"
+  },
+  "shopDefaults": {
+    "shopIntro": "Tussen twee begeleidingen door maak ik dingen voor mijn plezier: juwelen, glazen stukken in koper gevat. Elk stuk is met de hand gemaakt, in het atelier.",
+    "paymentNote": "Geen online betaling. Ik schrijf u om de bestelling te bevestigen en u te zeggen hoe u kunt betalen (overschrijving of ter plaatse).",
+    "pickupNote": "Afhalen in het atelier, op afspraak"
+  },
+  "errors": {
+    "shopUnreachable": "De winkel antwoordt op dit moment niet. Probeer het wat later opnieuw, of schrijf me.",
+    "orderUnreachable": "Ik kan de site niet bereiken. Probeer het zo meteen opnieuw, of schrijf me rechtstreeks.",
+    "messageFailed": "Het bericht kon niet verstuurd worden. Probeer het zo meteen opnieuw.",
+    "mailFallback": "De site kon het niet versturen: uw e-mailprogramma opent met het bericht al geschreven.",
+    "request": {
+      "tooLarge": "Dat is te groot om te versturen.",
+      "badFormat": "Er ging iets mis met het formaat. Probeer het opnieuw.",
+      "unreadable": "Ik kon niet lezen wat er verstuurd werd. Probeer het opnieuw.",
+      "methodRefused": "Die aanvraag werd niet aanvaard."
+    },
+    "order": {
+      "nameMissing": "Schrijf uw naam.",
+      "emailInvalid": "Dit e-mailadres lijkt onvolledig.",
+      "shippingOff": "Verzending wordt momenteel niet aangeboden.",
+      "pickupOff": "Afhalen in het atelier wordt momenteel niet aangeboden.",
+      "addressMissing": "Het verzendadres ontbreekt.",
+      "cartEmpty": "Het winkelmandje is leeg.",
+      "unavailable": "Het spijt me, dit is niet meer beschikbaar: {items}. Het winkelmandje is bijgewerkt.",
+      "rateLimited": "Te veel bestellingen tegelijk. Probeer het later opnieuw."
+    },
+    "message": {
+      "rateLimited": "Te veel berichten tegelijk. Probeer het over een paar minuten opnieuw.",
+      "nameMissing": "Laat minstens uw voornaam achter.",
+      "contactMissing": "Laat een e-mailadres of een nummer achter, zodat ik u kan antwoorden."
+    },
+    "server": {
+      "generic": "Er is iets misgegaan. Probeer het zo meteen opnieuw."
+    }
+  }
+}

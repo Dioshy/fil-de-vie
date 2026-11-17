@@ -29,16 +29,22 @@
   const SETTLE = "cubic-bezier(0.16, 1, 0.3, 1)";
   const CALM = "cubic-bezier(0.65, 0, 0.35, 1)";
   let running = false;
+  let sentName = "";
+  // the acknowledgement on screen follows a language switch
+  document.addEventListener("fildevie:locale-changed", () => {
+    if (!thanks.hidden && sentName) thanksText.textContent = window.i18n.t("ritual.thanks", { name: sentName });
+  });
 
   /* ---- writing feel: a quiet word count, only after typing, never a limit ---- */
   if (area && count) {
     const update = () => {
       const n = (area.value.trim().match(/\S+/g) || []).length;
-      count.textContent = n ? `${n} ${n > 1 ? "mots" : "mot"}` : "";
+      count.textContent = n ? window.i18n.plural("ritual.words", n) : "";
       count.classList.toggle("is-on", n > 0);
     };
     area.addEventListener("input", update);
     form.addEventListener("reset", () => setTimeout(update));
+    document.addEventListener("fildevie:locale-changed", update);
   }
 
   const announce = () => document.dispatchEvent(new CustomEvent("fildevie:message-sent"));
@@ -57,9 +63,10 @@
     const fields = parts();
     const ms = reduced() ? 0 : 1;
     const t = (n) => n;
-    const done = `Merci ${name}. J'ai bien reçu votre mot, je vous réponds moi-même.`;
+    const done = window.i18n.t("ritual.thanks", { name });
 
     fields.forEach((el) => { el.inert = true; });
+    sentName = name;
     thanksText.textContent = done;
     say(done, "ok"); // the live region announces it; the visible copy is hidden from assistive tech
     thanks.style.opacity = "0";
@@ -148,7 +155,7 @@
     run(info).catch(() => {
       restore();
       form.reset();
-      info.say(`Merci ${info.name}. J'ai bien reçu votre mot, je vous réponds moi-même.`, "ok");
+      info.say(() => window.i18n.t("ritual.thanks", { name: info.name }), "ok");
       announce();
     });
     return true;

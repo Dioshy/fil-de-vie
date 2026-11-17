@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "home": {
+      "title": "Fil de vie · Nathalie, accompagnement du deuil et ateliers de création",
+      "description": "Nathalie accompagne celles et ceux qui viennent de perdre un proche, et fabrique avec eux une petite pièce qui exauce son dernier souhait : verre et cuivre, sculpture, album, dessin. Plutôt qu'une urne de plus sur un meuble.",
+      "ogTitle": "Fil de vie",
+      "ogDescription": "Après une perte, Nathalie marche à vos côtés et fabrique avec vous une petite pièce qui garde la personne près de vous."
+    },
+    "shop": {
+      "title": "La boutique · Fil de vie",
+      "description": "Bijoux et pièces de verre serties de cuivre, faits à la main par Nathalie, à l'atelier. Pièces uniques ou en très petites séries.",
+      "ogTitle": "La boutique · Fil de vie"
+    }
+  },
+  "nav": {
+    "menu": "Menu",
+    "sectionsLabel": "Sections du site",
+    "about": "Qui je suis",
+    "pillars": "Les 3 piliers",
+    "support": "L'accompagnement",
+    "workshops": "Les ateliers",
+    "rituals": "Les rituels",
+    "shop": "La boutique",
+    "book": "Réserver",
+    "languageLabel": "Langue"
+  },
+  "hero": {
+    "heroLede": "Quelqu'un vous a quitté. Gardez-le entre vos mains.",
+    "heroLetterP": "Je suis Nathalie. Après une perte, je marche à vos côtés, des premières semaines jusqu'à l'objet terminé. Plutôt qu'une urne de plus sur un meuble, on fabrique ensemble une petite pièce qui lui ressemble et qui exauce un peu son dernier souhait\u00a0: un éclat de verre serti de cuivre, une sculpture, un album, un dessin. On le fait à quatre mains, et on prend le temps de parler de ce qui pèse.",
+    "heroAside": "Rien à réparer. Rien à presser.",
+    "heroPlace": "Ateliers à Bruxelles, chez moi ou chez vous",
+    "heroBtn": "Réserver une séance découverte",
+    "heroNext": "Découvrir l'accompagnement"
+  },
+  "nathalie": {
+    "secTitle": "J'ai toujours fait des choses de mes mains.",
+    "natTextP1": "J'ai cinquante-quatre ans, et d'aussi loin que je me souvienne, j'ai fabriqué. Des albums de scrapbooking pour chaque été, des dessins dans les marges, de la terre, du bois. Et depuis quelques années, du verre\u00a0: je le découpe, je le sertis d'un ruban de cuivre, puis je le soude à l'étain jusqu'à ce que les morceaux tiennent ensemble. J'ai passé des soirées entières dans des ateliers de toutes sortes, juste pour apprendre un geste de plus.",
+    "natTextP2": "Il y a quelques années, j'ai perdu ma mère. Mon père est parti un peu plus tard. Entre les papiers, les meubles à vider et l'urne qu'on vous tend au funérarium, j'ai compris une chose\u00a0: ce qui m'a aidée, ce n'est pas ce qu'on m'a vendu. C'est ce que j'ai fait de mes mains, pour eux.",
+    "natTextP3": "C'est de là qu'est né <span translate=\"no\">Fil de vie</span>. Aujourd'hui, je veux faire ce chemin avec d'autres\u00a0: rester à côté de vous après le départ de quelqu'un, et fabriquer avec vous la pièce qui le garde près de vous.",
+    "natPhotoLabel": "Portrait : Nathalie à son établi, un morceau de verre ambre levé vers la fenêtre, le fer à souder posé à côté.",
+    "natPhotoFigcaption": "Nathalie, à l'atelier.",
+    "natHandsTitle": "Ce que mes mains savent faire",
+    "natHandsLi1": "<span>Le verre et le cuivre</span> Vitraux, pendentifs, petites pièces à suspendre, serties et soudées à la main.",
+    "natHandsLi2": "<span>Le scrapbooking</span> Des albums et des carnets où l'on colle, on écrit, on garde.",
+    "natHandsLi3": "<span>Le dessin</span> Au crayon, à l'encre, à l'aquarelle\u00a0: un visage, une maison, un paysage.",
+    "natHandsLi4": "<span>La sculpture</span> La terre, le bois tendre, ce qu'on peut tenir dans une main.",
+    "natHandsLi5": "<span>Et le reste</span> La couture, la reliure, tout ce que j'ai appris d'atelier en atelier.",
+    "natQuoteP": "«\u00a0Ce que j'ai fait pour eux tient dans une main. Je le regarde tous les jours, et ce n'est jamais triste.\u00a0»"
+  },
+  "piliers": {
+    "secTitle": "Accueillir, honorer, transformer.",
+    "secIntro": "Le deuil ne se résout pas, il se traverse. Fil de vie repose sur trois mouvements, qui ne se suivent pas toujours dans l'ordre\u00a0: on y revient, on les mêle, on avance à son pas.",
+    "pilTitle": {
+      "accueillir": "Accueillir",
+      "honorer": "Honorer",
+      "transformer": "Transformer"
+    },
+    "pilP1": "Recevoir la peine telle qu'elle est. Lui faire une place, la déposer, sans avoir à aller mieux tout de suite.",
+    "pilP2": "Rendre hommage à la personne et à ce qui vous lie. Réaliser un souhait, garder un lien symbolique.",
+    "pilP3": "Faire de ce qu'on ressent quelque chose de porteur de sens\u00a0: un objet, un geste, un rituel.",
+    "pilManifesteP": "«\u00a0Ce qui nous relie ne s'arrête pas avec le départ. Il change de forme.\u00a0»"
+  },
+  "accompagnement": {
+    "accTitle": "On ne traverse pas ça en une seule fois.",
+    "accIntro": "Je ne viens pas pour une séance avant de repartir. Je reste, le temps qu'il faut, souvent plusieurs mois. On avance à votre pas, et entre deux rendez-vous, je suis toujours là.",
+    "accFirstTag": "Pour commencer",
+    "accFirstTitle": "La séance découverte",
+    "accFirstMetaDt": {
+      "duree": "Durée",
+      "tarif": "Tarif",
+      "ou": "Où"
+    },
+    "accFirstMetaDd": {
+      "60Minutes": "60 minutes",
+      "tarifPreciser": "[tarif à préciser]"
+    },
+    "accFirstMetaDd1": "À Bruxelles, chez moi ou chez vous",
+    "accFirstP": "Une heure pour se rencontrer. Vous me racontez ce qui vous amène, à votre rythme, et je vous explique comment je travaille. On regarde ensemble ce dont vous avez besoin maintenant\u00a0: déposer ce qui pèse, honorer la personne, ou commencer à transformer. À la fin, vous repartez sans engagement\u00a0; si vous le souhaitez, on dessine la suite.",
+    "accFirstBtn": "Réserver la séance découverte",
+    "accSub": {
+      "trajetPropose": "Le trajet proposé",
+      "cadreClair": "Un cadre clair"
+    },
+    "accWhen": {
+      "premieresSemaines": "Les premières semaines",
+      "premierMois": "Le premier mois",
+      "moisSuivent": "Les mois qui suivent",
+      "jourObjetFini": "Le jour où l'objet est fini"
+    },
+    "accBodyP1": "On se rencontre, chez vous ou à l'atelier. Vous me parlez de lui, d'elle, de ce qui manque à table le soir, de ce qu'il ou elle disait vouloir faire «\u00a0un jour\u00a0». Ce jour-là, il n'y a rien à décider.",
+    "accBodyP2": "On se voit chaque semaine, si vous le voulez. Le coaching, chez moi, c'est simple\u00a0: trouver des mots pour ce qui n'en a pas encore, retrouver quelques repères, tenir les jours où tout pèse plus lourd que prévu.",
+    "accBodyP3": "On choisit ensemble ce que vous allez fabriquer, en partant de son dernier souhait. Puis on travaille côte à côte\u00a0: le verre, le cuivre, la terre, le papier. Les mains occupées, la parole vient autrement. On façonne et on parle dans le même geste, sans avoir à se regarder en face.",
+    "accPhotoLabel": "Les mains de Nathalie et celles d'une personne accompagnée, côte à côte sur un établi, autour de morceaux de verre et d'un rouleau de ruban de cuivre.",
+    "accPhotoFigcaption": "Deux paires de mains, le même établi.",
+    "accBodyP4": "Vous repartez avec lui, et avec ce qu'on s'est dit en le faisant. Si vous avez envie qu'on se revoie après, la porte reste ouverte.",
+    "accPromise": "Vous ne ferez pas ce chemin sans moi.",
+    "accNote": "Entre deux séances, un message suffit. Je réponds le jour même, sauf le dimanche.",
+    "accSub1": "Cinq accompagnements complémentaires",
+    "accMoreListH4": {
+      "parcoursAccompagnement": "Le parcours d'accompagnement",
+      "deposerPeine": "Déposer sa peine",
+      "realiserSouhait": "Réaliser un souhait",
+      "maintenirLienSymbolique": "Maintenir un lien symbolique",
+      "donnerSensEmotions": "Donner un sens à ses émotions"
+    },
+    "accMoreListP1": "Des rendez-vous réguliers, sur plusieurs mois, pour traverser les premiers temps du deuil sans être seul.",
+    "accMoreListP2": "Un espace pour dire ce qui pèse, sans avoir à être fort, sans jugement et sans conseil qu'on n'a pas demandé.",
+    "accMoreListP3": "Partir de ce qu'il ou elle aimait, de ce qu'il voulait faire «\u00a0un jour\u00a0», et le faire exister.",
+    "wishLink": "Son dernier souhait",
+    "accMoreListP4": "Un objet, un geste, un rendez-vous qui garde la personne présente, autrement.",
+    "accMoreListP5": "Trouver les moyens de transformer ce qu'on ressent en quelque chose de porteur de sens, souvent par les mains.",
+    "accFrameLi1": "Ce que vous me confiez reste entre nous.",
+    "accFrameLi2": "Je ne remplace ni un médecin ni un psychothérapeute\u00a0; si c'est nécessaire, je vous oriente vers eux.",
+    "accFrameLi3": "Les séances, leur rythme et leur tarif sont posés ensemble dès le départ.",
+    "accFrameLi4": "Vous pouvez arrêter quand vous le souhaitez."
+  },
+  "souhaits": {
+    "secTitle": "Pas une urne de plus sur un meuble. <em>Ce qu'il aurait voulu.</em>",
+    "secIntro": "Une urne classique finit souvent posée quelque part, et on ne sait plus quoi en faire. Je vous propose autre chose\u00a0: partir de ce qu'il ou elle aimait, de ce qu'il ou elle disait vouloir faire un jour, et en faire une petite pièce. Un objet qu'on peut tenir, porter, accrocher à une fenêtre.",
+    "swSaid1": "«\u00a0Elle disait toujours qu'elle reverrait la mer.\u00a0»",
+    "swMade1": "Un pendentif de verre bleu, serti de cuivre, avec quelques grains du sable de sa plage.",
+    "swSaid2": "«\u00a0Son jardin, c'était toute sa vie.\u00a0»",
+    "swMade2": "Une feuille de vitrail pour la fenêtre de la cuisine, verte comme ses tomates pas encore mûres.",
+    "swSaid3": "«\u00a0Il voulait finir l'album des vacances. Il n'a jamais eu le temps.\u00a0»",
+    "swMade3": "On le finit ensemble, page après page, avec ses photos, ses billets et son écriture.",
+    "swSaid4": "«\u00a0Un jour, j'irai boire un pisco au Pérou.\u00a0»",
+    "swMade": {
+      "alorsVa": "Alors on y va."
+    },
+    "swFurtherTitle": "Et parfois, on va plus loin.",
+    "swFurtherP": "Quand le souhait est un voyage, on peut aussi l'exaucer. S'il rêvait de boire un pisco quelque part en Amérique latine, je vous aide à préparer ce voyage, et <span data-fill>si vous le souhaitez, je pars avec vous</span>. Là-bas, on lève un verre pour lui. On rapporte un caillou, une étiquette, un bout de tissu, une photo. Au retour, on en fait la pièce.",
+    "swAside": "L'objet reste petit. Ce qu'il porte ne l'est pas.",
+    "swLaw": "Une précision honnête\u00a0: <span data-fill>en Belgique, ce que l'on peut faire des cendres est encadré par la loi, et les règles varient d'une région à l'autre. Les pièces que l'on fabrique n'en contiennent pas</span>\u00a0; elles gardent autre chose\u00a0: sa couleur, ses objets, son écriture, ce qu'il voulait vivre."
+  },
+  "ateliers": {
+    "atTitle": "Ce qu'on fabrique, à quatre mains.",
+    "atIntro": "Un éclat de verre, une sculpture, un album, un dessin, ou quelque chose qui n'a pas encore de nom. Vous choisissez la matière, je vous montre les gestes, et on avance ensemble jusqu'à ce que la pièce tienne debout. Personne ne vous demande de savoir faire.",
+    "atKindH3": {
+      "ateliersPartage": "Les ateliers de partage",
+      "ateliersCreation": "Les ateliers de création"
+    },
+    "atKindP1": "Un cercle de parole, à petit nombre, pour dire ce qu'on traverse et entendre que d'autres le traversent aussi.",
+    "atKindP2": "Les mains au travail\u00a0: le verre, la terre, le papier. On fabrique, et la parole vient autrement.",
+    "atFormats": "En collectif ou en individuel. <span data-fill>Prochaines dates\u00a0: à venir.</span>",
+    "atRowLabel": "Les ateliers, à faire défiler de côté",
+    "atPhotoLabel1": "Photo : une feuille de vitrail sertie de cuivre, suspendue devant une fenêtre",
+    "atWorkH3": {
+      "verreCuivre": "Le verre et le cuivre",
+      "sculpture": "La sculpture",
+      "album": "L'album",
+      "dessin": "Le dessin",
+      "vetementsRecousus": "Ses vêtements, recousus"
+    },
+    "atWorkP1": "On choisit les couleurs, on découpe, on entoure chaque morceau d'un ruban de cuivre, puis on soude. Un vitrail à suspendre, un pendentif à porter\u00a0: la lumière passe à travers, comme il faut.",
+    "atMetaDt": {
+      "matiere": "Matière",
+      "repartez": "Vous repartez avec"
+    },
+    "atMetaDd": {
+      "verreColoreCuivre": "Verre coloré, cuivre, étain",
+      "4Seances3": "4 séances de 3 heures",
+      "terreTilleulNoyer": "Terre, tilleul ou noyer",
+      "68Seances": "6 à 8 séances",
+      "35Seances": "3 à 5 séances",
+      "4Seances": "4 séances",
+      "tempsFaut": "Le temps qu'il faut"
+    },
+    "atMetaDd1": "Un vitrail ou un bijou, à sa couleur préférée",
+    "atPhotoLabel2": "Photo : un oiseau sculpté dans le tilleul, à moitié dégagé de son bloc, des copeaux autour",
+    "atWorkP2": "Un morceau de tilleul ou une motte de terre, et le souvenir de ses mains qui travaillaient le dimanche. Un copeau, puis un autre. La forme vient lentement, comme le reste.",
+    "atMetaDd2": "Une pièce sculptée, signée de vos initiales",
+    "atPhotoLabel3": "Photo : un album de scrapbooking ouvert, des photos de vacances, des billets de train et une écriture à l'encre",
+    "atWorkP3": "Ses photos, ses billets, ses recettes, son écriture. On découpe, on colle, on raconte. Un album qui n'existe qu'en un seul exemplaire, et qu'on a fini pour lui.",
+    "atMetaDd3": "Papiers, photos, tissus, ses objets",
+    "atMetaDd4": "Un album relié, à feuilleter ou à compléter",
+    "atPhotoLabel4": "Photo : un dessin au crayon d'une maison de famille, un crayon posé en travers de la feuille",
+    "atWorkP4": "Sa maison, son visage, son paysage. On apprend à regarder avant de tracer, au crayon, à l'encre ou à l'aquarelle. On le fait pour soi, pas pour un musée.",
+    "atMetaDd5": "Un dessin encadré, ou un carnet entier",
+    "atPhotoLabel5": "Photo : un plaid en patchwork fait de chemises à carreaux et d'un vieux pull, plié sur une chaise",
+    "atWorkP5": "Sa chemise du dimanche, son pull trop grand. On découpe, on assemble, et ça devient un plaid ou un coussin où l'on peut encore se blottir.",
+    "atMetaDd6": "Un plaid ou un coussin cousu de ses habits",
+    "atOpenH3": "Votre idée",
+    "atOpenP": "Une boîte pour ses lettres, un mobile pour la chambre d'un enfant, une urne façonnée pour le columbarium. Vous me racontez, on dessine ensemble, et je cherche les gestes qu'il faut.",
+    "atStep": {
+      "atelierPrecedent": "Atelier précédent",
+      "atelierSuivant": "Atelier suivant"
+    },
+    "atNoteH3": "Vous n'avez perdu personne\u00a0? Venez aussi.",
+    "atNoteP": "Les ateliers sont ouverts à qui veut apprendre le verre et le cuivre, le scrapbooking, le dessin ou la sculpture. On travaille côte à côte, à petit nombre, chacun à son rythme. Le chagrin n'est pas une condition d'entrée.",
+    "atWhen": "Trois places par atelier, le mardi et le samedi",
+    "atAsk": "Demander une place à l'atelier"
+  },
+  "ceQuiReste": {
+    "cqrLabel": "Ce qui reste",
+    "cqrA": "L'objet, fait de vos mains.",
+    "cqrB": "Le souvenir, noué dedans.",
+    "cqrPhotoLabel": "Photo : une petite feuille de vitrail sertie de cuivre, suspendue à une fenêtre, une étiquette de papier nouée à son fil",
+    "cqrTextP1": "À la fin de l'atelier, vous repartez avec ce que vous avez fait. Pas un objet parfait\u00a0: le vôtre, avec la marque de vos doigts, la soudure un peu épaisse, le morceau de verre qu'on a recoupé deux fois.",
+    "cqrTextP2": "Il garde deux mémoires à la fois. Celle de la personne, qu'on retrouve un peu dans sa forme, sa couleur, ce qu'elle aimait. Et celle des heures passées à le faire, à parler d'elle, à se taire aussi.",
+    "cqrAside": "On ne le range pas. On le pose là où l'on passe.",
+    "cqrNext": "Lui écrire, quand ce sera le moment"
+  },
+  "rituels": {
+    "secTitle": "Des gestes simples, pour marquer ce qui compte.",
+    "secIntro": "Un rituel, c'est un moment qu'on choisit de vivre pleinement. Une bougie, une lettre, un objet posé quelque part. On les crée ensemble, à votre image.",
+    "ritH3": {
+      "revoir": "L'au revoir",
+      "gratitude": "La gratitude",
+      "intentions": "Les intentions"
+    },
+    "ritP1": "Dire ce qui n'a pas été dit, et laisser partir doucement.",
+    "ritP2": "Remercier pour ce qui a été vécu, pour ce qui reste.",
+    "ritP3": "Poser ce que l'on souhaite pour la suite, pour soi et pour le lien.",
+    "ritNote": "Les rituels peuvent s'inscrire dans une séance d'accompagnement ou clore un atelier. Ils se vivent seul, en famille ou à plusieurs."
+  },
+  "boutique": {
+    "secTitle": "Ce que je fabrique, entre deux ateliers.",
+    "secIntro": "Entre deux accompagnements, je fabrique pour le plaisir\u00a0: des bijoux, des pièces de verre serties de cuivre. Chaque pièce est faite à la main, à l'atelier.",
+    "bqMore": "Voir toutes les pièces de la boutique"
+  },
+  "shop": {
+    "skipLink": "Aller aux pièces",
+    "secTitle": "Faites à la main, <em>une à une.</em>",
+    "shopHand": "Prenez votre temps. Rien ne presse ici.",
+    "shopFiltersLabel": "Choisir une famille de pièces",
+    "shopGridLabel": "Les pièces",
+    "shopNoteLabel": "Comment se passe une commande",
+    "shopHowP1": "Vous choisissez une pièce et vous m'envoyez votre demande.",
+    "shopHowP2": "Je vous écris pour la confirmer et vous dire comment régler. Il n'y a pas de paiement en ligne.",
+    "shopHowP3": "Elle vous rejoint, à votre rythme.",
+    "shopCustom": "Une pièce vous ferait plaisir, mais pas tout à fait comme ça\u00a0? <a class=\"text-link\" href=\"index.html#ecrire\">Écrivez-moi</a>, on la fait ensemble.",
+    "close": "Fermer <span aria-hidden=\"true\">×</span>",
+    "pieceGalleryLabel": "Photos de la pièce",
+    "pieceGalleryRoledescription": "galerie",
+    "pieceStepLabel": {
+      "photoPrecedente": "Photo précédente",
+      "photoSuivante": "Photo suivante"
+    },
+    "pieceThumbsLabel": "Choisir une photo",
+    "pieceMade": "Faite à la main par Nathalie, à l'atelier. <span class=\"piece-made-more\"></span>",
+    "pieceQtyLabel": "Combien\u00a0?",
+    "addToCart": "Mettre de côté dans le panier",
+    "addedTitle": "Elle vous attend dans le panier.",
+    "addedText": "Rien n'est encore envoyé. Vous pouvez continuer à regarder, ou m'envoyer votre demande.",
+    "viewCart": "Voir le panier",
+    "keepLooking": "Continuer à regarder",
+    "all": "Tout",
+    "sold": "partie",
+    "unique": "pièce unique",
+    "empty": "La boutique se remplit doucement. Revenez bientôt, ou écrivez-moi si une pièce vous fait envie.",
+    "photoAlt": "{name}, photo {n} sur {total}",
+    "photoLabel": "Photo {n} sur {total}",
+    "photoCounter": "{n} / {total}",
+    "madeUnique": "Il n'y en a qu'une.",
+    "madeVaried": "Chacune est un peu différente.",
+    "availSold": "Elle est partie. Si vous aimeriez la même, écrivez-moi : je peux en refaire une proche, jamais tout à fait pareille.",
+    "availInCart": "Elle est déjà dans votre panier.",
+    "availUnique": "Pièce unique : il n'y en a qu'une.",
+    "availUpTo": "Vous pouvez en prendre jusqu'à {n}.",
+    "writeToNathalie": "Écrire à Nathalie",
+    "addedLive": "{name} est dans le panier."
+  },
+  "cart": {
+    "word": "Panier",
+    "cartTitle": "Votre panier",
+    "cartEmptyP": "Le panier est vide pour l'instant.",
+    "browse": "Regarder les pièces",
+    "stepTitle": "<span class=\"step-n\" aria-hidden=\"true\">1</span> Vos pièces",
+    "cartSubSpan": "Sous-total",
+    "doneTitle": "Merci.",
+    "cartDoneP": "Votre demande <b data-order-number></b> est bien arrivée chez moi. Je vous écris très vite pour la confirmer et vous dire comment régler.",
+    "doneSoft": "D'ici là, il n'y a rien d'autre à faire.",
+    "backToShop": "Revenir à la boutique",
+    "removedLive": "{name} a été retirée du panier.",
+    "howMany": "Combien",
+    "howManyFor": "Combien, {name}",
+    "remove": "Retirer",
+    "removeFor": "Retirer {name} du panier",
+    "unique": "Pièce unique",
+    "items": {
+      "one": "{n} pièce",
+      "other": "{n} pièces"
+    },
+    "srItems": ", {items}",
+    "srEmpty": ", vide",
+    "orderNumber": "n° {number}"
+  },
+  "checkout": {
+    "summaryTitle": "Il manque encore quelques lignes pour que je puisse vous répondre\u00a0:",
+    "stepTitle1": "<span class=\"step-n\" aria-hidden=\"true\">2</span> Comment la recevoir",
+    "orderOptB": {
+      "atelier": "À l'atelier",
+      "poste": "Par la poste"
+    },
+    "stepTitle2": "<span class=\"step-n\" aria-hidden=\"true\">3</span> Vos coordonnées",
+    "fieldLabel": {
+      "nom": "Votre nom",
+      "eMail": "Votre e-mail",
+      "adresse": "Adresse",
+      "codePostal": "Code postal",
+      "ville": "Ville",
+      "pays": "Pays"
+    },
+    "fieldHint1": "Pour que je puisse vous écrire.",
+    "fieldLabel1": "Téléphone <span class=\"opt\">(facultatif)</span>",
+    "fieldHint2": "Si vous préférez qu'on s'appelle.",
+    "fieldLabel2": "Un mot pour Nathalie <span class=\"opt\">(facultatif)</span>",
+    "fieldHint3": "Une gravure, une couleur, une date, ou rien du tout.",
+    "stepTitle3": "<span class=\"step-n\" aria-hidden=\"true\">4</span> Envoyer",
+    "orderTotalSpan": "Total",
+    "orderReassure": "Ce n'est pas un paiement\u00a0: c'est une demande. Je vous écris ensuite pour tout confirmer.",
+    "submit": "Envoyer ma demande à Nathalie",
+    "shipFee": "{fee} de frais d'envoi, suivi",
+    "shipFree": "Envoi offert",
+    "sending": "J'envoie…",
+    "countryDefault": "Belgique",
+    "offlinePayment": "Aucun paiement en ligne. Votre messagerie s'ouvre avec la commande déjà écrite : envoyez-la, je vous réponds pour la confirmer et vous dire comment régler.",
+    "offlinePickup": "Retrait à l'atelier, sur rendez-vous",
+    "offlineStatus": "Votre messagerie s'ouvre avec la commande déjà écrite : il ne reste qu'à l'envoyer.",
+    "error": {
+      "nameMissing": "Écrivez votre nom, pour que je sache à qui répondre.",
+      "emailMissing": "Écrivez votre e-mail, c'est par là que je vous répondrai.",
+      "emailBad": "Cette adresse semble incomplète, par exemple prenom@exemple.fr.",
+      "addressMissing": "Écrivez l'adresse où l'envoyer.",
+      "postalMissing": "Écrivez le code postal.",
+      "cityMissing": "Écrivez la ville."
+    },
+    "mail": {
+      "subject": "Commande de {name}",
+      "greeting": "Bonjour Nathalie,",
+      "intro": "Je voudrais commander :",
+      "line": "- {qty} × {name} ({price})",
+      "shipping": "Envoi par la poste : {price}",
+      "pickup": "Retrait à l'atelier",
+      "total": "Total : {price}",
+      "address": "Adresse : {address}, {postal} {city}, {country}",
+      "note": "Un mot : {note}"
+    }
+  },
+  "contact": {
+    "honeypot": "Ne pas remplir",
+    "ctPhotoLabel": "Photo : la table de l'atelier de Nathalie, deux tasses de thé posées près d'un bloc de tilleul à peine entamé et de quelques copeaux",
+    "ctCaption": "L'atelier, un mardi matin. Deux tasses, et tout le temps qu'il faut.",
+    "ctTitle": "Réserver, ou simplement écrire.",
+    "ctLetterP1": "Pour réserver la séance découverte, laissez-moi votre prénom et un moyen de vous joindre\u00a0: je vous propose un moment qui vous convient. <span data-fill>[outil de réservation à choisir]</span>",
+    "ctLetterP2": "Et si vous voulez seulement parler, vous n'avez pas à savoir quoi dire. Son prénom, ce qui vous occupe, ou seulement «\u00a0je ne sais pas par où commencer\u00a0»\u00a0: c'est assez pour que je vous réponde.",
+    "ctLetterP3": "C'est moi qui lis, et c'est moi qui écris en retour. Ensuite on se parle, au téléphone ou autour d'une table, et rien ne vous engage.",
+    "ctFieldLabel": {
+      "prenom": "Votre prénom"
+    },
+    "ctFieldLabel1": "Un e-mail ou un numéro, pour vous répondre",
+    "ctFieldLabel2": "Ce que vous voulez me dire <span>(même trois mots)</span>",
+    "submit": "Envoyer à Nathalie",
+    "ctThanksLabel": "Message envoyé",
+    "ctAgain": "Écrire un autre mot",
+    "ctNoteP1": "Je réponds moi-même, dans les trois jours.",
+    "ctNoteP2": "Vous préférez écrire depuis votre messagerie\u00a0? <a href=\"mailto:nathalie@fildevie.fr\" data-contact-email data-fill>nathalie@fildevie.fr</a>. Si écrire est trop, laissez seulement un prénom et un numéro\u00a0: je vous rappelle.",
+    "contactBarLabel": "Contacter Nathalie",
+    "error": {
+      "both": "Il me faut au moins un prénom et un moyen de vous répondre.",
+      "name": "Il me manque votre prénom.",
+      "contact": "Il me manque un e-mail ou un numéro pour vous répondre."
+    },
+    "sending": "J'envoie…",
+    "mailSubject": "Un mot de {name}"
+  },
+  "ritual": {
+    "thanks": "Merci {name}. J'ai bien reçu votre mot, je vous réponds moi-même.",
+    "words": {
+      "one": "{n} mot",
+      "other": "{n} mots"
+    }
+  },
+  "footer": {
+    "ftCloseP1": "Vous n'avez rien à décider aujourd'hui. Ce site restera là, et moi aussi\u00a0: dans trois semaines, dans six mois, le jour où l'envie de faire quelque chose de vos mains reviendra.",
+    "ftRegards": "Avec douceur,",
+    "ftRole": "<span translate=\"no\">Fil de vie</span>, accompagnement du deuil, pièces souvenirs et ateliers de création",
+    "ftPlace": "Bruxelles, Belgique",
+    "ftPsP": "<span class=\"ft-ps-mark\">P.-S.</span> Si écrire vous coûte, deux lignes suffisent. <span data-fill>Je réponds moi\u2011même, sous trois jours.</span>",
+    "ftLinksA": {
+      "ecrireNathalie": "Écrire à Nathalie",
+      "revenirAccueil": "Revenir à l'accueil"
+    },
+    "ftLegalSummary": "Mentions légales et confidentialité",
+    "ftLegalBodyP1": "Éditrice du site\u00a0: Nathalie [Nom], entrepreneuse individuelle, [adresse postale], 1000 Bruxelles, Belgique.",
+    "ftLegalBodyP2": "Numéro d'entreprise (BCE)\u00a0: [0000.000.000]. Directrice de la publication\u00a0: Nathalie [Nom].",
+    "ftLegalBodyP3": "Hébergement\u00a0: [nom de l'hébergeur], [adresse de l'hébergeur].",
+    "ftLegalBodyP4": "Ce que vous m'écrivez reste entre nous. Vos messages et vos commandes servent uniquement à vous répondre et à vous livrer\u00a0; ils ne sont ni partagés ni utilisés à d'autres fins. Ce site ne dépose aucun cookie de suivi. Pour consulter ou effacer vos données, écrivez-moi.",
+    "ftTop": "Revenir au début du fil",
+    "ftCloseP2": "Une pièce peut attendre le jour où vous serez prêt à la porter. Revenez quand vous voulez\u00a0: elles seront là, et moi aussi.",
+    "ftPsLabel": "Pour continuer"
+  },
+  "shopDefaults": {
+    "shopIntro": "Entre deux accompagnements, je fabrique pour le plaisir : des bijoux, des pièces de verre serties de cuivre. Chaque pièce est faite à la main, à l'atelier.",
+    "paymentNote": "Aucun paiement en ligne. Je vous écris pour confirmer la commande et vous indiquer comment régler (virement ou sur place).",
+    "pickupNote": "Retrait à l'atelier, sur rendez-vous"
+  },
+  "errors": {
+    "shopUnreachable": "La boutique ne répond pas pour le moment. Réessayez un peu plus tard, ou écrivez-moi.",
+    "orderUnreachable": "Je n'arrive pas à joindre le site. Réessayez dans un instant, ou écrivez-moi directement.",
+    "messageFailed": "Le message n'a pas pu partir. Réessayez dans un instant.",
+    "mailFallback": "Le site n'a pas pu l'envoyer : votre messagerie s'ouvre avec le message déjà écrit.",
+    "request": {
+      "tooLarge": "C'est trop volumineux.",
+      "badFormat": "Format inattendu.",
+      "unreadable": "Données illisibles.",
+      "methodRefused": "Méthode refusée."
+    },
+    "order": {
+      "nameMissing": "Indiquez votre nom.",
+      "emailInvalid": "L'adresse e-mail semble incomplète.",
+      "shippingOff": "L'envoi n'est pas proposé pour le moment.",
+      "pickupOff": "Le retrait à l'atelier n'est pas proposé pour le moment.",
+      "addressMissing": "Il manque l'adresse d'envoi.",
+      "cartEmpty": "Le panier est vide.",
+      "unavailable": "Désolée, ce n'est plus disponible : {items}. Le panier a été mis à jour.",
+      "rateLimited": "Trop de commandes d'un coup. Réessayez plus tard."
+    },
+    "message": {
+      "rateLimited": "Trop de messages d'un coup. Réessayez dans quelques minutes.",
+      "nameMissing": "Laissez au moins votre prénom.",
+      "contactMissing": "Laissez un e-mail ou un numéro, pour que je puisse vous répondre."
+    },
+    "server": {
+      "generic": "Quelque chose s'est mal passé. Réessayez dans un instant."
+    }
+  }
+}
