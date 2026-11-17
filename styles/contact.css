@@ -248,3 +248,6 @@
 @media (prefers-reduced-motion: reduce) {
   #contact .ct-field textarea, #contact .ct-count { transition-duration: var(--dur-2); }
 }
+
+/* the hands reach up to the top edge: keep the fingertips in the wide crop */
+#contact .ct-photo img { object-position: 50% 0; }

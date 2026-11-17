@@ -245,6 +245,8 @@ h1, h2, h3 { color: var(--accent); }
 .site-nav a.site-nav-cta:hover,
 .site-nav a.site-nav-cta:focus-visible { background: color-mix(in srgb, var(--accent) 84%, var(--ink)); color: var(--bg); }
 .site-nav a.site-nav-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+/* In the contact section the button is where the reader is: a fine ring round it, as the other links get their underline */
+.site-nav a.site-nav-cta.is-here { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--accent); }
 @media (max-width: 63.99rem) {
   html.js .site-nav a.site-nav-cta { margin-top: var(--space-2); justify-content: center; }
 }

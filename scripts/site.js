@@ -121,15 +121,33 @@
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Mark the link of the section on screen (home page only)
+  // Mark the link of the section the reader is in (home page only), all the way down: the sections with no
+  // link of their own count for the one they follow (a wish for the accompaniment, what remains for the
+  // workshops), so the bar never goes blank between two sections
   const links = [...bar.querySelectorAll('.site-nav a[href^="#"]')];
-  const targets = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
-  if (!targets.length || !("IntersectionObserver" in window)) return;
-  const seen = new Map();
-  const spy = new IntersectionObserver((entries) => {
-    for (const e of entries) seen.set(e.target, e.isIntersecting);
-    const here = targets.filter((t) => seen.get(t)).pop();
-    links.forEach((a) => a.classList.toggle("is-here", !!here && a.getAttribute("href") === `#${here.id}`));
-  }, { rootMargin: "-30% 0px -60% 0px" });
-  targets.forEach((t) => spy.observe(t));
+  const linkFor = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+  const OWNER = { souhaits: "accompagnement", "ce-qui-reste": "ateliers", contact: "reserver" };
+  const secs = [...document.querySelectorAll("section[id]")].filter((el) => !el.parentElement.closest("section[id]"))
+    .map((el) => ({ el, a: linkFor.get(OWNER[el.id] || el.id) || null }));
+  if (!secs.some((s) => s.a)) return;
+  let current = undefined, queued = false;
+  const mark = () => {
+    queued = false;
+    const line = innerHeight * 0.35;
+    let here = null;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) here = secs[secs.length - 1];
+    else for (const s of secs) { if (s.el.getBoundingClientRect().top <= line) here = s; else break; }
+    const a = here ? here.a : null;
+    if (a === current) return;
+    current = a;
+    links.forEach((l) => {
+      l.classList.toggle("is-here", l === a);
+      if (l === a) l.setAttribute("aria-current", "location"); else if (l.getAttribute("aria-current") === "location") l.removeAttribute("aria-current");
+    });
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(mark); } };
+  addEventListener("scroll", queue, { passive: true });
+  addEventListener("resize", queue);
+  addEventListener("load", queue);
+  mark();
 })();
