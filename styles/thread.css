@@ -19,13 +19,13 @@
    filter: drop-shadow() is costly because the browser rasterises the filter region on every change.
    Here it is only ever set on the knot SVGs, boxes of about 3rem, so that region stays tiny.
    It must never be applied to .page-thread: that SVG is as tall as the document. */
-[data-knot] {
+svg[data-knot] {
   transition: filter 450ms cubic-bezier(.16, 1, .3, 1);
 }
-[data-knot].is-near {
+svg[data-knot].is-near {
   filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 38%, transparent));
 }
-[data-knot].is-lit {
+svg[data-knot].is-lit {
   filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 60%, transparent));
 }
 
@@ -38,7 +38,7 @@
   100% { scale: 1; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  [data-knot].is-tying { animation: thread-tie 700ms cubic-bezier(.34, 1.3, .64, 1) 1 both; }
+  svg[data-knot].is-tying { animation: thread-tie 700ms cubic-bezier(.34, 1.3, .64, 1) 1 both; }
 }
 
 /* Reduced motion (or ?fil): a still, fully drawn thread */
@@ -50,3 +50,14 @@ html.thread-still .page-thread .thread-pulse-halo { display: none; }
 /* The loop round the button while it untwists into the line after a message is sent, and while it
    ties itself round the button again (.thread-loop). It stands in for that stretch of the line and
    inherits its ink, so nothing to add here; it is a plain path, never filtered. */
+
+/* Knots the line ties itself: the small icon steps aside (it stays as the anchor, the tie target and the
+   pulse's origin), unless the line could not tie its knot there (.thread-bead). Section-label knots become
+   beads: the path goes, the small circle stays on the line. */
+html.thread-live svg[data-thread-tie]:not(.thread-bead) g,
+html.thread-live .ct-tie[data-thread-tie] .ct-knot:not(.thread-bead) g { visibility: hidden; }
+html.thread-live .ft-knot[data-thread-tie]:not(.thread-bead) path { visibility: hidden; }
+html.thread-live svg[data-thread-bead] path { visibility: hidden; }
+
+/* The cinch: the knot the line has just tied, pulled tight once. A plain path over a gap in the line. */
+html.thread-still .page-thread .thread-cinch { display: none; }

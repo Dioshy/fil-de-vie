@@ -64,7 +64,8 @@
 }
 #accompagnement .acc-step { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
 #accompagnement .acc-step + .acc-step { margin-top: var(--space-5); }
-#accompagnement .acc-step:nth-child(3) { margin-top: var(--space-4); }
+/* room for the thread to step sideways 24 px+ below the text above (was space-4) */
+#accompagnement .acc-step:nth-child(3) { margin-top: var(--space-5); }
 #accompagnement .acc-step:nth-child(4) { margin-top: var(--space-6); }
 
 #accompagnement .acc-knot {
