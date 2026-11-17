@@ -47,8 +47,9 @@
   const DETOUR_MIN = 0.25, DETOUR_RATE = 2, DETOUR_LEAD = 0.35;
   const DETOUR_LAG = 0.5, TIP_LO = 0.1, TIP_HI = 0.95;
   const LEG_RATE = 2.2;     // px of line per px of scroll on the legs of a knot tied between them (K3)
-  const HOLD_DROP = 28;     // px the held line keeps going below a step's text before it steps sideways
+  const HOLD_DROP = 6;      // px the held line keeps going below a step's text before it steps sideways (its round turn takes the rest)
   const CINCH_MS = 700;     // a knot pulls tight once, when tied
+  const FOLLOW_S = 0.12;    // the drawn tip glides after the scroll (time constant, s): a wheel's steps never jerk it
 
   const anchors = [...document.querySelectorAll("[data-thread]")];
   if (!anchors.length) return;
@@ -108,7 +109,7 @@
 
   // Animation state
   let arrive = still ? 1 : 0, arriveT = still ? 1 : 0;
-  let drawn = 0, dirty = true;
+  let drawn = 0, dirty = true, snap = true;
   let sentFloor = 0; // a sent message ties the knot at the button, wherever the reader is
   const sway = { on: false, i0: 0, i1: 0, x: 0, v: 0, nx: null, ny: null, w: null };
   let pulse = null; // { t, from, a, b }
@@ -280,8 +281,10 @@
       return true;
     };
 
-    let holdY = null;
+    let holdY = null, fromHold = false;
     for (const e of boxes) {
+      const stepIn = fromHold;
+      fromHold = false;
       const { a, kind, b, span, btn, holdB } = e;
       if (!b.w && !b.h) continue;     // hidden
       if (b.t < lastY - 1) continue;  // never loop back up the page
@@ -289,7 +292,7 @@
       if (holdY !== null) {
         // …and a little past it: the sideways step to the next knot starts 28 px below the step's last line
         holdY = Math.min(holdY + HOLD_DROP, Math.max(holdY, b.t - 12));
-        if (holdY > lastY) { rail(lastY, holdY); pts.push({ x: baseX, y: holdY, v: true }); lastY = holdY; }
+        if (holdY > lastY) { rail(lastY, holdY); pts.push({ x: baseX, y: holdY, v: true }); lastY = holdY; fromHold = true; }
         holdY = null;
         baseX = rx;
       }
@@ -361,6 +364,26 @@
             lastY = cy + R;
           }
           baseX = rx;
+        } else if (stepIn && cx - R > pts[pts.length - 1].x + 24) {
+          // A sideways step from the step above lands on the knot's centre, not its top: the extra height
+          // lets the S-bend open out instead of turning on two elbows (the knot hides where it lands)
+          // Two round turns (true quarter circles, as round as the height allows) joined by a level run:
+          // one cubic alone cannot turn twice in so little height without bunching the turns into elbows
+          const o = pts[pts.length - 1], x0 = o.x, y0 = o.y;
+          // (with room to drop, as tall as it is wide or more, a single S is already round)
+          const r = (cy - y0) / 2;
+          if (cy - y0 < cx - x0 - 8) {
+            const Q = QUARTER * r;
+            pts.push(
+              { x: x0 + r, y: y0 + r, hz: true, fx: [{ x: x0, y: y0 + Q }, { x: x0 + r - Q, y: y0 + r }] },
+              { x: cx - r, y: cy - r, hz: true },
+              { x: cx, y: cy, v: true, fx: [{ x: cx - r + Q, y: cy - r }, { x: cx, y: cy - r + Q }] },
+            );
+          } else pts.push({ x: cx, y: cy, v: true });
+          pts.push({ x: cx, y: cy + R, v: true });
+          tieAt.push({ el: a, idx: pts.length - 2 });
+          lastY = cy + R;
+          if (holdB !== null) { baseX = cx; holdY = holdB; } else baseX = rx;
         } else {
           rail(lastY, cy - R);
           through(cx, cy, R);
@@ -370,6 +393,12 @@
         }
       } else if (kind === "wrap") {
         const p = 12, L = btn.l, R = btn.r, T = btn.t, B = btn.b, M = (T + B) / 2, w = R - L;
+        // Where the knot beside the button sits (slide looks at the line so far, so ask before going on)
+        let kS = 0, kk = 0, kx = 0, ky = null;
+        if (tie) {
+          kS = sizeOf(a, W < 768); kk = kS / GLYPH[tie].w; kx = L - 24 - GLYPH[tie].hw * kk;
+          ky = slide(a, tie, kS, lvOf(a), M);
+        }
         rail(lastY, T - 70);
         pts.push({ x: rx, y: T - 70, v: true });
         const s0 = pts.length - 1;
@@ -382,14 +411,19 @@
           { x: R + p, y: M },
           { x: R + p * 0.6, y: T - p * 0.8 },
           { x: L + w * 0.5, y: T - p * 1.05 },
-          { x: L - p * 0.4, y: T - p * 0.6 },
         );
         let done = false;
-        if (tie) {
-          const S = sizeOf(a, W < 768), k = S / GLYPH[tie].w, cx = L - 24 - GLYPH[tie].hw * k;
-          const y = slide(a, tie, S, lvOf(a), M);
-          if (y !== null) {
+        if (tie && ky !== null) {
+          const S = kS, k = kk, cx = kx, y = ky;
+          {
+            // Leaving the top of the loop level and dropping into the knot on a quarter ellipse:
+            // no cusp where the line turns from going left to going down
+            const top = y - 28 * k, sx = L - p * 0.4, ex = sx - cx;
+            const sy0 = Math.min(T - p * 0.6, top - ex * 0.75);
+            pts.push({ x: sx, y: sy0, hz: true });
             const g = glyph(tie, cx, y, S);
+            const ey = top - sy0;
+            pts[g.p0].fx = [{ x: sx - ex * QUARTER, y: sy0 }, { x: cx, y: top - ey * QUARTER }];
             tieAt.push({ el: knotOf(a), idx: g.p1, g });
             feats.push({ a, kind: "knot", sec: e.sec, k: gRange(g), i0: g.p0 * SUB, i1: g.p1 * SUB });
             pts.push({ x: rx, y: B + 70, v: true });
@@ -397,6 +431,7 @@
           }
         }
         if (!done) {
+          pts.push({ x: L - p * 0.4, y: T - p * 0.6 });
           pts.push({ x: L - p * 1.15, y: M + 3 });
           tieAt.push({ el: knotOf(a), idx: pts.length - 1 });
           pts.push({ x: rx, y: B + 70, v: true });
@@ -452,8 +487,15 @@
       if (b.fx) { c1 = b.fx[0]; c2 = b.fx[1]; } else {
         // Handles never longer than half the segment, so short stretches (through a knot) never overshoot
         const cap = Math.hypot(b.x - a.x, b.y - a.y) * 0.5;
-        const h = (t) => { const l = Math.hypot(t.x, t.y) / 3; const k = l > cap ? cap / l : 1; return { x: (t.x / 3) * k, y: (t.y / 3) * k }; };
-        const h1 = h(tans[i]), h2 = h(tans[i + 1]);
+        // A vertical (or level) handle never reaches past the other end's height (or x): longer, the curve
+        // would dip back on itself and read as two elbows (the short sideways steps between two knots)
+        const dx = Math.abs(b.x - a.x), dy = Math.abs(b.y - a.y);
+        const h = (t, p) => {
+          const lim = p.v ? Math.max(dy * 0.85, 1) : p.hz ? Math.max(dx * 0.85, 1) : cap;
+          const l = Math.hypot(t.x, t.y) / 3, c = Math.min(cap, lim), k = l > c ? c / l : 1;
+          return { x: (t.x / 3) * k, y: (t.y / 3) * k };
+        };
+        const h1 = h(tans[i], a), h2 = h(tans[i + 1], b);
         c1 = { x: a.x + h1.x, y: a.y + h1.y };
         c2 = { x: b.x - h2.x, y: b.y - h2.y };
       }
@@ -705,6 +747,7 @@
       for (const p of [pulse.a, pulse.b]) { p.setAttribute("d", d); p.setAttribute("pathLength", total.toFixed(2)); }
     }
     dirty = true;
+    snap = true; // the lengths are new: no gliding from a length on the old line
     paint();
   }
 
@@ -729,7 +772,9 @@
 
   function paint() {
     dirty = false;
-    drawn = readerLength() * arrive;
+    // The tip follows the reader in tick(); it jumps straight there only when still or after a rebuild
+    const target = readerLength() * arrive;
+    if (still || snap) { drawn = target; snap = false; } else if (Math.abs(target - drawn) > 0.25) wake();
     if (sway.on && lens[sway.i1] > drawn) endSway();
     // Gaps in the drawn line where an overlay stands in for it (the sway, the loop untwisting);
     // each overlay meets the line exactly at both ends
@@ -830,6 +875,12 @@
       pulse.t += (dt * 1000) / PULSE_MS;
       if (pulse.t >= 1) endPulse();
       else { stepPulse(); busy = true; }
+    }
+
+    if (!still) {
+      const gap = readerLength() * arrive - drawn;
+      if (Math.abs(gap) > 0.25) { drawn += gap * (1 - Math.exp(-dt / FOLLOW_S)); dirty = true; busy = true; }
+      else if (gap) { drawn += gap; dirty = true; }
     }
 
     if (dirty) paint();
