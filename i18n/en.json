@@ -211,7 +211,9 @@
     "ritP1": "Say what hasn't been said, and let go gently.",
     "ritP2": "Give thanks for what was lived, for what remains.",
     "ritP3": "Set down what you wish for what comes next, for yourself and for the bond.",
-    "ritNote": "Rituals can be part of a support session or close a workshop. They can be lived alone, with family or with others."
+    "ritNote": "Rituals can be part of a support session or close a workshop. They can be lived alone, with family or with others.",
+    "ritPhotoLabel": "Photo: a heart of pebbles on the sand, a small cairn standing in front",
+    "ritCaption": "A heart of pebbles, set there for someone."
   },
   "boutique": {
     "secTitle": "What I make, between workshops.",

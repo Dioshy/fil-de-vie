@@ -211,7 +211,9 @@
     "ritP1": "Dire ce qui n'a pas été dit, et laisser partir doucement.",
     "ritP2": "Remercier pour ce qui a été vécu, pour ce qui reste.",
     "ritP3": "Poser ce que l'on souhaite pour la suite, pour soi et pour le lien.",
-    "ritNote": "Les rituels peuvent s'inscrire dans une séance d'accompagnement ou clore un atelier. Ils se vivent seul, en famille ou à plusieurs."
+    "ritNote": "Les rituels peuvent s'inscrire dans une séance d'accompagnement ou clore un atelier. Ils se vivent seul, en famille ou à plusieurs.",
+    "ritPhotoLabel": "Photo : un cœur de galets sur le sable, un petit cairn posé devant",
+    "ritCaption": "Un cœur de galets, posé là pour quelqu'un."
   },
   "boutique": {
     "secTitle": "Ce que je fabrique, entre deux ateliers.",
