@@ -283,3 +283,16 @@ html.js [data-fade-after].is-waiting { opacity: 0; }
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Photos in the photo slots: they fill the frame the slot already draws */
+[data-slot="photo"]:has(> img) { position: relative; overflow: hidden; }
+[data-slot="photo"] > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* A touch warmer and softer, so stock light sits with the paper tones */
+  filter: saturate(.88) sepia(.08);
+}

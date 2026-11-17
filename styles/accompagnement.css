@@ -268,3 +268,10 @@
   #accompagnement .acc-more, #accompagnement .acc-frame { grid-column: 3 / 11; }
   #accompagnement .acc-more-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--cols-gap); }
 }
+
+/* Caption sits on the photo: a quiet paper label keeps it legible */
+#accompagnement .acc-photo figcaption {
+  z-index: 1;
+  padding: .2em .6em;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
